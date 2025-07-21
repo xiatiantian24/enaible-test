@@ -7,7 +7,7 @@ const PRODUCTS = [
     inventory: 8,
     distance: 0.3, // km
     location: { x: 60, y: 120 }, // fake map coordinates
-    image: "https://via.placeholder.com/80x100?text=Dress"
+    image: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80" // Black dress
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ const PRODUCTS = [
     inventory: 5,
     distance: 0.5,
     location: { x: 180, y: 80 },
-    image: "https://via.placeholder.com/80x100?text=Shirt"
+    image: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=400&q=80" // White shirt
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ const PRODUCTS = [
     inventory: 2,
     distance: 0.2,
     location: { x: 120, y: 200 },
-    image: "https://via.placeholder.com/80x100?text=Bag"
+    image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" // Tote bag
   },
   {
     id: 4,
@@ -34,7 +34,7 @@ const PRODUCTS = [
     inventory: 10,
     distance: 0.4,
     location: { x: 220, y: 160 },
-    image: "https://via.placeholder.com/80x100?text=Sandals"
+    image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=400&q=80" // Sandals
   }
 ];
 
@@ -46,44 +46,44 @@ function $(selector) {
   return document.querySelector(selector);
 }
 function show(el) {
-  el.classList.remove('hidden');
+  if (el) el.classList.remove('hidden');
 }
 function hide(el) {
-  el.classList.add('hidden');
+  if (el) el.classList.add('hidden');
 }
 
 // --- Render Product List ---
 function renderProducts(products) {
   const list = $('#product-list');
   list.innerHTML = '';
-  products.forEach(product => {
-    const card = document.createElement('div');
-    card.className = 'product-card';
-    card.innerHTML = `
-      <div style="display:flex;align-items:center;gap:1rem;">
-        <img src="${product.image}" alt="${product.name}" style="border-radius:0.5rem;width:80px;height:100px;object-fit:cover;">
-        <div style="flex:1;text-align:left;">
-          <div class="product-title">${product.name}</div>
-          <div class="product-meta">${product.description}</div>
-          <div class="product-meta">Inventory: ${product.inventory} | ${product.distance} km away</div>
-        </div>
-      </div>
-      <button class="add-btn" data-id="${product.id}">Add to Trip</button>
-    `;
-    list.appendChild(card);
-  });
-  // Add event listeners for add buttons
-  list.querySelectorAll('.add-btn').forEach(btn => {
-    btn.onclick = () => addToTrip(parseInt(btn.dataset.id));
+  import('./components/ProductCard.js').then(({ renderProductCard }) => {
+    products.forEach(product => {
+      const card = renderProductCard(product, { onAdd: addToTrip });
+      list.appendChild(card);
+    });
+    if (window.feather) window.feather.replace();
   });
 }
 
 // --- Add to Trip Plan ---
 function addToTrip(productId) {
-  if (!tripPlan.includes(productId)) {
+  const idx = tripPlan.indexOf(productId);
+  if (idx === -1) {
     tripPlan.push(productId);
+  } else {
+    tripPlan.splice(idx, 1);
+  }
+  // Update button visibility
+  if (tripPlan.length > 0) {
     $('#preview-trip-btn').classList.remove('hidden');
     $('#in-store-mode-btn').classList.remove('hidden');
+  } else {
+    $('#preview-trip-btn').classList.add('hidden');
+    $('#in-store-mode-btn').classList.add('hidden');
+  }
+  // Re-render products to update icons
+  if (window.renderProducts && window.PRODUCTS) {
+    window.renderProducts(window.PRODUCTS);
   }
 }
 
@@ -136,26 +136,30 @@ function renderMapOverlay() {
 }
 
 // --- Event Listeners ---
-$('#search-btn').onclick = () => {
-  const goal = $('#shopping-goal').value.trim();
-  if (goal.length === 0) return;
-  show($('#product-results'));
-  renderProducts(PRODUCTS); // In real app, filter by goal
-};
+// $('#search-btn').onclick = () => {
+//   const goal = $('#shopping-goal').value.trim();
+//   if (goal.length === 0) return;
+//   show($('#product-results'));
+//   renderProducts(PRODUCTS); // In real app, filter by goal
+// };
 
 $('#preview-trip-btn').onclick = () => {
   renderTripOverlay();
+  hide(document.getElementById('products-page'));
   show($('#trip-overlay'));
 };
 $('#close-overlay-btn').onclick = () => {
   hide($('#trip-overlay'));
+  show(document.getElementById('products-page'));
 };
 $('#in-store-mode-btn').onclick = () => {
   renderMapOverlay();
+  hide(document.getElementById('products-page'));
   show($('#map-overlay'));
 };
 $('#close-map-btn').onclick = () => {
   hide($('#map-overlay'));
+  show(document.getElementById('products-page'));
 };
 
 // --- Utility: Hide overlays on start ---
@@ -164,3 +168,13 @@ hide($('#trip-overlay'));
 hide($('#map-overlay'));
 hide($('#preview-trip-btn'));
 hide($('#in-store-mode-btn'));
+
+// Ensure Feather icons are rendered after DOM is loaded
+window.addEventListener('DOMContentLoaded', () => {
+  if (window.feather) window.feather.replace();
+});
+
+// Expose for SPA navigation
+window.PRODUCTS = PRODUCTS;
+window.renderProducts = renderProducts;
+window.tripPlan = tripPlan;
