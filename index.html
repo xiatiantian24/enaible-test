@@ -10,6 +10,7 @@
 </head>
 <body>
   <div class="app-container">
+    <button id="back-to-search-btn-refine" class="refine-back-btn hidden"><i data-feather="arrow-left"></i></button>
     <!-- Location Section -->
     <div id="location-bar" class="location-bar">
       <i data-feather="shopping-bag"></i>
@@ -19,6 +20,11 @@
     <div class="accent-heading">Let’s start curating.</div>
     <!-- SearchBar Component Mount Point -->
     <div id="searchbar-container"></div>
+    <!-- Refine Description (shown only during refine step) -->
+    <div id="refine-desc" class="refine-desc hidden">
+      Let’s refine the style you’re looking for. Choose 3+ images that speak to you.<br>
+      We’ll use your selections to curate products and stores.
+    </div>
     <!-- Search Toggle Row (if any) -->
     <div id="search-toggle-row"></div>
     <!-- Refine Page (SPA style) -->
@@ -33,6 +39,22 @@
       <div id="product-list"></div>
       <button id="preview-trip-btn" class="hidden">Preview Trip</button>
       <button id="in-store-mode-btn" class="hidden">In-Store Shopping Mode</button>
+    </div>
+    <!-- Map Page (SPA style) -->
+    <div id="map-page" class="hidden">
+      <h2>Store Map</h2>
+      <div id="map-container" style="width:100%;height:250px;background:repeating-linear-gradient(45deg,#e0e0e0,#e0e0e0 10px,#fff 10px,#fff 20px);position:relative;"></div>
+      <p>This is your trip plan map. (Mockup)</p>
+    </div>
+    <!-- Profile Page (SPA style) -->
+    <div id="profile-page" class="hidden">
+      <h2>Profile</h2>
+      <div id="profile-info">
+        <p><strong>Name:</strong> Jane Doe</p>
+        <p><strong>Email:</strong> jane.doe@example.com</p>
+        <p><strong>Favorite Style:</strong> Modern Business</p>
+        <p>This is a mockup profile page.</p>
+      </div>
     </div>
     <!-- Trip Plan Overlay Sheet -->
     <div id="trip-overlay" class="overlay hidden">
@@ -85,8 +107,7 @@
       }
       // SPA: go to refine page after search
       function goToProductsPage(query) {
-        hideSearchUI();
-        document.getElementById('refine-page').classList.remove('hidden');
+        if (window.showScreen) window.showScreen('refine');
         // Render refine image grid
         const grid = document.getElementById('refine-image-grid');
         grid.innerHTML = '';
@@ -105,8 +126,7 @@
         // Finish Refine button logic
         const finishBtn = document.getElementById('finish-refine-btn');
         finishBtn.onclick = () => {
-          document.getElementById('refine-page').classList.add('hidden');
-          document.getElementById('products-page').classList.remove('hidden');
+          if (window.showScreen) window.showScreen('products');
           waitForRenderProducts(() => {
             window.renderProducts(window.PRODUCTS);
           });
@@ -121,8 +141,15 @@
         backBtn.style = 'margin-bottom: 1rem; background: none; border: none; cursor: pointer; padding: 4px;';
         productsPage.insertBefore(backBtn, productsPage.firstChild);
         backBtn.onclick = () => {
-          productsPage.classList.add('hidden');
-          showSearchUI();
+          if (window.showScreen) window.showScreen('refine');
+        };
+        if (window.feather) window.feather.replace();
+      }
+      // Add back button logic for refine page
+      const backBtnRefine = document.getElementById('back-to-search-btn-refine');
+      if (backBtnRefine) {
+        backBtnRefine.onclick = () => {
+          if (window.showScreen) window.showScreen('search');
         };
         if (window.feather) window.feather.replace();
       }

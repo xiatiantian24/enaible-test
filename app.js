@@ -114,7 +114,8 @@ function renderTripOverlay() {
 
 // --- Render Map Overlay ---
 function renderMapOverlay() {
-  const map = $('#map-container');
+  const map = document.getElementById('map-container');
+  if (!map) return;
   map.innerHTML = '';
   // Fake map size
   map.style.position = 'relative';
@@ -178,3 +179,111 @@ window.addEventListener('DOMContentLoaded', () => {
 window.PRODUCTS = PRODUCTS;
 window.renderProducts = renderProducts;
 window.tripPlan = tripPlan;
+
+// --- SPA Navigation: Nav Bar Clicks ---
+window.addEventListener('DOMContentLoaded', () => {
+  // Helper to show/hide main screens
+  function showScreen(screen) {
+    // Hide all main screens
+    document.getElementById('refine-page').classList.add('hidden');
+    document.getElementById('products-page').classList.add('hidden');
+    document.getElementById('profile-page').classList.add('hidden');
+    document.getElementById('map-page').classList.add('hidden');
+    // Show/hide search UI
+    document.getElementById('searchbar-container').classList.add('hidden');
+    const accent = document.querySelector('.accent-heading');
+    if (accent) accent.classList.add('hidden');
+    const toggleRow = document.getElementById('search-toggle-row');
+    if (toggleRow) toggleRow.classList.add('hidden');
+    const locationBar = document.getElementById('location-bar');
+    if (locationBar) locationBar.classList.add('hidden');
+    const refineDesc = document.getElementById('refine-desc');
+    if (refineDesc) refineDesc.classList.add('hidden');
+    const backBtnRefine = document.getElementById('back-to-search-btn-refine');
+    if (backBtnRefine) backBtnRefine.classList.add('hidden');
+
+    const searchbarActions = document.querySelector('.searchbar-actions-row-fixed');
+    const searchbarOuter = document.querySelector('.searchbar-outer');
+    if (searchbarActions) searchbarActions.classList.remove('hidden');
+    if (searchbarOuter) searchbarOuter.style.height = '';
+
+    if (screen === 'search') {
+      document.getElementById('searchbar-container').classList.remove('hidden');
+      if (accent) accent.classList.remove('hidden');
+      if (toggleRow) toggleRow.classList.remove('hidden');
+      if (locationBar) locationBar.classList.remove('hidden');
+      if (refineDesc) refineDesc.classList.add('hidden');
+      if (backBtnRefine) backBtnRefine.classList.add('hidden');
+      if (searchbarActions) searchbarActions.classList.remove('hidden');
+      if (searchbarOuter) searchbarOuter.style.height = '';
+    } else if (screen === 'refine') {
+      document.getElementById('refine-page').classList.remove('hidden');
+      document.getElementById('searchbar-container').classList.remove('hidden');
+      if (refineDesc) refineDesc.classList.remove('hidden');
+      if (backBtnRefine) {
+        backBtnRefine.classList.remove('hidden');
+        if (window.feather) window.feather.replace();
+      }
+      if (searchbarActions) searchbarActions.classList.add('hidden');
+      if (searchbarOuter) searchbarOuter.style.height = '58px';
+    } else if (screen === 'products') {
+      document.getElementById('products-page').classList.remove('hidden');
+      if (refineDesc) refineDesc.classList.add('hidden');
+      document.getElementById('searchbar-container').classList.add('hidden');
+      if (backBtnRefine) backBtnRefine.classList.add('hidden');
+      if (searchbarActions) searchbarActions.classList.remove('hidden');
+      if (searchbarOuter) searchbarOuter.style.height = '';
+    } else if (screen === 'profile') {
+      document.getElementById('profile-page').classList.remove('hidden');
+      if (refineDesc) refineDesc.classList.add('hidden');
+      document.getElementById('searchbar-container').classList.add('hidden');
+      if (backBtnRefine) backBtnRefine.classList.add('hidden');
+      if (searchbarActions) searchbarActions.classList.remove('hidden');
+      if (searchbarOuter) searchbarOuter.style.height = '';
+    } else if (screen === 'map') {
+      document.getElementById('map-page').classList.remove('hidden');
+      if (refineDesc) refineDesc.classList.add('hidden');
+      document.getElementById('searchbar-container').classList.add('hidden');
+      if (backBtnRefine) backBtnRefine.classList.add('hidden');
+      if (typeof renderMapOverlay === 'function') renderMapOverlay();
+      if (searchbarActions) searchbarActions.classList.remove('hidden');
+      if (searchbarOuter) searchbarOuter.style.height = '';
+    }
+  }
+
+  // Expose showScreen globally for use in index.html
+  window.showScreen = showScreen;
+
+  // Attach nav bar click listeners
+  const navBar = document.getElementById('navbar-container');
+  if (navBar) {
+    navBar.addEventListener('click', (e) => {
+      let navItem = e.target.closest('.nav-item');
+      if (!navItem) return;
+      // Remove active from all nav-items and nav-icon-bg
+      navBar.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+      navBar.querySelectorAll('.nav-icon-bg').forEach(i => i.classList.remove('active'));
+      // Set active on clicked
+      navItem.classList.add('active');
+      const iconBg = navItem.querySelector('.nav-icon-bg');
+      if (iconBg) iconBg.classList.add('active');
+      // Switch view
+      const label = navItem.querySelector('.nav-label')?.textContent?.trim();
+      if (label === 'Find') {
+        showScreen('search');
+      } else if (label === 'Trip') {
+        showScreen('map');
+      } else if (label === 'Me') {
+        showScreen('profile');
+      }
+    });
+  }
+
+  // Attach click handler for refine back button
+  const backBtnRefine = document.getElementById('back-to-search-btn-refine');
+  if (backBtnRefine) {
+    backBtnRefine.onclick = () => {
+      showScreen('search');
+    };
+  }
+});

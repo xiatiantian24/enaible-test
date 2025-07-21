@@ -29,6 +29,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin-top: 32px;
 }
 
 .search-bar-modern {
@@ -76,8 +77,6 @@ body {
   align-items: stretch;
   width: 100%;
   height: 158px;
-  min-height: 158px;
-  max-height: 158px;
   box-sizing: border-box;
   padding: 16px;
   background: var(--Background-Default-Default, #fff);
@@ -395,10 +394,6 @@ svg {
 
 #refine-page {
   max-width: 400px;
-  margin: 32px auto;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0px 2px 4px rgba(0,0,0,0.08);
   padding: 24px 16px 32px 16px;
   display: flex;
   flex-direction: column;
@@ -455,4 +450,37 @@ svg {
 }
 .primary-btn:hover {
   background: #357a96;
+}
+.refine-desc {
+  color: #5A5A5A;
+  font-size: 0.98rem;
+  margin: 10px auto 18px auto;
+  max-width: 370px;
+  line-height: 1.5;
+  font-family: 'Instrument Sans', Arial, sans-serif;
+  background: none;
+}
+.refine-back-btn {
+  position: absolute;
+  top: 24px;
+  left: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 20;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .refine-back-btn {
+    top: 12px;
+    left: 8px;
+  }
+  #searchbar-container {
+    margin-top: 24px;
+  }
 }
