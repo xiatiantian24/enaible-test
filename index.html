@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Shopping Trip Planner</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Search Section -->
+    <header>
+      <h1>Shopping Trip Planner</h1>
+      <input type="text" id="shopping-goal" placeholder="What's your shopping goal? (e.g. black dresses for business trip...)" />
+      <button id="search-btn">Search</button>
+    </header>
+
+    <!-- Product Results Section -->
+    <section id="product-results" class="hidden">
+      <h2>Results</h2>
+      <div id="product-list"></div>
+    </section>
+
+    <!-- Trip Plan Preview Button -->
+    <footer>
+      <button id="preview-trip-btn" class="hidden">Preview Trip</button>
+      <button id="in-store-mode-btn" class="hidden">In-Store Shopping Mode</button>
+    </footer>
+
+    <!-- Trip Plan Overlay Sheet -->
+    <div id="trip-overlay" class="overlay hidden">
+      <div class="overlay-content">
+        <h2>Your Shopping Trip Plan</h2>
+        <div id="trip-list"></div>
+        <button id="close-overlay-btn">Close</button>
+      </div>
+    </div>
+
+    <!-- Map Overlay Sheet -->
+    <div id="map-overlay" class="overlay hidden">
+      <div class="overlay-content">
+        <h2>Store Map</h2>
+        <div id="map-container"></div>
+        <button id="close-map-btn">Close</button>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
