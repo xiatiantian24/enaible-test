@@ -6,7 +6,7 @@ export function renderFilterSheet() {
     <div id="filter-sheet" class="filter-sheet hidden">
       <div class="filter-sheet-header">
         <h3>Filters</h3>
-        <button class="close-filter-btn" id="close-filter-btn"><i data-feather="x"></i></button>
+        <button class="close-filter-btn" id="close-filter-btn"><i class="fa fa-times"></i></button>
       </div>
       <div class="filter-sheet-content">
         <div class="filter-section">
@@ -32,7 +32,7 @@ export function renderFilterSheet() {
               <input type="checkbox" name="keywords" value="business-casual" checked tabindex="-1">
               <span>Business casual</span>
             </label>
-            <input type="text" id="custom-keyword-input" class="custom-keyword-input" placeholder="Add your own..." autocomplete="off" />
+            <input type="text" id="custom-keyword-input" class="custom-keyword-input" placeholder="Add more keywords" autocomplete="off" />
           </div>
         </div>
         <div class="filter-section">

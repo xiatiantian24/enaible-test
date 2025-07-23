@@ -60,11 +60,18 @@
     <!-- Products Page (SPA style) -->
     <div id="products-page" class="hidden">
         <div class="back-btn-bar hidden" id="back-btn-bar-products" data-back="products">
+          <div class="products-bar-buttons">
           <button class="back-btn" id="back-btn-products"><i data-feather="arrow-left"></i></button>
+          <button class="filter-btn" id="filter-btn-products"><i data-feather="sliders"></i></button>
+          </div>
+          <div class="products-heading-row"><span class="products-heading">Match List</span></div>
         </div>
-      <h2>Results</h2>
       <div id="product-list"></div>
-      <button id="preview-trip-btn" class="hidden">View Trip List</button>
+      <button id="preview-trip-btn" class="hidden floating-trip-btn">
+        <span class="trip-btn-icon"><i class="fa-solid fa-list"></i></span>
+        <span class="trip-btn-label">View Trip List</span>
+        <span class="trip-btn-badge" id="trip-btn-badge">0</span>
+      </button>
       </div>
       <!-- Map Page (SPA style) -->
       <div id="map-page" class="hidden">
@@ -103,11 +110,17 @@
         </div>
     </div>
     <!-- Trip Plan Overlay Sheet -->
-    <div id="trip-overlay" class="overlay hidden">
-      <div class="overlay-content">
-        <h2>Your Shopping Trip Plan</h2>
+    <div id="trip-sheet-overlay" class="filter-overlay hidden"></div>
+    <div id="trip-overlay" class="filter-sheet hidden">
+      <div class="filter-sheet-header">
+        <div class="trip-sheet-header-stack">
+          <h3 id="trip-sheet-title">Trip List for Friday, July 11th</h3>
+          <div id="trip-sheet-meta" style="margin-bottom: 0; color: #555; font-size: 1rem;"></div>
+        </div>
+        <button id="close-overlay-btn" class="close-filter-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="filter-sheet-content">
         <div id="trip-list"></div>
-        <button id="close-overlay-btn">Close</button>
       </div>
     </div>
     <!-- Map Overlay Sheet -->
@@ -161,6 +174,8 @@
       }
       // SPA: go to refine page after search
       function goToProductsPage(query) {
+          window.justSearched = true;
+          window.lastSearchQuery = query;
           if (window.showScreen) window.showScreen('refine');
         // Render refine image grid
         const grid = document.getElementById('refine-image-grid');
@@ -206,11 +221,7 @@
             if (filteredProducts.length < 3) {
               // Get products not already selected
               const notSelected = (window.PRODUCTS || []).filter(p => !productIds.includes(p.id));
-              // Shuffle and pick as many as needed
-              for (let i = notSelected.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [notSelected[i], notSelected[j]] = [notSelected[j], notSelected[i]];
-              }
+              // Add up to two unselected products (not random)
               filteredProducts = filteredProducts.concat(notSelected.slice(0, 3 - filteredProducts.length));
             }
             // Only show up to 3 products
@@ -256,6 +267,50 @@
             window.showScreen('search');
           }
         }, 100);
+
+        // Add filter button logic for refine and products pages
+        const filterBtnRefine = document.getElementById('filter-btn-refine');
+        if (filterBtnRefine) {
+          filterBtnRefine.onclick = () => {
+            const filterSheetContainer = document.getElementById("filter-sheet-container");
+            if (filterSheetContainer) {
+              filterSheetContainer.innerHTML = renderFilterSheet();
+              initializeFilterSheet();
+              // Show overlay and sheet
+              const filterSheet = document.getElementById('filter-sheet');
+              const filterOverlay = document.getElementById('filter-overlay');
+              if (filterSheet && filterOverlay) {
+                filterSheet.classList.remove('hidden');
+                filterOverlay.classList.remove('hidden');
+                setTimeout(() => {
+                  filterSheet.classList.add('show');
+                  filterOverlay.classList.add('show');
+                }, 10);
+              }
+            }
+          };
+        }
+        const filterBtnProducts = document.getElementById('filter-btn-products');
+        if (filterBtnProducts) {
+          filterBtnProducts.onclick = () => {
+            const filterSheetContainer = document.getElementById("filter-sheet-container");
+            if (filterSheetContainer) {
+              filterSheetContainer.innerHTML = renderFilterSheet();
+              initializeFilterSheet();
+              // Show overlay and sheet
+              const filterSheet = document.getElementById('filter-sheet');
+              const filterOverlay = document.getElementById('filter-overlay');
+              if (filterSheet && filterOverlay) {
+                filterSheet.classList.remove('hidden');
+                filterOverlay.classList.remove('hidden');
+                setTimeout(() => {
+                  filterSheet.classList.add('show');
+                  filterOverlay.classList.add('show');
+                }, 10);
+              }
+            }
+          };
+        }
     });
   </script>
 </body>
