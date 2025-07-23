@@ -35,7 +35,7 @@ body {
 
 .search-bar-modern {
   width: 100%;
-  max-width: 370px;
+  max-width: 380px;
   margin: 0 auto;
 }
 
@@ -485,6 +485,7 @@ svg {
   font-weight: 600;
   font-style: italic;
   width: 100%;
+  max-width: 380px;
   padding: 36px 16px 12px;
   line-height: 1.1;
   background: none;
@@ -877,4 +878,19 @@ svg {
 
 .apply-filters-btn {
   flex: 2;
+}
+
+.bookmark-btn i {
+  color: #519db8;
+  font-size: 20px;
+  transition: color 0.15s;
+}
+
+.bookmark-btn:hover i,
+.bookmark-btn.active i {
+  color: #357a96;
+}
+
+.searchbar-input {
+  resize: none;
 }

@@ -114,10 +114,8 @@ function addToTrip(productId) {
   // Update button visibility
   if (tripPlan.length > 0) {
     $('#preview-trip-btn').classList.remove('hidden');
-    $('#in-store-mode-btn').classList.remove('hidden');
   } else {
     $('#preview-trip-btn').classList.add('hidden');
-    $('#in-store-mode-btn').classList.add('hidden');
   }
   // Re-render products to update icons
   if (window.renderProducts && window.lastProductSelection) {
@@ -194,11 +192,6 @@ $('#close-overlay-btn').onclick = () => {
   hide($('#trip-overlay'));
   show(document.getElementById('products-page'));
 };
-$('#in-store-mode-btn').onclick = () => {
-  renderMapOverlay();
-  hide(document.getElementById('products-page'));
-  show($('#map-overlay'));
-};
 $('#close-map-btn').onclick = () => {
   hide($('#map-overlay'));
   show(document.getElementById('products-page'));
@@ -209,7 +202,6 @@ hide($('#product-results'));
 hide($('#trip-overlay'));
 hide($('#map-overlay'));
 hide($('#preview-trip-btn'));
-hide($('#in-store-mode-btn'));
 
 // Ensure Feather icons are rendered after DOM is loaded
 window.addEventListener('DOMContentLoaded', () => {
@@ -295,6 +287,9 @@ window.addEventListener('DOMContentLoaded', () => {
       if (backBtnRefine) backBtnRefine.classList.add('hidden');
       if (searchbarActions) searchbarActions.classList.remove('hidden');
       if (searchbarOuter) searchbarOuter.style.height = '';
+      // Reset scroll for searchbar container
+      const searchbarContainer = document.getElementById('searchbar-container');
+      if (searchbarContainer) searchbarContainer.scrollTop = 0;
       // Rotating placeholder logic with fade transition
       setTimeout(() => {
         let searchInput = document.querySelector('#searchbar-container .searchbar-input');
@@ -336,6 +331,9 @@ window.addEventListener('DOMContentLoaded', () => {
       if (searchbarActions) searchbarActions.classList.add('hidden');
       if (searchbarOuter) searchbarOuter.style.height = '58px';
       if (exampleSearches) exampleSearches.classList.add('hidden');
+      // Reset scroll for refine page
+      const refinePage = document.getElementById('refine-page');
+      if (refinePage) refinePage.scrollTop = 0;
       
       // Add animation-played class after animations complete to prevent re-animation
       setTimeout(() => {
@@ -359,6 +357,9 @@ window.addEventListener('DOMContentLoaded', () => {
       if (searchbarActions) searchbarActions.classList.remove('hidden');
       if (searchbarOuter) searchbarOuter.style.height = '';
       if (exampleSearches) exampleSearches.classList.add('hidden');
+      // Reset scroll for product list
+      const productList = document.getElementById('product-list');
+      if (productList) productList.scrollTop = 0;
     } else if (screen === 'profile') {
       document.getElementById('profile-page').classList.remove('hidden');
       if (refineDesc) refineDesc.classList.add('hidden');
@@ -369,6 +370,9 @@ window.addEventListener('DOMContentLoaded', () => {
       if (searchbarActions) searchbarActions.classList.remove('hidden');
       if (searchbarOuter) searchbarOuter.style.height = '';
       if (exampleSearches) exampleSearches.classList.add('hidden');
+      // Reset scroll for profile page
+      const profilePage = document.getElementById('profile-page');
+      if (profilePage) profilePage.scrollTop = 0;
     } else if (screen === 'map') {
       document.getElementById('map-page').classList.remove('hidden');
       if (refineDesc) refineDesc.classList.add('hidden');
@@ -379,6 +383,9 @@ window.addEventListener('DOMContentLoaded', () => {
       if (searchbarActions) searchbarActions.classList.remove('hidden');
       if (searchbarOuter) searchbarOuter.style.height = '';
       if (exampleSearches) exampleSearches.classList.add('hidden');
+      // Reset scroll for map page
+      const mapPage = document.getElementById('map-page');
+      if (mapPage) mapPage.scrollTop = 0;
     }
   }
 

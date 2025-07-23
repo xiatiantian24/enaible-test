@@ -88,8 +88,6 @@ export function initializeFilterSheet() {
   const clearFiltersBtn = document.querySelector('.clear-filters-btn');
   const applyFiltersBtn = document.querySelector('.apply-filters-btn');
   
-  console.log('Filter elements found:', { filterBtn, filterSheet, filterOverlay, closeFilterBtn });
-  
   // Helper function to close filter sheet
   function closeFilterSheet() {
     filterSheet.classList.remove('show');
