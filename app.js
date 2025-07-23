@@ -7,7 +7,7 @@ const PRODUCTS = [
     inventory: 8,
     distance: 0.3, // km
     location: { x: 60, y: 120 }, // fake map coordinates
-    image: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80" // Black dress
+    image: "assets/images/product/Dick's-Nike-P-6000-side view.jpg" // Local test image
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ const PRODUCTS = [
     inventory: 5,
     distance: 0.5,
     location: { x: 180, y: 80 },
-    image: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=400&q=80" // White shirt
+    image: "assets/images/product/Dick's-Nike-P-6000-on.jpg" // Local test image
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ const PRODUCTS = [
     inventory: 2,
     distance: 0.2,
     location: { x: 120, y: 200 },
-    image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" // Tote bag
+    image: "assets/images/product/Dick's-Nike-P-6000-on-full body.jpg" // Local test image
   },
   {
     id: 4,
@@ -34,7 +34,7 @@ const PRODUCTS = [
     inventory: 10,
     distance: 0.4,
     location: { x: 220, y: 160 },
-    image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=400&q=80" // Sandals
+    image: "assets/images/product/Dick's-Nike-P-6000-bottom.jpg" // Local test image
   },
   {
     id: 5,
@@ -90,6 +90,23 @@ function hide(el) {
   if (el) el.classList.add('hidden');
 }
 
+// --- Add to Trip Plan ---
+function addToTrip(productId) {
+  const idx = tripPlan.indexOf(productId);
+  if (idx === -1) {
+    tripPlan.push(productId);
+  } else {
+    tripPlan.splice(idx, 1);
+  }
+  updateTripBtn();
+  // Re-render products to update icons
+  if (window.renderProducts && window.lastProductSelection) {
+    const filteredProducts = window.lastProductSelection.map(id => (window.PRODUCTS || []).find(p => p.id === id));
+    window.renderProducts(filteredProducts);
+  } else if (window.renderProducts && window.PRODUCTS) {
+    window.renderProducts(window.PRODUCTS);
+  }
+}
 // --- Render Product List ---
 function renderProducts(products) {
   const list = $('#product-list');
@@ -103,52 +120,63 @@ function renderProducts(products) {
   });
 }
 
-// --- Add to Trip Plan ---
-function addToTrip(productId) {
-  const idx = tripPlan.indexOf(productId);
-  if (idx === -1) {
-    tripPlan.push(productId);
-  } else {
-    tripPlan.splice(idx, 1);
-  }
-  // Update button visibility
-  if (tripPlan.length > 0) {
-    $('#preview-trip-btn').classList.remove('hidden');
-  } else {
-    $('#preview-trip-btn').classList.add('hidden');
-  }
-  // Re-render products to update icons
-  if (window.renderProducts && window.lastProductSelection) {
-    const filteredProducts = (window.PRODUCTS || []).filter(p => window.lastProductSelection.includes(p.id));
-    window.renderProducts(filteredProducts);
-  } else if (window.renderProducts && window.PRODUCTS) {
-    window.renderProducts(window.PRODUCTS);
-  }
-}
-
 // --- Render Trip Plan Overlay ---
 function renderTripOverlay() {
-  const tripList = $('#trip-list');
-  tripList.innerHTML = '';
-  if (tripPlan.length === 0) {
-    tripList.innerHTML = '<p>No products added yet.</p>';
-    return;
-  }
+  // Set sheet title to just 'Trip List'
+  const title = document.getElementById('trip-sheet-title');
+  const meta = document.getElementById('trip-sheet-meta');
+  const tripList = document.getElementById('trip-list');
+  if (!tripList || !title || !meta) return;
+  title.textContent = 'My Trip List';
+  // Calculate estimated trip length (sum of product distances in min + 5 min per item)
+  let totalMin = 0;
   tripPlan.forEach(id => {
     const product = PRODUCTS.find(p => p.id === id);
-    const item = document.createElement('div');
-    item.className = 'product-card';
-    item.innerHTML = `
-      <div style="display:flex;align-items:center;gap:1rem;">
-        <img src="${product.image}" alt="${product.name}" style="border-radius:0.5rem;width:60px;height:75px;object-fit:cover;">
-        <div style="flex:1;text-align:left;">
-          <div class="product-title">${product.name}</div>
-          <div class="product-meta">${product.description}</div>
-        </div>
-      </div>
-    `;
-    tripList.appendChild(item);
+    if (product && product.distance) {
+      totalMin += Math.round(product.distance * 13); // same as product card
+    }
   });
+  totalMin += tripPlan.length * 5;
+  meta.textContent = `Estimated shopping time: ${totalMin} min`;
+  // Dropdown header from last search
+  const searchLabel = window.lastSearchQuery || 'Trip Items';
+  // Render dropdown
+  tripList.innerHTML = `
+    <div class="trip-dropdown">
+      <div class="trip-dropdown-header" id="trip-dropdown-header">
+        <span><i id="trip-dropdown-arrow" class="fa-solid fa-chevron-down"></i></span>
+        <span>${searchLabel}</span>
+      </div>
+      <div class="trip-dropdown-content" id="trip-dropdown-content"></div>
+    </div>
+  `;
+  const dropdownContent = document.getElementById('trip-dropdown-content');
+  if (tripPlan.length === 0) {
+    dropdownContent.innerHTML = '<p>No items added yet.</p>';
+    return;
+  }
+  import('./components/ProductCard.js').then(({ renderProductCard }) => {
+    tripPlan.forEach(id => {
+      const product = PRODUCTS.find(p => p.id === id);
+      // Render the card with add/remove button enabled and refresh sheet on click
+      const card = renderProductCard(product, {
+        onAdd: (id) => {
+          addToTrip(id);
+          renderTripOverlay();
+        }
+      });
+      dropdownContent.appendChild(card);
+    });
+    if (window.feather) window.feather.replace();
+  });
+  // Dropdown toggle logic
+  const header = document.getElementById('trip-dropdown-header');
+  const arrow = document.getElementById('trip-dropdown-arrow');
+  header.onclick = () => {
+    const isOpen = dropdownContent.style.display !== 'none';
+    dropdownContent.style.display = isOpen ? 'none' : 'block';
+    arrow.className = isOpen ? 'fa-solid fa-chevron-right' : 'fa-solid fa-chevron-down';
+  };
 }
 
 // --- Render Map Overlay ---
@@ -185,13 +213,27 @@ function renderMapOverlay() {
 
 $('#preview-trip-btn').onclick = () => {
   renderTripOverlay();
-  hide(document.getElementById('products-page'));
-  show($('#trip-overlay'));
+  const overlay = document.getElementById('trip-overlay');
+  const bg = document.getElementById('trip-sheet-overlay');
+  overlay.classList.remove('hidden');
+  bg.classList.remove('hidden');
+  setTimeout(() => {
+    overlay.classList.add('show');
+    bg.classList.add('show');
+  }, 10);
 };
-$('#close-overlay-btn').onclick = () => {
-  hide($('#trip-overlay'));
-  show(document.getElementById('products-page'));
-};
+$('#close-overlay-btn').onclick = closeTripSheet;
+document.getElementById('trip-sheet-overlay').onclick = closeTripSheet;
+function closeTripSheet() {
+  const overlay = document.getElementById('trip-overlay');
+  const bg = document.getElementById('trip-sheet-overlay');
+  overlay.classList.remove('show');
+  bg.classList.remove('show');
+  setTimeout(() => {
+    overlay.classList.add('hidden');
+    bg.classList.add('hidden');
+  }, 180);
+}
 $('#close-map-btn').onclick = () => {
   hide($('#map-overlay'));
   show(document.getElementById('products-page'));
@@ -245,6 +287,21 @@ window.examplePlaceholders = [
 ];
 window.placeholderIndex = 0;
 window.placeholderInterval = null;
+
+function updateTripBtn() {
+  const btn = document.getElementById('preview-trip-btn');
+  const badge = document.getElementById('trip-btn-badge');
+  if (!btn || !badge) return;
+  if (tripPlan.length > 0) {
+    btn.classList.remove('hidden');
+    setTimeout(() => btn.classList.add('show'), 10);
+    badge.textContent = tripPlan.length;
+  } else {
+    btn.classList.remove('show');
+    setTimeout(() => btn.classList.add('hidden'), 100);
+    badge.textContent = 0;
+  }
+}
 
 // --- SPA Navigation: Nav Bar Clicks ---
 window.addEventListener('DOMContentLoaded', () => {
@@ -319,9 +376,61 @@ window.addEventListener('DOMContentLoaded', () => {
         }
       }, 100);
     } else if (screen === 'refine') {
-      document.getElementById('refine-page').classList.remove('hidden');
-      document.getElementById('searchbar-container').classList.remove('hidden');
-      if (refineDesc) refineDesc.classList.remove('hidden');
+      // Only play loading animation if coming from search
+      if (window.justSearched) {
+      // --- Begin: Loading animation before refine description ---
+      const refineDesc = document.getElementById('refine-desc');
+      let refineLoading = document.getElementById('refine-loading');
+      if (!refineLoading) {
+        refineLoading = document.createElement('div');
+        refineLoading.id = 'refine-loading';
+        refineLoading.className = 'refine-loading';
+        // Insert loading element before refineDesc
+        refineDesc.parentNode.insertBefore(refineLoading, refineDesc);
+      }
+      refineLoading.classList.remove('hidden');
+      refineDesc.classList.add('hidden');
+      // Hide refine page and searchbar container until loading is done
+      document.getElementById('refine-page').classList.add('hidden');
+      document.getElementById('searchbar-container').classList.add('hidden');
+      // Rotating loading texts
+      const loadingMessages = [
+        'Finding your style...',
+        'Thinking about the weather...',
+        'Looking for popular trends...',
+        'Checking stores near you...'
+      ];
+      let loadingIdx = 0;
+      refineLoading.textContent = loadingMessages[loadingIdx];
+      let loadingInterval = setInterval(() => {
+        loadingIdx = (loadingIdx + 1) % loadingMessages.length;
+        refineLoading.textContent = loadingMessages[loadingIdx];
+      }, 800);
+      setTimeout(() => {
+        clearInterval(loadingInterval);
+        refineLoading.classList.add('hidden');
+        // Now show refine page and searchbar container
+        document.getElementById('refine-page').classList.remove('hidden');
+        document.getElementById('searchbar-container').classList.remove('hidden');
+        refineDesc.classList.remove('hidden');
+        // Play animation as before
+        setTimeout(() => {
+          const refineDescEl = document.getElementById('refine-desc');
+          const refinePageEl = document.getElementById('refine-page');
+          if (refineDescEl) refineDescEl.classList.add('animation-played');
+          if (refinePageEl) refinePageEl.classList.add('animation-played');
+        }, 2400);
+        window.justSearched = false;
+      }, 3000);
+      // --- End: Loading animation before refine description ---
+      } else {
+        // No loading animation, just show refine page and desc
+        document.getElementById('refine-page').classList.remove('hidden');
+        document.getElementById('searchbar-container').classList.remove('hidden');
+        const refineDesc = document.getElementById('refine-desc');
+        if (refineDesc) refineDesc.classList.remove('hidden');
+        window.justSearched = false;
+      }
       const bar = document.querySelector('.back-btn-bar[data-back="refine"]');
       if (bar) bar.classList.remove('hidden');
       if (backBtnRefine) {
@@ -334,15 +443,8 @@ window.addEventListener('DOMContentLoaded', () => {
       // Reset scroll for refine page
       const refinePage = document.getElementById('refine-page');
       if (refinePage) refinePage.scrollTop = 0;
-      
       // Add animation-played class after animations complete to prevent re-animation
-      setTimeout(() => {
-        const refineDescEl = document.getElementById('refine-desc');
-        const refinePageEl = document.getElementById('refine-page');
-        if (refineDescEl) refineDescEl.classList.add('animation-played');
-        if (refinePageEl) refinePageEl.classList.add('animation-played');
-      }, 2400); // Wait for all animations to complete (1.8s + 0.6s = 2.4s)
-      
+      // (moved into setTimeout above)
       // Initialize filter functionality
       if (window.initializeFilterSheet) {
         window.initializeFilterSheet();
@@ -424,11 +526,22 @@ window.addEventListener('DOMContentLoaded', () => {
       showScreen('search');
     };
   }
-  
 
-  
   // Initialize filter sheet functionality
   if (typeof initializeFilterSheet === 'function') {
     initializeFilterSheet();
+  }
+  // Ensure default products are shown if navigating directly to products page
+  const productsPage = document.getElementById('products-page');
+  if (productsPage && !window.lastProductSelection) {
+    window.renderProducts(window.PRODUCTS);
+  }
+});
+
+window.addEventListener('keydown', function(e) {
+  if (e.key === 'ArrowRight') {
+    if (typeof showScreen === 'function') {
+      showScreen('products');
+    }
   }
 });
