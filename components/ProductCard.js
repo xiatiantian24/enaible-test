@@ -23,7 +23,7 @@ export function renderProductCard(product, { onAdd } = {}) {
         <div class="product-card-header-row">
           <img class="brand-logo" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Bellroy_logo.png" alt="Bellroy" />
           <div class="sold-by">Sold by Nordstrom</div>
-          <button class="bookmark-btn" title="Bookmark"><svg width="24" height="24" fill="none" stroke="#519DB8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+          <button class="bookmark-btn" title="Bookmark"><i class="fa-regular fa-bookmark"></i></button>
         </div>
         <div class="product-title">${product.name}</div>
         <div class="product-price">$${currentPrice}.00${originalPrice}</div>

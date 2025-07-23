@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cerulean - Shopping Trip Planner</title>
@@ -10,19 +10,19 @@
       href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script src="https://unpkg.com/feather-icons"></script>
-  </head>
-  <body>
-    <div class="app-container">
-      <!-- Location Section -->
-      <div id="location-bar" class="location-bar">
-        <i data-feather="shopping-bag"></i>
-        <span class="location-text">Long Island, New York</span>
-      </div>
-      <!-- Accent Heading -->
-      <div class="accent-heading">Let’s start curating.</div>
-      <!-- SearchBar Component Mount Point -->
-      <div id="searchbar-container"></div>
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Location Section -->
+    <div id="location-bar" class="location-bar">
+      <i data-feather="shopping-bag"></i>
+      <span class="location-text">Long Island, New York</span>
+    </div>
+    <!-- Accent Heading -->
+    <div class="accent-heading">Let’s start curating.</div>
+    <!-- SearchBar Component Mount Point -->
+    <div id="searchbar-container"></div>
       <!--
       <div id="example-searches-container" class="example-searches-container">
         <div class="example-searches-scroll">
@@ -46,9 +46,9 @@
         <button class="filter-btn" id="filter-btn-refine"><i data-feather="sliders"></i></button>
       </div>
       
-      <!-- Refine Page (SPA style) -->
-      <div id="refine-page" class="hidden">
-        <div id="refine-image-grid"></div>
+    <!-- Refine Page (SPA style) -->
+    <div id="refine-page" class="hidden">
+      <div id="refine-image-grid"></div>
         <button
           id="finish-refine-btn"
           class="primary-btn"
@@ -56,18 +56,15 @@
         >
           Finish Refine
         </button>
-      </div>
-      <!-- Products Page (SPA style) -->
-      <div id="products-page" class="hidden">
+    </div>
+    <!-- Products Page (SPA style) -->
+    <div id="products-page" class="hidden">
         <div class="back-btn-bar hidden" id="back-btn-bar-products" data-back="products">
           <button class="back-btn" id="back-btn-products"><i data-feather="arrow-left"></i></button>
         </div>
-        <h2>Results</h2>
-        <div id="product-list"></div>
-        <button id="preview-trip-btn" class="hidden">Preview Trip</button>
-        <button id="in-store-mode-btn" class="hidden">
-          In-Store Shopping Mode
-        </button>
+      <h2>Results</h2>
+      <div id="product-list"></div>
+      <button id="preview-trip-btn" class="hidden">View Trip List</button>
       </div>
       <!-- Map Page (SPA style) -->
       <div id="map-page" class="hidden">
@@ -104,43 +101,43 @@
           <p><strong>Favorite Style:</strong> Modern Business</p>
           <p>This is a mockup profile page.</p>
         </div>
+    </div>
+    <!-- Trip Plan Overlay Sheet -->
+    <div id="trip-overlay" class="overlay hidden">
+      <div class="overlay-content">
+        <h2>Your Shopping Trip Plan</h2>
+        <div id="trip-list"></div>
+        <button id="close-overlay-btn">Close</button>
       </div>
-      <!-- Trip Plan Overlay Sheet -->
-      <div id="trip-overlay" class="overlay hidden">
-        <div class="overlay-content">
-          <h2>Your Shopping Trip Plan</h2>
-          <div id="trip-list"></div>
-          <button id="close-overlay-btn">Close</button>
-        </div>
+    </div>
+    <!-- Map Overlay Sheet -->
+    <div id="map-overlay" class="overlay hidden">
+      <div class="overlay-content">
+        <h2>Store Map</h2>
+        <div id="map-container"></div>
+        <button id="close-map-btn">Close</button>
       </div>
-      <!-- Map Overlay Sheet -->
-      <div id="map-overlay" class="overlay hidden">
-        <div class="overlay-content">
-          <h2>Store Map</h2>
-          <div id="map-container"></div>
-          <button id="close-map-btn">Close</button>
-        </div>
-      </div>
+    </div>
       
       <!-- Filter Sheet Component Mount Point -->
       <div id="filter-sheet-container"></div>
-    </div>
-    <!-- NavBar Component Mount Point -->
-    <div id="navbar-container"></div>
-    <script src="app.js"></script>
-    <script type="module">
+  </div>
+  <!-- NavBar Component Mount Point -->
+  <div id="navbar-container"></div>
+  <script src="app.js"></script>
+  <script type="module">
       import { renderNavBar } from "./components/NavBar.js";
       import { renderSearchBar } from "./components/SearchBar.js";
       import { renderFilterSheet, initializeFilterSheet } from "./components/FilterSheet.js";
       window.addEventListener("DOMContentLoaded", () => {
-        function waitForRenderProducts(callback) {
-          if (window.renderProducts && window.PRODUCTS) {
-            callback();
-          } else {
-            setTimeout(() => waitForRenderProducts(callback), 50);
-          }
+      function waitForRenderProducts(callback) {
+        if (window.renderProducts && window.PRODUCTS) {
+          callback();
+        } else {
+          setTimeout(() => waitForRenderProducts(callback), 50);
         }
-        function hideSearchUI() {
+      }
+      function hideSearchUI() {
           document
             .getElementById("searchbar-container")
             .classList.add("hidden");
@@ -150,8 +147,8 @@
           if (toggleRow) toggleRow.classList.add("hidden");
           const locationBar = document.getElementById("location-bar");
           if (locationBar) locationBar.classList.add("hidden");
-        }
-        function showSearchUI() {
+      }
+      function showSearchUI() {
           document
             .getElementById("searchbar-container")
             .classList.remove("hidden");
@@ -161,19 +158,19 @@
           if (toggleRow) toggleRow.classList.remove("hidden");
           const locationBar = document.getElementById("location-bar");
           if (locationBar) locationBar.classList.remove("hidden");
-        }
-        // SPA: go to refine page after search
-        function goToProductsPage(query) {
+      }
+      // SPA: go to refine page after search
+      function goToProductsPage(query) {
           if (window.showScreen) window.showScreen('refine');
-          // Render refine image grid
-          const grid = document.getElementById('refine-image-grid');
-          grid.innerHTML = '';
-          const selected = new Set();
+        // Render refine image grid
+        const grid = document.getElementById('refine-image-grid');
+        grid.innerHTML = '';
+        const selected = new Set();
           (window.REFINE_IMAGES || []).forEach(img => {
-            const tile = document.createElement('div');
-            tile.className = 'refine-image-tile';
+          const tile = document.createElement('div');
+          tile.className = 'refine-image-tile';
             tile.innerHTML = `<img src="${img.image}" alt="${img.alt || ''}" title="${img.alt || ''}" />`;
-            tile.onclick = () => {
+          tile.onclick = () => {
               if (tile.classList.contains('selected')) {
                 // Deselect
                 tile.classList.remove('selected');
@@ -185,12 +182,12 @@
                   selected.add(img.id);
                 }
               }
-            };
-            grid.appendChild(tile);
-          });
-          // Finish Refine button logic
-          const finishBtn = document.getElementById('finish-refine-btn');
-          finishBtn.onclick = () => {
+          };
+          grid.appendChild(tile);
+        });
+        // Finish Refine button logic
+        const finishBtn = document.getElementById('finish-refine-btn');
+        finishBtn.onclick = () => {
             if (window.showScreen) window.showScreen('products');
             // Gather selected refine image IDs
             const selectedIds = Array.from(selected);
@@ -205,31 +202,26 @@
             productIds = [...new Set(productIds)];
             // If less than 3, add random products not already selected
             let filteredProducts;
-            // Use lastProductSelection if available and valid
-            if (window.lastProductSelection && Array.isArray(window.lastProductSelection) && window.lastProductSelection.length === 3) {
-              filteredProducts = (window.PRODUCTS || []).filter(p => window.lastProductSelection.includes(p.id));
-            } else {
-              filteredProducts = (window.PRODUCTS || []).filter(p => productIds.includes(p.id));
-              if (filteredProducts.length < 3) {
-                // Get products not already selected
-                const notSelected = (window.PRODUCTS || []).filter(p => !productIds.includes(p.id));
-                // Shuffle and pick as many as needed
-                for (let i = notSelected.length - 1; i > 0; i--) {
-                  const j = Math.floor(Math.random() * (i + 1));
-                  [notSelected[i], notSelected[j]] = [notSelected[j], notSelected[i]];
-                }
-                filteredProducts = filteredProducts.concat(notSelected.slice(0, 3 - filteredProducts.length));
+            filteredProducts = (window.PRODUCTS || []).filter(p => productIds.includes(p.id));
+            if (filteredProducts.length < 3) {
+              // Get products not already selected
+              const notSelected = (window.PRODUCTS || []).filter(p => !productIds.includes(p.id));
+              // Shuffle and pick as many as needed
+              for (let i = notSelected.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [notSelected[i], notSelected[j]] = [notSelected[j], notSelected[i]];
               }
-              // Only show up to 3 products
-              filteredProducts = filteredProducts.slice(0, 3);
-              // Store for session
-              window.lastProductSelection = filteredProducts.map(p => p.id);
+              filteredProducts = filteredProducts.concat(notSelected.slice(0, 3 - filteredProducts.length));
             }
-            waitForRenderProducts(() => {
+            // Only show up to 3 products
+            filteredProducts = filteredProducts.slice(0, 3);
+            // Store for session
+            window.lastProductSelection = filteredProducts.map(p => p.id);
+          waitForRenderProducts(() => {
               window.renderProducts(filteredProducts);
-            });
-          };
-        }
+          });
+        };
+      }
         // Add back button logic for all pages
         document.querySelectorAll('.back-btn-bar').forEach(bar => {
           const btn = bar.querySelector('.back-btn');
@@ -244,8 +236,8 @@
               else if (type === 'map') window.showScreen('products');
               else if (type === 'profile') window.showScreen('products');
             }
-          };
-          if (window.feather) window.feather.replace();
+        };
+        if (window.feather) window.feather.replace();
         });
         renderNavBar("navbar-container");
         renderSearchBar("searchbar-container", goToProductsPage);
@@ -264,7 +256,7 @@
             window.showScreen('search');
           }
         }, 100);
-      });
-    </script>
-  </body>
+    });
+  </script>
+</body>
 </html>
