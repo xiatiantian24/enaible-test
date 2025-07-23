@@ -4,7 +4,7 @@ export function renderSearchBar(containerId, onSearch) {
   searchDiv.className = "search-bar-modern";
   searchDiv.innerHTML = `
     <div class="searchbar-outer searchbar-vertical-fixed">
-      <input type="text" class="searchbar-input" placeholder="What are you searching for today?" style="font-size:17px;font-weight:400;line-height:23px;text-align:left;display:flex;align-items:center;width:100%;border:none;outline:none;background:transparent;color:var(--Text-Default-Default,#1E1E1E);font-family:'Instrument Sans',Arial,sans-serif;" />
+      <textarea type="text" class="searchbar-input" placeholder="What are you searching for today?" style="font-size:17px;line-height:23px;text-align:left;display:flex;width:100%;height:100%;border:none;outline:none;background:transparent;color:var(--Text-Default-Default,#1E1E1E);font-family:'Instrument Sans',Arial,sans-serif;"></textarea>
       <div class="searchbar-actions-row-fixed">
         <button class="searchbar-action-btn" title="Voice Search">
           <i data-feather="mic"></i>

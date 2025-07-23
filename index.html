@@ -1,161 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mobile Shopping Trip Planner</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/feather-icons"></script>
-</head>
-<body>
-  <div class="app-container">
-    <button id="back-to-search-btn-refine" class="refine-back-btn hidden"><i data-feather="arrow-left"></i></button>
-    <!-- Location Section -->
-    <div id="location-bar" class="location-bar">
-      <i data-feather="shopping-bag"></i>
-      <span class="location-text">Long Island, New York</span>
-    </div>
-    <!-- Accent Heading -->
-    <div class="accent-heading">Let’s start curating.</div>
-    <!-- SearchBar Component Mount Point -->
-    <div id="searchbar-container"></div>
-    <!-- Refine Description (shown only during refine step) -->
-    <div id="refine-desc" class="refine-desc hidden">
-      Let’s refine the style you’re looking for. Choose 3+ images that speak to you.<br>
-      We’ll use your selections to curate products and stores.
-    </div>
-    <!-- Search Toggle Row (if any) -->
-    <div id="search-toggle-row"></div>
-    <!-- Refine Page (SPA style) -->
-    <div id="refine-page" class="hidden">
-      <h2>Refine Your Preferences</h2>
-      <div id="refine-image-grid"></div>
-      <button id="finish-refine-btn" class="primary-btn" style="margin-top: 24px;">Finish Refine</button>
-    </div>
-    <!-- Products Page (SPA style) -->
-    <div id="products-page" class="hidden">
-      <h2>Results</h2>
-      <div id="product-list"></div>
-      <button id="preview-trip-btn" class="hidden">Preview Trip</button>
-      <button id="in-store-mode-btn" class="hidden">In-Store Shopping Mode</button>
-    </div>
-    <!-- Map Page (SPA style) -->
-    <div id="map-page" class="hidden">
-      <h2>Store Map</h2>
-      <div id="map-container" style="width:100%;height:250px;background:repeating-linear-gradient(45deg,#e0e0e0,#e0e0e0 10px,#fff 10px,#fff 20px);position:relative;"></div>
-      <p>This is your trip plan map. (Mockup)</p>
-    </div>
-    <!-- Profile Page (SPA style) -->
-    <div id="profile-page" class="hidden">
-      <h2>Profile</h2>
-      <div id="profile-info">
-        <p><strong>Name:</strong> Jane Doe</p>
-        <p><strong>Email:</strong> jane.doe@example.com</p>
-        <p><strong>Favorite Style:</strong> Modern Business</p>
-        <p>This is a mockup profile page.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cerulean - Shopping Trip Planner</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/feather-icons"></script>
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Location Section -->
+      <div id="location-bar" class="location-bar">
+        <i data-feather="shopping-bag"></i>
+        <span class="location-text">Long Island, New York</span>
       </div>
-    </div>
-    <!-- Trip Plan Overlay Sheet -->
-    <div id="trip-overlay" class="overlay hidden">
-      <div class="overlay-content">
-        <h2>Your Shopping Trip Plan</h2>
-        <div id="trip-list"></div>
-        <button id="close-overlay-btn">Close</button>
+      <!-- Accent Heading -->
+      <div class="accent-heading">Let’s start curating.</div>
+      <!-- SearchBar Component Mount Point -->
+      <div id="searchbar-container"></div>
+      <!--
+      <div id="example-searches-container" class="example-searches-container">
+        <div class="example-searches-scroll">
+          <span class="example-search">white cotton tees that I can wear for walking to class in a Philly summer</span>
+          <span class="example-search">navy button down shirts for a Catholic  summer wedding in Quito</span>
+          <span class="example-search">formal cream dress for 28 y.o. women for a barn wedding in TX this weekend</span>
+          <span class="example-search">bags that go well with linen pants for summer in Tuscany</span>
+        </div>
       </div>
-    </div>
-    <!-- Map Overlay Sheet -->
-    <div id="map-overlay" class="overlay hidden">
-      <div class="overlay-content">
+      -->
+      <!-- Refine Description (shown only during refine step) -->
+      <div id="refine-desc" class="refine-desc hidden">
+        <p>
+          Let’s refine the style you’re looking for.
+        </p>
+        <p>Choose up to 3 images that speak to you.</p>
+      </div>
+      <!-- Refine Page Back Button Bar (fixed position) -->
+      <div class="back-btn-bar hidden" id="back-btn-bar-refine" data-back="refine">
+        <button class="back-btn" id="back-btn-refine"><i data-feather="arrow-left"></i></button>
+        <button class="filter-btn" id="filter-btn-refine"><i data-feather="sliders"></i></button>
+      </div>
+      
+      <!-- Refine Page (SPA style) -->
+      <div id="refine-page" class="hidden">
+        <div id="refine-image-grid"></div>
+        <button
+          id="finish-refine-btn"
+          class="primary-btn"
+          style="margin-top: 24px"
+        >
+          Finish Refine
+        </button>
+      </div>
+      <!-- Products Page (SPA style) -->
+      <div id="products-page" class="hidden">
+        <div class="back-btn-bar hidden" id="back-btn-bar-products" data-back="products">
+          <button class="back-btn" id="back-btn-products"><i data-feather="arrow-left"></i></button>
+        </div>
+        <h2>Results</h2>
+        <div id="product-list"></div>
+        <button id="preview-trip-btn" class="hidden">Preview Trip</button>
+        <button id="in-store-mode-btn" class="hidden">
+          In-Store Shopping Mode
+        </button>
+      </div>
+      <!-- Map Page (SPA style) -->
+      <div id="map-page" class="hidden">
+        <div class="back-btn-bar hidden" id="back-btn-bar-map" data-back="map">
+          <button class="back-btn" id="back-btn-map"><i data-feather="arrow-left"></i></button>
+        </div>
         <h2>Store Map</h2>
-        <div id="map-container"></div>
-        <button id="close-map-btn">Close</button>
+        <div
+          id="map-container"
+          style="
+            width: 100%;
+            height: 250px;
+            background: repeating-linear-gradient(
+              45deg,
+              #e0e0e0,
+              #e0e0e0 10px,
+              #fff 10px,
+              #fff 20px
+            );
+            position: relative;
+          "
+        ></div>
+        <p>This is your trip plan map. (Mockup)</p>
       </div>
+      <!-- Profile Page (SPA style) -->
+      <div id="profile-page" class="hidden">
+        <div class="back-btn-bar hidden" id="back-btn-bar-profile" data-back="profile">
+          <button class="back-btn" id="back-btn-profile"><i data-feather="arrow-left"></i></button>
+        </div>
+        <h2>Profile</h2>
+        <div id="profile-info">
+          <p><strong>Name:</strong> Jane Doe</p>
+          <p><strong>Email:</strong> jane.doe@example.com</p>
+          <p><strong>Favorite Style:</strong> Modern Business</p>
+          <p>This is a mockup profile page.</p>
+        </div>
+      </div>
+      <!-- Trip Plan Overlay Sheet -->
+      <div id="trip-overlay" class="overlay hidden">
+        <div class="overlay-content">
+          <h2>Your Shopping Trip Plan</h2>
+          <div id="trip-list"></div>
+          <button id="close-overlay-btn">Close</button>
+        </div>
+      </div>
+      <!-- Map Overlay Sheet -->
+      <div id="map-overlay" class="overlay hidden">
+        <div class="overlay-content">
+          <h2>Store Map</h2>
+          <div id="map-container"></div>
+          <button id="close-map-btn">Close</button>
+        </div>
+      </div>
+      
+      <!-- Filter Sheet Component Mount Point -->
+      <div id="filter-sheet-container"></div>
     </div>
-  </div>
-  <!-- NavBar Component Mount Point -->
-  <div id="navbar-container"></div>
-  <script src="app.js"></script>
-  <script type="module">
-    import { renderNavBar } from './components/NavBar.js';
-    import { renderSearchBar } from './components/SearchBar.js';
-    window.addEventListener('DOMContentLoaded', () => {
-      function waitForRenderProducts(callback) {
-        if (window.renderProducts && window.PRODUCTS) {
-          callback();
-        } else {
-          setTimeout(() => waitForRenderProducts(callback), 50);
+    <!-- NavBar Component Mount Point -->
+    <div id="navbar-container"></div>
+    <script src="app.js"></script>
+    <script type="module">
+      import { renderNavBar } from "./components/NavBar.js";
+      import { renderSearchBar } from "./components/SearchBar.js";
+      import { renderFilterSheet, initializeFilterSheet } from "./components/FilterSheet.js";
+      window.addEventListener("DOMContentLoaded", () => {
+        function waitForRenderProducts(callback) {
+          if (window.renderProducts && window.PRODUCTS) {
+            callback();
+          } else {
+            setTimeout(() => waitForRenderProducts(callback), 50);
+          }
         }
-      }
-      function hideSearchUI() {
-        document.getElementById('searchbar-container').classList.add('hidden');
-        const accent = document.querySelector('.accent-heading');
-        if (accent) accent.classList.add('hidden');
-        const toggleRow = document.getElementById('search-toggle-row');
-        if (toggleRow) toggleRow.classList.add('hidden');
-        const locationBar = document.getElementById('location-bar');
-        if (locationBar) locationBar.classList.add('hidden');
-      }
-      function showSearchUI() {
-        document.getElementById('searchbar-container').classList.remove('hidden');
-        const accent = document.querySelector('.accent-heading');
-        if (accent) accent.classList.remove('hidden');
-        const toggleRow = document.getElementById('search-toggle-row');
-        if (toggleRow) toggleRow.classList.remove('hidden');
-        const locationBar = document.getElementById('location-bar');
-        if (locationBar) locationBar.classList.remove('hidden');
-      }
-      // SPA: go to refine page after search
-      function goToProductsPage(query) {
-        if (window.showScreen) window.showScreen('refine');
-        // Render refine image grid
-        const grid = document.getElementById('refine-image-grid');
-        grid.innerHTML = '';
-        const selected = new Set();
-        (window.PRODUCTS || []).forEach(product => {
-          const tile = document.createElement('div');
-          tile.className = 'refine-image-tile';
-          tile.innerHTML = `<img src="${product.image}" alt="${product.name}" title="${product.name}" />`;
-          tile.onclick = () => {
-            tile.classList.toggle('selected');
-            if (tile.classList.contains('selected')) selected.add(product.id);
-            else selected.delete(product.id);
-          };
-          grid.appendChild(tile);
-        });
-        // Finish Refine button logic
-        const finishBtn = document.getElementById('finish-refine-btn');
-        finishBtn.onclick = () => {
-          if (window.showScreen) window.showScreen('products');
-          waitForRenderProducts(() => {
-            window.renderProducts(window.PRODUCTS);
-          });
-        };
-      }
-      // Add back button logic
-      const productsPage = document.getElementById('products-page');
-      if (productsPage && !document.getElementById('back-to-search-btn')) {
-        const backBtn = document.createElement('button');
-        backBtn.id = 'back-to-search-btn';
-        backBtn.innerHTML = '<i data-feather="arrow-left"></i>';
-        backBtn.style = 'margin-bottom: 1rem; background: none; border: none; cursor: pointer; padding: 4px;';
-        productsPage.insertBefore(backBtn, productsPage.firstChild);
-        backBtn.onclick = () => {
+        function hideSearchUI() {
+          document
+            .getElementById("searchbar-container")
+            .classList.add("hidden");
+          const accent = document.querySelector(".accent-heading");
+          if (accent) accent.classList.add("hidden");
+          const toggleRow = document.getElementById("search-toggle-row");
+          if (toggleRow) toggleRow.classList.add("hidden");
+          const locationBar = document.getElementById("location-bar");
+          if (locationBar) locationBar.classList.add("hidden");
+        }
+        function showSearchUI() {
+          document
+            .getElementById("searchbar-container")
+            .classList.remove("hidden");
+          const accent = document.querySelector(".accent-heading");
+          if (accent) accent.classList.remove("hidden");
+          const toggleRow = document.getElementById("search-toggle-row");
+          if (toggleRow) toggleRow.classList.remove("hidden");
+          const locationBar = document.getElementById("location-bar");
+          if (locationBar) locationBar.classList.remove("hidden");
+        }
+        // SPA: go to refine page after search
+        function goToProductsPage(query) {
           if (window.showScreen) window.showScreen('refine');
-        };
-        if (window.feather) window.feather.replace();
-      }
-      // Add back button logic for refine page
-      const backBtnRefine = document.getElementById('back-to-search-btn-refine');
-      if (backBtnRefine) {
-        backBtnRefine.onclick = () => {
-          if (window.showScreen) window.showScreen('search');
-        };
-        if (window.feather) window.feather.replace();
-      }
-      renderNavBar('navbar-container');
-      renderSearchBar('searchbar-container', goToProductsPage);
-    });
-  </script>
-</body>
+          // Render refine image grid
+          const grid = document.getElementById('refine-image-grid');
+          grid.innerHTML = '';
+          const selected = new Set();
+          (window.REFINE_IMAGES || []).forEach(img => {
+            const tile = document.createElement('div');
+            tile.className = 'refine-image-tile';
+            tile.innerHTML = `<img src="${img.image}" alt="${img.alt || ''}" title="${img.alt || ''}" />`;
+            tile.onclick = () => {
+              if (tile.classList.contains('selected')) {
+                // Deselect
+                tile.classList.remove('selected');
+                selected.delete(img.id);
+              } else {
+                // Only allow up to 3 selections
+                if (selected.size < 3) {
+                  tile.classList.add('selected');
+                  selected.add(img.id);
+                }
+              }
+            };
+            grid.appendChild(tile);
+          });
+          // Finish Refine button logic
+          const finishBtn = document.getElementById('finish-refine-btn');
+          finishBtn.onclick = () => {
+            if (window.showScreen) window.showScreen('products');
+            // Gather selected refine image IDs
+            const selectedIds = Array.from(selected);
+            // Map to product IDs
+            let productIds = [];
+            selectedIds.forEach(refineId => {
+              if (window.REFINE_TO_PRODUCTS && window.REFINE_TO_PRODUCTS[refineId]) {
+                productIds = productIds.concat(window.REFINE_TO_PRODUCTS[refineId]);
+              }
+            });
+            // Remove duplicates
+            productIds = [...new Set(productIds)];
+            // If less than 3, add random products not already selected
+            let filteredProducts;
+            // Use lastProductSelection if available and valid
+            if (window.lastProductSelection && Array.isArray(window.lastProductSelection) && window.lastProductSelection.length === 3) {
+              filteredProducts = (window.PRODUCTS || []).filter(p => window.lastProductSelection.includes(p.id));
+            } else {
+              filteredProducts = (window.PRODUCTS || []).filter(p => productIds.includes(p.id));
+              if (filteredProducts.length < 3) {
+                // Get products not already selected
+                const notSelected = (window.PRODUCTS || []).filter(p => !productIds.includes(p.id));
+                // Shuffle and pick as many as needed
+                for (let i = notSelected.length - 1; i > 0; i--) {
+                  const j = Math.floor(Math.random() * (i + 1));
+                  [notSelected[i], notSelected[j]] = [notSelected[j], notSelected[i]];
+                }
+                filteredProducts = filteredProducts.concat(notSelected.slice(0, 3 - filteredProducts.length));
+              }
+              // Only show up to 3 products
+              filteredProducts = filteredProducts.slice(0, 3);
+              // Store for session
+              window.lastProductSelection = filteredProducts.map(p => p.id);
+            }
+            waitForRenderProducts(() => {
+              window.renderProducts(filteredProducts);
+            });
+          };
+        }
+        // Add back button logic for all pages
+        document.querySelectorAll('.back-btn-bar').forEach(bar => {
+          const btn = bar.querySelector('.back-btn');
+          btn.onclick = () => {
+            // Hide all back bars
+            document.querySelectorAll('.back-btn-bar').forEach(b => b.classList.add('hidden'));
+            // Go to the appropriate screen
+            const type = bar.getAttribute('data-back');
+            if (window.showScreen) {
+              if (type === 'refine') window.showScreen('search');
+              else if (type === 'products') window.showScreen('refine');
+              else if (type === 'map') window.showScreen('products');
+              else if (type === 'profile') window.showScreen('products');
+            }
+          };
+          if (window.feather) window.feather.replace();
+        });
+        renderNavBar("navbar-container");
+        renderSearchBar("searchbar-container", goToProductsPage);
+        
+        // Render FilterSheet component
+        const filterSheetContainer = document.getElementById("filter-sheet-container");
+        if (filterSheetContainer) {
+          filterSheetContainer.innerHTML = renderFilterSheet();
+          // Initialize filter sheet functionality after rendering
+          initializeFilterSheet();
+        }
+        
+        // Initialize app to show search screen by default
+        setTimeout(() => {
+          if (window.showScreen) {
+            window.showScreen('search');
+          }
+        }, 100);
+      });
+    </script>
+  </body>
 </html>
