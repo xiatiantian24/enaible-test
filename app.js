@@ -3,55 +3,67 @@ const PRODUCTS = [
   {
     id: 1,
     name: "Black Summer Dress",
+    brand: "Everlane",
+    seller: "Nordstrom",
+    price: 120,
+    walkingTime: 4,
     description: "Lightweight, perfect for business trips.",
     inventory: 8,
-    distance: 0.3, // km
-    location: { x: 60, y: 120 }, // fake map coordinates
     image: "assets/images/product/Dick's-Nike-P-6000-side view.jpg" // Local test image
   },
   {
     id: 2,
     name: "White Linen Shirt",
+    brand: "Uniqlo",
+    seller: "Nordstrom",
+    price: 45,
+    walkingTime: 7,
     description: "Breathable, stylish for summer.",
     inventory: 5,
-    distance: 0.5,
-    location: { x: 180, y: 80 },
     image: "assets/images/product/Dick's-Nike-P-6000-on.jpg" // Local test image
   },
   {
     id: 3,
     name: "Business Tote Bag",
+    brand: "Bellroy",
+    seller: "Nordstrom",
+    price: 210,
+    walkingTime: 2,
     description: "Fits laptop and essentials.",
     inventory: 2,
-    distance: 0.2,
-    location: { x: 120, y: 200 },
     image: "assets/images/product/Dick's-Nike-P-6000-on-full body.jpg" // Local test image
   },
   {
     id: 4,
     name: "Comfort Sandals",
+    brand: "Birkenstock",
+    seller: "DSW",
+    price: 99,
+    walkingTime: 5,
     description: "Walk all day in style.",
     inventory: 10,
-    distance: 0.4,
-    location: { x: 220, y: 160 },
     image: "assets/images/product/Dick's-Nike-P-6000-bottom.jpg" // Local test image
   },
   {
     id: 5,
     name: "Lightweight Scarf",
+    brand: "Madewell",
+    seller: "Nordstrom",
+    price: 38,
+    walkingTime: 8,
     description: "Perfect for breezy summer evenings.",
     inventory: 7,
-    distance: 0.6,
-    location: { x: 90, y: 60 },
     image: "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=80" // Scarf
   },
   {
     id: 6,
     name: "Classic Sunglasses",
+    brand: "Ray-Ban",
+    seller: "Sunglass Hut",
+    price: 165,
+    walkingTime: 10,
     description: "UV protection with timeless style.",
     inventory: 12,
-    distance: 0.7,
-    location: { x: 160, y: 180 },
     image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" // Sunglasses
   }
 ];

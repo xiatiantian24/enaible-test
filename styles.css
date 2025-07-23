@@ -271,10 +271,8 @@ svg {
   gap: 8px;
   margin-bottom: 4px;
 }
-.brand-logo {
-  width: 44px;
-  height: 26px;
-  object-fit: contain;
+.brand-logo-text {
+font-size:14px;
 }
 .sold-by {
   color: #757575;
@@ -364,7 +362,7 @@ svg {
 
 .product-meta-row {
   display: flex;
-  align-items: center;
+  align-items: end;
   gap: 12px;
   margin-top: 2px;
 }
