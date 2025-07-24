@@ -2,91 +2,104 @@
 const PRODUCTS = [
   {
     id: 1,
-    name: "Black Summer Dress",
-    brand: "Everlane",
+    name: "Plum Linen Shirt",
+    brand: "J.Crew",
     seller: "Nordstrom",
-    price: 120,
+    price: 125.00,
     walkingTime: 4,
-    description: "Lightweight, perfect for business trips.",
     inventory: 8,
-    image: "assets/images/product/Dick's-Nike-P-6000-side view.jpg" // Local test image
+    images: [
+      "assets/images/product/1-4.jpg",
+      "assets/images/product/1-1.jpg",
+      "assets/images/product/1-3.jpg",
+    ],
+    material: "100% Linen",
+    features: "Breathable fabric, buttoned front placket, chest pocket",
+    fit: "Relaxed fit, dropped shoulders, true to size",
+    care: "Machine wash cold with like colors. Tumble dry low or hang to dry. Warm iron if needed",
+    countryOfOrigin: "Made in Portugal",
+    size: "L"
   },
   {
     id: 2,
-    name: "White Linen Shirt",
-    brand: "Uniqlo",
+    name: "Jacquard Floral Shirt",
+    brand: "NN07",
     seller: "Nordstrom",
-    price: 45,
+    price: 137.00,
     walkingTime: 7,
-    description: "Breathable, stylish for summer.",
     inventory: 5,
-    image: "assets/images/product/Dick's-Nike-P-6000-on.jpg" // Local test image
+    images: [
+      "assets/images/product/2-1.jpg",
+      "assets/images/product/2-2.jpg",
+      "assets/images/product/2-3.jpg",
+      "assets/images/product/2-4.jpg",
+      "assets/images/product/2-5.jpg",
+    ],
+    material: "100% Organic Cotton",
+    features: "Flower jacquard pattern,  Cuban collar, Ribbed trim, Side slits",
+    fit: "Regular fit",
+    care: "Machine wash cold inside out. Do not bleach. Tumble dry low. Warm iron if needed",
+    countryOfOrigin: "Made in China",
+    size: "L"
   },
   {
     id: 3,
-    name: "Business Tote Bag",
-    brand: "Bellroy",
-    seller: "Nordstrom",
-    price: 210,
+    name: "Burgundy Embroidered Shirt",
+    brand: "Kotn",
+    seller: "Macy's",
+    price: 145.00,
     walkingTime: 2,
-    description: "Fits laptop and essentials.",
     inventory: 2,
-    image: "assets/images/product/Dick's-Nike-P-6000-on-full body.jpg" // Local test image
+    images: [
+      "assets/images/product/3-1.jpg",
+      "assets/images/product/3-2.jpg",
+      "assets/images/product/3-3.jpg",
+      "assets/images/product/3-4.jpg",
+    ],
+    material: "100% BCI Cotton",
+    features: "Featuring a subtle herringbone pattern, contrast stitching, and a patch pocket on the front body. Made to layer open over a t-shirt or buttoned up. Ethically crafted",
+    fit: "Relaxed fit – intended to follow the shape of your body with extra room; waist length – intended to hit between the waist and high hip",
+    care: "Wash cold and lay flat to dry",
+    countryOfOrigin: "Made in Portugal",
+    size: "L"
   },
   {
     id: 4,
-    name: "Comfort Sandals",
-    brand: "Birkenstock",
-    seller: "DSW",
-    price: 99,
-    walkingTime: 5,
-    description: "Walk all day in style.",
-    inventory: 10,
-    image: "assets/images/product/Dick's-Nike-P-6000-bottom.jpg" // Local test image
-  },
-  {
-    id: 5,
-    name: "Lightweight Scarf",
-    brand: "Madewell",
+    name: "77 Flamé Rugby Shirt",
+    brand: "New Balance",
     seller: "Nordstrom",
-    price: 38,
-    walkingTime: 8,
-    description: "Perfect for breezy summer evenings.",
-    inventory: 7,
-    image: "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=80" // Scarf
+    price: 90.00,
+    walkingTime: 5,
+    inventory: 10,
+    images: [
+      "assets/images/product/4-1.jpg",
+      "assets/images/product/4-2.jpg",
+      "assets/images/product/4-3.jpg",
+      "assets/images/product/4-4.jpg",
+    ],
+    material: "100% Cotton",
+    features: "Limited edition, ribbed hem and cuffs, rubber buttons, covered placket",
+    fit: "Fits true to size – for a more relaxed fit, size up",
+    care: "Machine wash cold with like colors",
+    countryOfOrigin: "Made in Germany",
+    size: "L"
   },
-  {
-    id: 6,
-    name: "Classic Sunglasses",
-    brand: "Ray-Ban",
-    seller: "Sunglass Hut",
-    price: 165,
-    walkingTime: 10,
-    description: "UV protection with timeless style.",
-    inventory: 12,
-    image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" // Sunglasses
-  }
 ];
 
 // --- Refine Images (separate from products) ---
 const REFINE_IMAGES = [
-  { id: 1, image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=400&q=80', alt: 'Tan Satchel' },
-  { id: 2, image: 'https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=80', alt: 'Red Handbag' },
-  { id: 3, image: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80', alt: 'Blue Crossbody' },
-  { id: 4, image: 'https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80', alt: 'Green Backpack' },
-  { id: 5, image: 'https://images.unsplash.com/photo-1469398715555-76331a6c7c9b?auto=format&fit=crop&w=400&q=80', alt: 'Yellow Tote' },
-  { id: 6, image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80', alt: 'Grey Messenger' },
+  { id: 1, image: 'assets/images/refine/1.jpeg', alt: 'Tan Satchel' },
+  { id: 2, image: 'assets/images/refine/2.jpg', alt: 'Red Handbag' },
+  { id: 3, image: 'assets/images/refine/3.jpg', alt: 'Blue Crossbody' },
+  { id: 4, image: 'assets/images/refine/4.jpg', alt: 'Green Backpack' },
 ];
 
-// Map refine image id to product ids
-const REFINE_TO_PRODUCTS = {
-  1: [3],        // Canvas Tote Bag → Business Tote Bag
-  2: [4],        // Brown Leather Crossbody → Comfort Sandals
-  3: [5],        // Green Messenger Bag → Lightweight Scarf
-  4: [1],        // Black Satchel → Black Summer Dress
-  5: [2],        // White Slouch Bag → White Linen Shirt
-  6: [6],        // Black Shoulder Bag → Classic Sunglasses
-};
+// Map refine image id to product ids (auto-generated to match current test data)
+const REFINE_TO_PRODUCTS = {};
+const minCount = Math.min(REFINE_IMAGES.length, PRODUCTS.length);
+for (let i = 0; i < minCount; i++) {
+  REFINE_TO_PRODUCTS[REFINE_IMAGES[i].id] = [PRODUCTS[i].id];
+}
 
 // --- State ---
 let tripPlan = [];
@@ -301,7 +314,7 @@ function renderTripOverlay() {
     }
   });
   totalMin += tripPlan.length * 5;
-  meta.textContent = `Estimated shopping time: ${totalMin} min`;
+  meta.innerHTML = `Estimated trip time: <span class="trip-time-bold">${totalMin} <span class="trip-time-unit">min</span></span>`;
   // Dropdown header from last search
   const searchLabel = window.lastSearchQuery || 'Trip Items';
   // Render dropdown
@@ -471,6 +484,21 @@ function updateTripBtn() {
   }
 }
 
+function renderRefineImageGrid() {
+  const grid = document.getElementById('refine-image-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  // Only show refine images that are mapped to a product
+  const mappedIds = Object.keys(REFINE_TO_PRODUCTS).map(Number);
+  const imagesToShow = REFINE_IMAGES.filter(img => mappedIds.includes(img.id));
+  imagesToShow.forEach(img => {
+    const tile = document.createElement('div');
+    tile.className = 'refine-image-tile';
+    tile.innerHTML = `<img src="${img.image}" alt="${img.alt || ''}" />`;
+    grid.appendChild(tile);
+  });
+}
+
 // --- SPA Navigation: Nav Bar Clicks ---
 window.addEventListener('DOMContentLoaded', () => {
   // Initialize launch screen
@@ -508,8 +536,14 @@ window.addEventListener('DOMContentLoaded', () => {
     const exampleSearches = document.getElementById('example-searches-container');
     if (exampleSearches) exampleSearches.classList.add('hidden');
 
+    // Hide nav bar by default
+    const navBar = document.getElementById('navbar-container');
+    if (navBar) navBar.style.display = 'none';
+
     if (screen === 'onboarding') {
       document.getElementById('onboarding-screen').classList.remove('hidden');
+      // Hide nav bar during onboarding
+      if (navBar) navBar.style.display = 'none';
       // Initialize feather icons for onboarding screen
       setTimeout(() => {
         if (typeof feather !== 'undefined') {
@@ -560,6 +594,8 @@ window.addEventListener('DOMContentLoaded', () => {
           }, 3000);
         }
       }, 100);
+      // Show nav bar on search page
+      if (navBar) navBar.style.display = '';
     } else if (screen === 'refine') {
       // Only play loading animation if coming from search
       if (window.justSearched) {
@@ -616,6 +652,7 @@ window.addEventListener('DOMContentLoaded', () => {
         if (refineDesc) refineDesc.classList.remove('hidden');
         window.justSearched = false;
       }
+      if (window.renderRefineImageGrid) window.renderRefineImageGrid();
       const bar = document.querySelector('.back-btn-bar[data-back="refine"]');
       if (bar) bar.classList.remove('hidden');
       if (backBtnRefine) {
@@ -634,6 +671,8 @@ window.addEventListener('DOMContentLoaded', () => {
       if (window.initializeFilterSheet) {
         window.initializeFilterSheet();
       }
+      // Show nav bar on refine page
+      if (navBar) navBar.style.display = '';
     } else if (screen === 'products') {
       document.getElementById('products-page').classList.remove('hidden');
       if (refineDesc) refineDesc.classList.add('hidden');
@@ -647,6 +686,8 @@ window.addEventListener('DOMContentLoaded', () => {
       // Reset scroll for product list
       const productList = document.getElementById('product-list');
       if (productList) productList.scrollTop = 0;
+      // Show nav bar on products page
+      if (navBar) navBar.style.display = '';
     } else if (screen === 'profile') {
       document.getElementById('profile-page').classList.remove('hidden');
       if (refineDesc) refineDesc.classList.add('hidden');
@@ -660,6 +701,8 @@ window.addEventListener('DOMContentLoaded', () => {
       // Reset scroll for profile page
       const profilePage = document.getElementById('profile-page');
       if (profilePage) profilePage.scrollTop = 0;
+      // Show nav bar on profile page
+      if (navBar) navBar.style.display = '';
     } else if (screen === 'map') {
       document.getElementById('map-page').classList.remove('hidden');
       if (refineDesc) refineDesc.classList.add('hidden');
@@ -673,6 +716,8 @@ window.addEventListener('DOMContentLoaded', () => {
       // Reset scroll for map page
       const mapPage = document.getElementById('map-page');
       if (mapPage) mapPage.scrollTop = 0;
+      // Show nav bar on map page (ensure this is always run)
+      if (navBar) navBar.style.display = '';
     }
   }
 
