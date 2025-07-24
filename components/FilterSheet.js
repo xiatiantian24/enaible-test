@@ -6,7 +6,7 @@ export function renderFilterSheet() {
     <div id="filter-sheet" class="filter-sheet hidden">
       <div class="filter-sheet-header">
         <h3>Filters</h3>
-        <button class="close-filter-btn" id="close-filter-btn"><i class="fa fa-times"></i></button>
+        <button class="close-filter-btn" id="close-filter-btn"><i data-feather="x"></i></button>
       </div>
       <div class="filter-sheet-content">
         <div class="filter-section">
@@ -88,6 +88,9 @@ export function initializeFilterSheet() {
   const clearFiltersBtn = document.querySelector('.clear-filters-btn');
   const applyFiltersBtn = document.querySelector('.apply-filters-btn');
   
+  // Replace Feather icons after initialization
+  if (window.feather) window.feather.replace();
+  
   // Helper function to close filter sheet
   function closeFilterSheet() {
     filterSheet.classList.remove('show');
@@ -125,7 +128,6 @@ export function initializeFilterSheet() {
           });
         }, 300);
       }, 10);
-      if (window.feather) window.feather.replace();
     });
   } else {
     console.log('Filter button not found');

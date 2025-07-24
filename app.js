@@ -3,55 +3,67 @@ const PRODUCTS = [
   {
     id: 1,
     name: "Black Summer Dress",
+    brand: "Everlane",
+    seller: "Nordstrom",
+    price: 120,
+    walkingTime: 4,
     description: "Lightweight, perfect for business trips.",
     inventory: 8,
-    distance: 0.3, // km
-    location: { x: 60, y: 120 }, // fake map coordinates
     image: "assets/images/product/Dick's-Nike-P-6000-side view.jpg" // Local test image
   },
   {
     id: 2,
     name: "White Linen Shirt",
+    brand: "Uniqlo",
+    seller: "Nordstrom",
+    price: 45,
+    walkingTime: 7,
     description: "Breathable, stylish for summer.",
     inventory: 5,
-    distance: 0.5,
-    location: { x: 180, y: 80 },
     image: "assets/images/product/Dick's-Nike-P-6000-on.jpg" // Local test image
   },
   {
     id: 3,
     name: "Business Tote Bag",
+    brand: "Bellroy",
+    seller: "Nordstrom",
+    price: 210,
+    walkingTime: 2,
     description: "Fits laptop and essentials.",
     inventory: 2,
-    distance: 0.2,
-    location: { x: 120, y: 200 },
     image: "assets/images/product/Dick's-Nike-P-6000-on-full body.jpg" // Local test image
   },
   {
     id: 4,
     name: "Comfort Sandals",
+    brand: "Birkenstock",
+    seller: "DSW",
+    price: 99,
+    walkingTime: 5,
     description: "Walk all day in style.",
     inventory: 10,
-    distance: 0.4,
-    location: { x: 220, y: 160 },
     image: "assets/images/product/Dick's-Nike-P-6000-bottom.jpg" // Local test image
   },
   {
     id: 5,
     name: "Lightweight Scarf",
+    brand: "Madewell",
+    seller: "Nordstrom",
+    price: 38,
+    walkingTime: 8,
     description: "Perfect for breezy summer evenings.",
     inventory: 7,
-    distance: 0.6,
-    location: { x: 90, y: 60 },
     image: "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=80" // Scarf
   },
   {
     id: 6,
     name: "Classic Sunglasses",
+    brand: "Ray-Ban",
+    seller: "Sunglass Hut",
+    price: 165,
+    walkingTime: 10,
     description: "UV protection with timeless style.",
     inventory: 12,
-    distance: 0.7,
-    location: { x: 160, y: 180 },
     image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" // Sunglasses
   }
 ];
@@ -78,6 +90,158 @@ const REFINE_TO_PRODUCTS = {
 
 // --- State ---
 let tripPlan = [];
+
+// --- Launch Screen Logic ---
+function initializeLaunchScreen() {
+  // For testing: uncomment the line below to reset launch screen
+  // sessionStorage.removeItem('launchScreenShown');
+  
+  const launchScreen = document.getElementById('launch-screen');
+  const startButton = document.getElementById('start-app-btn');
+  
+  // Check if launch screen has been shown in this session
+  const hasSeenLaunchScreen = sessionStorage.getItem('launchScreenShown');
+  
+  if (hasSeenLaunchScreen) {
+    // Hide launch screen immediately if already shown
+    launchScreen.classList.add('hidden');
+  } else {
+    // Show launch screen and mark as shown
+    sessionStorage.setItem('launchScreenShown', 'true');
+  }
+  
+  // Handle start button click
+  if (startButton) {
+    startButton.addEventListener('click', () => {
+      // Animate the logo
+      const logo = document.querySelector('.launch-logo');
+      if (logo) {
+        logo.classList.add('animate-out');
+      }
+      
+      // Fade out the entire launch screen
+      launchScreen.classList.add('fade-out');
+      
+      // Show onboarding screen immediately
+      showOnboardingScreen();
+      
+      // Hide the entire launch screen after 1 second
+      setTimeout(() => {
+        launchScreen.classList.add('hidden');
+        // Initialize feather icons after launch screen is hidden with a small delay
+        setTimeout(() => {
+          if (typeof feather !== 'undefined') {
+            feather.replace();
+          }
+        }, 100);
+      }, 1000);
+    });
+  }
+}
+
+// --- Onboarding Screen Logic ---
+function initializeOnboardingScreen() {
+  // For testing: uncomment the line below to reset onboarding screen
+  // sessionStorage.removeItem('onboardingScreenShown');
+  
+  const onboardingScreen = document.getElementById('onboarding-screen');
+  
+  // Check if onboarding screen has been shown in this session
+  const hasSeenOnboarding = sessionStorage.getItem('onboardingScreenShown');
+  
+  if (hasSeenOnboarding) {
+    // Hide onboarding screen immediately if already shown
+    onboardingScreen.classList.add('hidden');
+  } else {
+    // Show onboarding screen and mark as shown
+    sessionStorage.setItem('onboardingScreenShown', 'true');
+  }
+  
+  // Initialize budget presets
+  initializeBudgetPresets();
+  
+  // Initialize get started button
+  const getStartedBtn = document.getElementById('get-started-btn');
+  if (getStartedBtn) {
+    getStartedBtn.addEventListener('click', () => {
+      // Collect all form data
+      const formData = collectFormData();
+      console.log('Onboarding data:', formData);
+      
+      // Fade out the onboarding screen
+      onboardingScreen.classList.add('fade-out');
+      
+      // Hide the onboarding screen after animation
+      setTimeout(() => {
+        onboardingScreen.classList.add('hidden');
+        // Show the main app (search screen)
+        if (window.showScreen) {
+          window.showScreen('search');
+        }
+        // Initialize feather icons
+        setTimeout(() => {
+          if (typeof feather !== 'undefined') {
+            feather.replace();
+          }
+        }, 100);
+      }, 600);
+    });
+  }
+  
+  function initializeBudgetPresets() {
+    const budgetInput = document.getElementById('budget');
+    const budgetPresets = document.querySelectorAll('.budget-preset');
+    
+    budgetPresets.forEach(preset => {
+      preset.addEventListener('click', () => {
+        const value = preset.getAttribute('data-value');
+        budgetInput.value = value;
+        
+        // Update active state
+        budgetPresets.forEach(p => p.classList.remove('active'));
+        preset.classList.add('active');
+      });
+    });
+  }
+  
+  function collectFormData() {
+    const data = {
+      departments: [],
+      sizes: {},
+      budget: 0,
+      preferences: {}
+    };
+    
+    // Collect departments
+    document.querySelectorAll('input[name="department"]:checked').forEach(checkbox => {
+      data.departments.push(checkbox.value);
+    });
+    
+    // Collect sizes
+    data.sizes = {
+      top: document.getElementById('top-size').value,
+      bottom: document.getElementById('bottom-size').value,
+      shoe: document.getElementById('shoe-size').value
+    };
+    
+    // Collect budget
+    data.budget = parseInt(document.getElementById('budget').value) || 0;
+    
+    // Collect preferences
+    data.preferences = {
+      locationConsent: document.querySelector('input[name="locationConsent"]:checked') !== null,
+      notifications: document.querySelector('input[name="notifications"]:checked') !== null
+    };
+    
+    return data;
+  }
+}
+
+function showOnboardingScreen() {
+  if (window.showScreen) {
+    window.showScreen('onboarding');
+  }
+}
 
 // --- UI Helpers ---
 function $(selector) {
@@ -177,6 +341,9 @@ function renderTripOverlay() {
     dropdownContent.style.display = isOpen ? 'none' : 'block';
     arrow.className = isOpen ? 'fa-solid fa-chevron-right' : 'fa-solid fa-chevron-down';
   };
+  
+  // Replace Feather icons after rendering
+  if (window.feather) window.feather.replace();
 }
 
 // --- Render Map Overlay ---
@@ -256,6 +423,7 @@ window.renderProducts = renderProducts;
 window.tripPlan = tripPlan;
 window.REFINE_IMAGES = REFINE_IMAGES;
 window.REFINE_TO_PRODUCTS = REFINE_TO_PRODUCTS;
+window.addToTrip = addToTrip;
 
 // Map productId to array of badge objects for this session
 window.productBadgeMap = window.productBadgeMap || {};
@@ -305,9 +473,14 @@ function updateTripBtn() {
 
 // --- SPA Navigation: Nav Bar Clicks ---
 window.addEventListener('DOMContentLoaded', () => {
+  // Initialize launch screen
+  initializeLaunchScreen();
+  // Initialize onboarding screen
+  initializeOnboardingScreen();
   // Helper to show/hide main screens
   function showScreen(screen) {
     // Hide all main screens
+    document.getElementById('onboarding-screen').classList.add('hidden');
     document.getElementById('refine-page').classList.add('hidden');
     document.getElementById('products-page').classList.add('hidden');
     document.getElementById('profile-page').classList.add('hidden');
@@ -335,7 +508,15 @@ window.addEventListener('DOMContentLoaded', () => {
     const exampleSearches = document.getElementById('example-searches-container');
     if (exampleSearches) exampleSearches.classList.add('hidden');
 
-    if (screen === 'search') {
+    if (screen === 'onboarding') {
+      document.getElementById('onboarding-screen').classList.remove('hidden');
+      // Initialize feather icons for onboarding screen
+      setTimeout(() => {
+        if (typeof feather !== 'undefined') {
+          feather.replace();
+        }
+      }, 100);
+    } else if (screen === 'search') {
       document.getElementById('searchbar-container').classList.remove('hidden');
       if (accent) accent.classList.remove('hidden');
       if (toggleRow) toggleRow.classList.remove('hidden');
@@ -363,6 +544,10 @@ window.addEventListener('DOMContentLoaded', () => {
           if (window.placeholderInterval) clearInterval(window.placeholderInterval);
           window.placeholderIndex = 0;
           window.placeholderInterval = setInterval(() => {
+            // Only rotate if search screen is visible
+            if (document.getElementById('searchbar-container').classList.contains('hidden')) {
+              return;
+            }
             // Fade out
             searchInput.style.opacity = '0.3';
             setTimeout(() => {
