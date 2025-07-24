@@ -6,12 +6,7 @@ export function renderProductDetail(product, { onClose } = {}) {
   overlay.className = "product-detail-overlay";
 
   // Placeholder images for carousel
-  const carouselImages = [
-    "assets/images/product/Dick's-Nike-P-6000-side view.jpg",
-    "assets/images/product/Dick's-Nike-P-6000-on.jpg",
-    "assets/images/product/Dick's-Nike-P-6000-on-full body.jpg",
-    "assets/images/product/Dick's-Nike-P-6000-bottom.jpg"
-  ];
+  const carouselImages = product.images;
 
   let currentIndex = 0;
 
@@ -36,8 +31,8 @@ export function renderProductDetail(product, { onClose } = {}) {
           </div>
           <div class="product-detail-rating-row">
             <span class="star-icon">★</span>
-            <span class="product-detail-rating">5.0</span>
-            <a href="#" class="product-detail-reviews">(932 reviews)</a>
+            <span class="product-detail-rating">4.5</span>
+            <a href="#" class="product-detail-reviews">(54 reviews)</a>
           </div>
            <div class="product-detail-color-row">
             <div class="product-detail-color-label">Color</div>
@@ -46,27 +41,37 @@ export function renderProductDetail(product, { onClose } = {}) {
               <span class="color-swatch color-gray"></span>
             </span>
           </div>
-          <div class="product-detail-description">
-            <div class="product-detail-description-text">Cropped t-shirt in pima cotton jersey with Intrecciato suede patch.</div>
             
           <div class="product-detail-section">
-            <div class="product-detail-section-title">Product Detail</div>
+            <div class="product-detail-section-title">Product Details</div>
             <div class="product-detail-subsection">
               <div class="product-detail-subsection-title">Material</div>
               <div class="product-detail-subsection-content">
-                100% Pima cotton. Patch: 100% suede leather.
+                ${product.material}
               </div>
             </div>
             <div class="product-detail-subsection">
-              <div class="product-detail-subsection-title">Size & Fit</div>
+              <div class="product-detail-subsection-title">Features</div>
               <div class="product-detail-subsection-content">
-                Model is 5'6" and wears a size S.
+                ${product.features}
               </div>
             </div>
             <div class="product-detail-subsection">
-              <div class="product-detail-subsection-title">Product Care</div>
+              <div class="product-detail-subsection-title">Fit</div>
               <div class="product-detail-subsection-content">
-                Machine wash cold with like colors. Do not bleach. Lay flat to dry. Patch: spot clean only.
+                ${product.fit}
+              </div>
+            </div>
+            <div class="product-detail-subsection">
+              <div class="product-detail-subsection-title">Care Instructions</div>
+              <div class="product-detail-subsection-content">
+                ${product.care}
+              </div>
+            </div>
+            <div class="product-detail-subsection">
+              <div class="product-detail-subsection-title">Country of Origin</div>
+              <div class="product-detail-subsection-content">
+                ${product.countryOfOrigin}
               </div>
             </div>
           </div>

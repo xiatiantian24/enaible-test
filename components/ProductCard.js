@@ -21,10 +21,13 @@ export function renderProductCard(product, { onAdd } = {}) {
     availabilityText = 'Low stock';
     dotColor = '#F09A37'; // yellow
   }
+  if (product.size) {
+    availabilityText += ` in ${product.size}`;
+  }
   card.innerHTML = `
     <div class="product-card-content">
       <div class="product-card-image-col">
-        <img class="product-image" src="${product.image}" alt="${product.name}" />
+        <img class="product-image" src="${product.images[0]}" alt="${product.name}" />
       </div>
       <div class="product-card-details-col">
         <div class="product-card-header-row">
