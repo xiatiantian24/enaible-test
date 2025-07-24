@@ -52,6 +52,26 @@ export function renderProductCard(product, { onAdd } = {}) {
       </div>
     </div>
   `;
-  card.querySelector('.add-btn-modular').onclick = () => onAdd && onAdd(product.id);
+  // Add click handler for detail overlay (ignore add/bookmark buttons)
+  card.addEventListener('click', async (e) => {
+    // Prevent if clicking on a button or inside a button
+    if (e.target.closest('button')) return;
+    const module = await import('./ProductDetail.js');
+    const overlay = module.renderProductDetail(product, { onClose: null });
+    document.body.appendChild(overlay);
+  });
+  // Prevent card click when clicking add-to-trip button
+  card.querySelector('.add-btn-modular').onclick = (e) => {
+    e.stopPropagation();
+    onAdd && onAdd(product.id);
+  };
+  // Prevent card click when clicking bookmark button
+  const bookmarkBtn = card.querySelector('.bookmark-btn');
+  if (bookmarkBtn) {
+    bookmarkBtn.onclick = (e) => {
+      e.stopPropagation();
+      // Optionally: implement bookmark logic here
+    };
+  }
   return card;
 }

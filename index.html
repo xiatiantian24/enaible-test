@@ -13,7 +13,191 @@
   <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
+  <!-- Launch Screen -->
+  <div id="launch-screen" class="launch-screen">
+    <div class="launch-content">
+      <div class="logo-container">
+        <img src="assets/images/branding/Cerulean-logo.svg" alt="Cerulean Logo" class="launch-logo">
+      </div>
+      <button id="start-app-btn" class="start-button">
+        <span>Shop with less stress</span>
+        <i data-feather="arrow-right"></i>
+      </button>
+    </div>
+  </div>
+
   <div class="app-container">
+    <!-- Onboarding Screen (inside app container) -->
+    <div id="onboarding-screen" class="onboarding-screen hidden">
+      <div class="onboarding-content">
+        <div class="onboarding-header">
+          <div class="onboarding-title">Welcome to Cerulean.</div>
+          <p>Let's destress your next shopping trip</p>
+        </div>
+        
+        <!-- All Steps on One Page -->
+        <div class="onboarding-steps">
+          <!-- Step 1: Department Selection -->
+          <div class="onboarding-step">
+            <div class="step-header">
+              <div class="step-icon">
+                <i data-feather="shopping-bag"></i>
+              </div>
+              <div class="step-content">
+                <h3>Select department</h3>
+              </div>
+            </div>
+            
+            <div class="form-section">
+              <div class="department-presets">
+                <label class="department-preset">
+                  <input type="checkbox" name="department" value="womens" checked>
+                  <span>Women's</span>
+                </label>
+                <label class="department-preset">
+                  <input type="checkbox" name="department" value="mens">
+                  <span>Men's</span>
+                </label>
+                <label class="department-preset">
+                  <input type="checkbox" name="department" value="unisex">
+                  <span>Unisex</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Step 2: Body Measurements -->
+          <div class="onboarding-step">
+            <div class="step-header">
+              <div class="step-icon">
+                <i class="fa-solid fa-shirt shirt-outline"></i>
+              </div>
+              <div class="step-content">
+                <h3>Choose clothing sizes</h3>
+              </div>
+            </div>
+            
+            <div class="form-section">
+              <div class="input-group">
+                <label for="top-size">Top Size</label>
+                <div class="select-wrapper">
+                  <select id="top-size" name="topSize" class="form-select">
+                    <option value="">Select size</option>
+                    <option value="xs">XS</option>
+                    <option value="s">S</option>
+                    <option value="m" selected>M</option>
+                    <option value="l">L</option>
+                    <option value="xl">XL</option>
+                    <option value="xxl">XXL</option>
+                  </select>
+                  <i class="fa-solid fa-chevron-down select-caret"></i>
+                </div>
+              </div>
+              
+              <div class="input-group">
+                <label for="bottom-size">Bottom Size</label>
+                <div class="select-wrapper">
+                  <select id="bottom-size" name="bottomSize" class="form-select">
+                    <option value="">Select size</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30" selected>30</option>
+                    <option value="31">31</option>
+                    <option value="32">32</option>
+                    <option value="33">33</option>
+                    <option value="34">34</option>
+                    <option value="36">36</option>
+                    <option value="38">38</option>
+                    <option value="40">40</option>
+                    <option value="42">42</option>
+                  </select>
+                  <i class="fa-solid fa-chevron-down select-caret"></i>
+                </div>
+              </div>
+              
+              <div class="input-group">
+                <label for="shoe-size">Shoe Size</label>
+                <div class="select-wrapper">
+                  <select id="shoe-size" name="shoeSize" class="form-select">
+                    <option value="">Select size</option>
+                    <option value="5">5</option>
+                    <option value="5.5">5.5</option>
+                    <option value="6">6</option>
+                    <option value="6.5">6.5</option>
+                    <option value="7">7</option>
+                    <option value="7.5">7.5</option>
+                    <option value="8" selected>8</option>
+                    <option value="8.5">8.5</option>
+                    <option value="9">9</option>
+                    <option value="9.5">9.5</option>
+                    <option value="10">10</option>
+                    <option value="10.5">10.5</option>
+                    <option value="11">11</option>
+                    <option value="11.5">11.5</option>
+                    <option value="12">12</option>
+                  </select>
+                  <i class="fa-solid fa-chevron-down select-caret"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Step 3: Budget -->
+          <div class="onboarding-step">
+            <div class="step-header">
+              <div class="step-icon">
+                <i data-feather="dollar-sign"></i>
+              </div>
+              <div class="step-content">
+                <h3>Set budget per item</h3>
+                <p>This can be a rough estimate and you can change it later.</p>
+              </div>
+            </div>
+            
+            <div class="form-section">
+              <div class="input-group">
+                <label for="budget">Maximum budget per item ($)</label>
+                <input type="number" id="budget" name="budget" class="form-input" placeholder="e.g., 150" min="0" step="10">
+                <script>document.getElementById('budget').value = 120;</script>
+              </div>
+      
+            </div>
+          </div>
+          
+          <!-- Step 4: Location Consent -->
+          <div class="onboarding-step">
+            <div class="step-header">
+              <div class="step-icon">
+                <i data-feather="map-pin"></i>
+              </div>
+              <div class="step-content">
+                <h3>Location consent</h3>
+                <p>Allow us to show directions and find what’s available at nearby stores</p>
+              </div>
+            </div>
+            
+            <div class="form-section">
+              <div class="consent-section">
+                <p class="consent-text">We anonymize your data before sharing it with retailers. This allows them to see bigger patterns, like who's coming in and what they're looking for. Your personal details are never shared.</p>
+                
+                <div class="checkbox-group">
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="locationConsent" value="true" checked>
+                    <span class="checkmark"></span>
+                    <span class="label-text">I agree to share my location with Cerulean</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Get Started Button -->
+        <button id="get-started-btn" class="get-started-button">
+          <span>Finish Setup</span>
+        </button>
+      </div>
+    </div>
     <!-- Location Section -->
     <div id="location-bar" class="location-bar">
       <i data-feather="shopping-bag"></i>
@@ -75,9 +259,6 @@
       </div>
       <!-- Map Page (SPA style) -->
       <div id="map-page" class="hidden">
-        <div class="back-btn-bar hidden" id="back-btn-bar-map" data-back="map">
-          <button class="back-btn" id="back-btn-map"><i data-feather="arrow-left"></i></button>
-        </div>
         <h2>Store Map</h2>
         <div
           id="map-container"
@@ -98,9 +279,6 @@
       </div>
       <!-- Profile Page (SPA style) -->
       <div id="profile-page" class="hidden">
-        <div class="back-btn-bar hidden" id="back-btn-bar-profile" data-back="profile">
-          <button class="back-btn" id="back-btn-profile"><i data-feather="arrow-left"></i></button>
-        </div>
         <h2>Profile</h2>
         <div id="profile-info">
           <p><strong>Name:</strong> Jane Doe</p>
@@ -117,7 +295,7 @@
           <h3 id="trip-sheet-title">Trip List for Friday, July 11th</h3>
           <div id="trip-sheet-meta" style="margin-bottom: 0; color: #555; font-size: 1rem;"></div>
         </div>
-        <button id="close-overlay-btn" class="close-filter-btn"><i class="fa-solid fa-xmark"></i></button>
+        <button id="close-overlay-btn" class="close-filter-btn"><i data-feather="x"></i></button>
       </div>
       <div class="filter-sheet-content">
         <div id="trip-list"></div>
@@ -261,12 +439,12 @@
           initializeFilterSheet();
         }
         
-        // Initialize app to show search screen by default
-        setTimeout(() => {
-          if (window.showScreen) {
-            window.showScreen('search');
-          }
-        }, 100);
+        // Initialize app but don't show search screen by default (wait for onboarding)
+        // setTimeout(() => {
+        //   if (window.showScreen) {
+        //     window.showScreen('search');
+        //   }
+        // }, 100);
 
         // Add filter button logic for refine and products pages
         const filterBtnRefine = document.getElementById('filter-btn-refine');
