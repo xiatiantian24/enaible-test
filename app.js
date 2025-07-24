@@ -577,21 +577,41 @@ window.addEventListener('DOMContentLoaded', () => {
           searchInput.placeholder = window.examplePlaceholders[0];
           if (window.placeholderInterval) clearInterval(window.placeholderInterval);
           window.placeholderIndex = 0;
-          window.placeholderInterval = setInterval(() => {
-            // Only rotate if search screen is visible
-            if (document.getElementById('searchbar-container').classList.contains('hidden')) {
-              return;
-            }
-            // Fade out
-            searchInput.style.opacity = '0.3';
-            setTimeout(() => {
-              // Change placeholder text
-              window.placeholderIndex = (window.placeholderIndex + 1) % window.examplePlaceholders.length;
-              searchInput.placeholder = window.examplePlaceholders[window.placeholderIndex];
-              // Fade in
+
+          function startPlaceholderRotation() {
+            if (window.placeholderInterval) clearInterval(window.placeholderInterval);
+            window.placeholderInterval = setInterval(() => {
+              // Only rotate if search screen is visible and input is empty
+              if (
+                document.getElementById('searchbar-container').classList.contains('hidden') ||
+                searchInput.value.length > 0
+              ) {
+                return;
+              }
+              // Fade out
+              searchInput.style.opacity = '0.3';
+              setTimeout(() => {
+                // Change placeholder text
+                window.placeholderIndex = (window.placeholderIndex + 1) % window.examplePlaceholders.length;
+                searchInput.placeholder = window.examplePlaceholders[window.placeholderIndex];
+                // Fade in
+                searchInput.style.opacity = '1';
+              }, 150);
+            }, 3000);
+          }
+
+          startPlaceholderRotation();
+
+          // Pause rotation only when input is not empty
+          searchInput.addEventListener('input', () => {
+            if (searchInput.value.length > 0) {
+              if (window.placeholderInterval) clearInterval(window.placeholderInterval);
               searchInput.style.opacity = '1';
-            }, 150);
-          }, 3000);
+            } else {
+              startPlaceholderRotation();
+            }
+          });
+          // No need to pause on focus/blur, only on actual input
         }
       }, 100);
       // Show nav bar on search page
