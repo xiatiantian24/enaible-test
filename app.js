@@ -2,93 +2,127 @@
 const PRODUCTS = [
   {
     id: 1,
-    name: "Plum Linen Shirt",
-    brand: "J.Crew",
-    seller: "Nordstrom",
-    price: 125.00,
+    name: "Women's P-6000 Shoes",
+    brand: "Nike",
+    seller: "Dick's",
+    price: 91.99,
     walkingTime: 4,
     inventory: 8,
     images: [
-      "assets/images/product/1-4.jpg",
       "assets/images/product/1-1.jpg",
+      "assets/images/product/1-2.jpg",
       "assets/images/product/1-3.jpg",
+      "assets/images/product/1-4.jpg",
     ],
-    material: "100% Linen",
-    features: "Breathable fabric, buttoned front placket, chest pocket",
-    fit: "Relaxed fit, dropped shoulders, true to size",
-    care: "Machine wash cold with like colors. Tumble dry low or hang to dry. Warm iron if needed",
-    countryOfOrigin: "Made in Portugal",
-    size: "L"
+    overview: "A heritage-inspired sneaker combining breathable textiles with retro styling cues drawn from the Nike Pegasus 25 and Pegasus 2006, designed for everyday wear with durable traction and lasting comfort.",
+    materials: [
+      "Textile upper with mesh overlays",
+      "Foam midsole",
+      "Solid rubber outsole"
+    ],
+    featuresList: [
+      "Breathable layered upper for texture and airflow",
+      "Foam midsole provides lightweight, lasting cushioning",
+      "Solid-rubber outsole enhances traction and durability",
+      "Sporty lines and throwback silhouette"
+    ],
+    size: "8.5"
   },
   {
     id: 2,
-    name: "Jacquard Floral Shirt",
-    brand: "NN07",
-    seller: "Nordstrom",
-    price: 137.00,
+    name: "GEL-1130 Premium Shoes",
+    brand: "Asics ",
+    seller: "Free People",
+    price: 100.00,
     walkingTime: 7,
     inventory: 5,
     images: [
-      "assets/images/product/2-1.jpg",
-      "assets/images/product/2-2.jpg",
-      "assets/images/product/2-3.jpg",
-      "assets/images/product/2-4.jpg",
-      "assets/images/product/2-5.jpg",
+      "assets/images/product/2-1.png",
+      "assets/images/product/2-2.png",
+      "assets/images/product/2-3.png",
+      "assets/images/product/2-4.png",
+      "assets/images/product/2-5.png",
     ],
-    material: "100% Organic Cotton",
-    features: "Flower jacquard pattern,  Cuban collar, Ribbed trim, Side slits",
-    fit: "Regular fit",
-    care: "Machine wash cold inside out. Do not bleach. Tumble dry low. Warm iron if needed",
-    countryOfOrigin: "Made in China",
-    size: "L"
+    overview: "A lightweight, breathable sneaker inspired by late 2000s athletic styles, featuring GEL® technology for plush comfort and a classic lace-up silhouette.",
+    materials: [
+      "Mesh upper",
+      "Synthetic overlays",
+      "Rubber outsole",
+      "Cushioned footbed"
+    ],
+    featuresList: [
+      "Lace-up closure for a secure fit",
+      "Breathable mesh construction with retro aesthetic",
+      "GEL® technology for all-day cushioning",
+      "Durable rubber outsole"
+    ],
+    size: "8.5"
   },
   {
     id: 3,
-    name: "Burgundy Embroidered Shirt",
-    brand: "Kotn",
-    seller: "Macy's",
-    price: 145.00,
-    walkingTime: 2,
+    name: " 530 Sneakers",
+    brand: "New Balance",
+    seller: "Free People",
+    price: 100.00,
+    walkingTime: 8,
     inventory: 2,
     images: [
-      "assets/images/product/3-1.jpg",
-      "assets/images/product/3-2.jpg",
-      "assets/images/product/3-3.jpg",
-      "assets/images/product/3-4.jpg",
+      "assets/images/product/3-1.png",
+      "assets/images/product/3-2.png",
+      "assets/images/product/3-3.png",
     ],
-    material: "100% BCI Cotton",
-    features: "Featuring a subtle herringbone pattern, contrast stitching, and a patch pocket on the front body. Made to layer open over a t-shirt or buttoned up. Ethically crafted",
-    fit: "Relaxed fit – intended to follow the shape of your body with extra room; waist length – intended to hit between the waist and high hip",
-    care: "Wash cold and lay flat to dry",
-    countryOfOrigin: "Made in Portugal",
-    size: "L"
+    overview: "A streamlined, neutral-toned sneaker from New Balance that blends retro running aesthetics with contemporary comfort, ideal for casual styling or athletic-inspired looks.",
+    materials: [
+      "Mesh uppers",
+      "Leather overlays",
+      "Rubber outsole",
+      "ABZORB midsole"
+    ],
+    featuresList: [
+      "Low-boot construction",
+      "Streamlined design for sleek silhouette",
+      "ABZORB cushioning for impact absorption",
+      "Lace-up closure with pull tab for easy on/off",
+      "Signature logo detailing"
+    ],
+    size: "8.5"
   },
   {
     id: 4,
-    name: "77 Flamé Rugby Shirt",
-    brand: "New Balance",
+    name: "Gender Inclusive XT-6 Sneaker",
+    brand: "Salomon's",
     seller: "Nordstrom",
-    price: 90.00,
+    price: 150.00,
     walkingTime: 5,
     inventory: 10,
     images: [
-      "assets/images/product/4-1.jpg",
-      "assets/images/product/4-2.jpg",
-      "assets/images/product/4-3.jpg",
-      "assets/images/product/4-4.jpg",
+      "assets/images/product/4-1.png",
+      "assets/images/product/4-2.png",
+      "assets/images/product/4-3.png",
+      "assets/images/product/4-4.png",
+      "assets/images/product/4-5.png",
     ],
-    material: "100% Cotton",
-    features: "Limited edition, ribbed hem and cuffs, rubber buttons, covered placket",
-    fit: "Fits true to size – for a more relaxed fit, size up",
-    care: "Machine wash cold with like colors",
-    countryOfOrigin: "Made in Germany",
-    size: "L"
+    overview: "A performance-driven running shoe offering stability, support, and reliable traction across various terrains, designed for long-distance comfort with innovative fit technologies.",
+    materials: [
+      "Textile and synthetic upper and lining",
+      "Rubber sole",
+      "Removable OrthoLite® insole"
+    ],
+    featuresList: [
+      "SensiFit™ and EndoFit™ construction for a secure, sock-like fit",
+      "Agile Chassis System (ACS) for heel-to-toe stability",
+      "Contagrip® MA tread for multi-surface traction",
+      "Quicklace™ system for easy one-pull tightening",
+      "Removable insole to accommodate orthotics",
+      "Designed in exclusive partnership with Alex Dymond (Provence/High Risk Red colors)"
+    ],
+    size: "8.5"
   },
 ];
 
 // --- Refine Images (separate from products) ---
 const REFINE_IMAGES = [
-  { id: 1, image: 'assets/images/refine/1.jpeg', alt: 'Tan Satchel' },
+  { id: 1, image: 'assets/images/refine/1.jpg', alt: 'Tan Satchel' },
   { id: 2, image: 'assets/images/refine/2.jpg', alt: 'Red Handbag' },
   { id: 3, image: 'assets/images/refine/3.jpg', alt: 'Blue Crossbody' },
   { id: 4, image: 'assets/images/refine/4.jpg', alt: 'Green Backpack' },
@@ -401,6 +435,9 @@ $('#preview-trip-btn').onclick = () => {
     overlay.classList.add('show');
     bg.classList.add('show');
   }, 10);
+  // Always show nav bar when overlay is open
+  const navBar = document.getElementById('navbar-container');
+  if (navBar) navBar.style.display = '';
 };
 $('#close-overlay-btn').onclick = closeTripSheet;
 document.getElementById('trip-sheet-overlay').onclick = closeTripSheet;
@@ -412,6 +449,9 @@ function closeTripSheet() {
   setTimeout(() => {
     overlay.classList.add('hidden');
     bg.classList.add('hidden');
+    // Always show nav bar after closing overlay
+    const navBar = document.getElementById('navbar-container');
+    if (navBar) navBar.style.display = '';
   }, 180);
 }
 $('#close-map-btn').onclick = () => {
@@ -491,12 +531,57 @@ function renderRefineImageGrid() {
   // Only show refine images that are mapped to a product
   const mappedIds = Object.keys(REFINE_TO_PRODUCTS).map(Number);
   const imagesToShow = REFINE_IMAGES.filter(img => mappedIds.includes(img.id));
+  // Selection logic
+  const selected = new Set();
   imagesToShow.forEach(img => {
     const tile = document.createElement('div');
     tile.className = 'refine-image-tile';
     tile.innerHTML = `<img src="${img.image}" alt="${img.alt || ''}" />`;
+    tile.onclick = () => {
+      if (tile.classList.contains('selected')) {
+        tile.classList.remove('selected');
+        selected.delete(img.id);
+      } else {
+        if (selected.size < 3) {
+          tile.classList.add('selected');
+          selected.add(img.id);
+        }
+      }
+    };
     grid.appendChild(tile);
   });
+  // Attach finish button logic if present
+  const finishBtn = document.getElementById('finish-refine-btn');
+  if (finishBtn) {
+    finishBtn.onclick = () => {
+      if (window.showScreen) window.showScreen('products');
+      // Gather selected refine image IDs
+      const selectedIds = Array.from(selected);
+      // Map to product IDs
+      let productIds = [];
+      selectedIds.forEach(refineId => {
+        if (window.REFINE_TO_PRODUCTS && window.REFINE_TO_PRODUCTS[refineId]) {
+          productIds = productIds.concat(window.REFINE_TO_PRODUCTS[refineId]);
+        }
+      });
+      // Remove duplicates
+      productIds = [...new Set(productIds)];
+      // If less than 3, add random products not already selected
+      let filteredProducts;
+      filteredProducts = (window.PRODUCTS || []).filter(p => productIds.includes(p.id));
+      if (filteredProducts.length < 3) {
+        // Get products not already selected
+        const notSelected = (window.PRODUCTS || []).filter(p => !productIds.includes(p.id));
+        // Add up to two unselected products (not random)
+        filteredProducts = filteredProducts.concat(notSelected.slice(0, 3 - filteredProducts.length));
+      }
+      // Only show up to 3 products
+      filteredProducts = filteredProducts.slice(0, 3);
+      // Store for session
+      window.lastProductSelection = filteredProducts.map(p => p.id);
+      if (window.renderProducts) window.renderProducts(filteredProducts);
+    };
+  }
 }
 
 // --- SPA Navigation: Nav Bar Clicks ---
@@ -507,6 +592,10 @@ window.addEventListener('DOMContentLoaded', () => {
   initializeOnboardingScreen();
   // Helper to show/hide main screens
   function showScreen(screen) {
+    // Track last Find sub-screen
+    if (['search', 'refine', 'products'].includes(screen)) {
+      window.lastFindScreen = screen;
+    }
     // Hide all main screens
     document.getElementById('onboarding-screen').classList.add('hidden');
     document.getElementById('refine-page').classList.add('hidden');
@@ -538,7 +627,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Hide nav bar by default
     const navBar = document.getElementById('navbar-container');
-    if (navBar) navBar.style.display = 'none';
 
     if (screen === 'onboarding') {
       document.getElementById('onboarding-screen').classList.remove('hidden');
@@ -736,8 +824,11 @@ window.addEventListener('DOMContentLoaded', () => {
       // Reset scroll for map page
       const mapPage = document.getElementById('map-page');
       if (mapPage) mapPage.scrollTop = 0;
-      // Show nav bar on map page (ensure this is always run)
-      if (navBar) navBar.style.display = '';
+      // Always show nav bar on map page
+      if (navBar) {
+        navBar.style.display = '';
+        navBar.classList.remove('hidden');
+      }
     }
   }
 
@@ -760,7 +851,7 @@ window.addEventListener('DOMContentLoaded', () => {
       // Switch view
       const label = navItem.querySelector('.nav-label')?.textContent?.trim();
       if (label === 'Find') {
-        showScreen('search');
+        showScreen(window.lastFindScreen || 'search');
       } else if (label === 'Trip') {
         showScreen('map');
       } else if (label === 'Me') {
