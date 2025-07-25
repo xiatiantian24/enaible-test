@@ -36,7 +36,7 @@ export function renderProductCard(product, { onAdd } = {}) {
         </div>
         <div class="sold-by">Sold by ${product.seller || 'Seller'}</div>
         <div class="product-title">${product.name}</div>
-        <div class="product-price">$${product.price || 150}.00${originalPrice}</div>
+        <div class="product-price">$${product.price || 150}${originalPrice}</div>
         <div class="product-badges-row">
           ${selectedBadges.map(badge =>
             `<span class="badge ${badge.class}">${badge.html}</span>`

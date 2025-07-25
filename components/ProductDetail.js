@@ -27,7 +27,7 @@ export function renderProductDetail(product, { onClose } = {}) {
         <div class="product-detail-info-col">
           <div class="product-detail-title-row">
             <span class="product-detail-title">${product.name}</span>
-            <span class="product-detail-price">$${product.price}.00</span>
+            <span class="product-detail-price">$${product.price}</span>
           </div>
           <div class="product-detail-rating-row">
             <span class="star-icon">★</span>
@@ -41,38 +41,22 @@ export function renderProductDetail(product, { onClose } = {}) {
               <span class="color-swatch color-gray"></span>
             </span>
           </div>
-            
           <div class="product-detail-section">
-            <div class="product-detail-section-title">Product Details</div>
-            <div class="product-detail-subsection">
-              <div class="product-detail-subsection-title">Material</div>
-              <div class="product-detail-subsection-content">
-                ${product.material}
-              </div>
+            <div class="product-detail-section-title">Overview</div>
+            <div class="product-detail-description-text">
+              ${product.overview || product.features || ''}
             </div>
-            <div class="product-detail-subsection">
-              <div class="product-detail-subsection-title">Features</div>
-              <div class="product-detail-subsection-content">
-                ${product.features}
-              </div>
+          </div>
+          <div class="product-detail-section">
+            <div class="product-detail-section-title">Materials</div>
+            <div class="product-detail-description-text">
+              ${Array.isArray(product.materials) ? product.materials.map(m => `<div>• ${m}</div>`).join('') : (product.materials ? `<div>• ${product.materials}</div>` : (product.material ? `<div>• ${product.material}</div>` : ''))}
             </div>
-            <div class="product-detail-subsection">
-              <div class="product-detail-subsection-title">Fit</div>
-              <div class="product-detail-subsection-content">
-                ${product.fit}
-              </div>
-            </div>
-            <div class="product-detail-subsection">
-              <div class="product-detail-subsection-title">Care Instructions</div>
-              <div class="product-detail-subsection-content">
-                ${product.care}
-              </div>
-            </div>
-            <div class="product-detail-subsection">
-              <div class="product-detail-subsection-title">Country of Origin</div>
-              <div class="product-detail-subsection-content">
-                ${product.countryOfOrigin}
-              </div>
+          </div>
+          <div class="product-detail-section">
+            <div class="product-detail-section-title">Features</div>
+            <div class="product-detail-description-text">
+              ${Array.isArray(product.featuresList) ? product.featuresList.map(f => `<div>• ${f}</div>`).join('') : (product.featuresList ? `<div>• ${product.featuresList}</div>` : (product.features ? `<div>• ${product.features}</div>` : ''))}
             </div>
           </div>
           <div class="product-detail-section">
