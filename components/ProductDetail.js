@@ -27,7 +27,7 @@ export function renderProductDetail(product, { onClose } = {}) {
         <div class="product-detail-info-col">
           <div class="product-detail-title-row">
             <span class="product-detail-title">${product.name}</span>
-            <span class="product-detail-price">$${product.price}</span>
+            <span class="product-detail-price">$${product.price.toFixed(2)}</span>
           </div>
           <div class="product-detail-rating-row">
             <span class="star-icon">★</span>

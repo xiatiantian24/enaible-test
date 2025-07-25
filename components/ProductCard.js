@@ -38,7 +38,7 @@ export function renderProductCard(product, { onAdd } = {}) {
           <button class="bookmark-btn" title="Bookmark"><i class="fa-regular fa-bookmark"></i></button>
         </div>
         <div class="product-title">${product.name}</div>
-        <div class="product-price">$${product.price || 150}${originalPrice}</div>
+        <div class="product-price">$${(product.price || 150).toFixed(2)}${originalPrice}</div>
         <div class="product-badges-row">
           ${selectedBadges.map(badge =>
             `<span class="badge ${badge.class}">${badge.html}</span>`

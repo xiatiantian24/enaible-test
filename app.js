@@ -2,130 +2,156 @@
 const PRODUCTS = [
   {
     id: 1,
-    name: "Women's P-6000 Shoes",
-    brand: "Nike",
-    seller: "Dick's",
-    price: 91.99,
+    name: "Badminton Court Sneakers",
+    brand: "Gola",
+    seller: "Free People",
+    price: 45.00,
     walkingTime: 4,
     inventory: 8,
     images: [
       "assets/images/product/1-1.jpg",
       "assets/images/product/1-2.jpg",
       "assets/images/product/1-3.jpg",
-      "assets/images/product/1-4.jpg",
+      "assets/images/product/1-4.jpg", 
+      "assets/images/product/1-5.jpg",
     ],
-    overview: "A heritage-inspired sneaker combining breathable textiles with retro styling cues drawn from the Nike Pegasus 25 and Pegasus 2006, designed for everyday wear with durable traction and lasting comfort.",
+    overview: "A timeless court-style sneaker with suede paneling and rounded-toe construction, designed for all-day wear with a sporty, minimal look. Now available in FP Exclusive colorways.",
     materials: [
-      "Textile upper with mesh overlays",
-      "Foam midsole",
-      "Solid rubber outsole"
+      "Suede paneling",
+      "Rubber outsole",
+      "Cushioned insole"
     ],
     featuresList: [
-      "Breathable layered upper for texture and airflow",
-      "Foam midsole provides lightweight, lasting cushioning",
-      "Solid-rubber outsole enhances traction and durability",
-      "Sporty lines and throwback silhouette"
+      "Lace-up closure",
+      "Rounded-toe silhouette",
+      "Available in FP Exclusive colors: Tulip Pink, Black, and Black & White"
     ],
-    size: "8.5",
+    size: "7.5",
     reviewCount: 54,
     rating: 4.7
   },
   {
     id: 2,
-    name: "GEL-1130 Premium Shoes",
-    brand: "Asics ",
-    seller: "Free People",
-    price: 100.00,
+    name: "H&M Sneakers",
+    brand: "H&M ",
+    // seller: "Free People",
+    price: 37.99,
     walkingTime: 7,
     inventory: 5,
     images: [
-      "assets/images/product/2-1.png",
-      "assets/images/product/2-2.png",
-      "assets/images/product/2-3.png",
-      "assets/images/product/2-4.png",
-      "assets/images/product/2-5.png",
+      "assets/images/product/2-1.jpg",
+      "assets/images/product/2-2.jpg",
     ],
-    overview: "A lightweight, breathable sneaker inspired by late 2000s athletic styles, featuring GEL® technology for plush comfort and a classic lace-up silhouette.",
+    overview: "A minimalist sneaker featuring lightweight construction and patterned soles, ideal for everyday casual wear in neutral tones.",
     materials: [
-      "Mesh upper",
-      "Synthetic overlays",
-      "Rubber outsole",
-      "Cushioned footbed"
+      "Mesh insoles",
+      "Rubber-patterned soles"
     ],
     featuresList: [
-      "Lace-up closure for a secure fit",
-      "Breathable mesh construction with retro aesthetic",
-      "GEL® technology for all-day cushioning",
-      "Durable rubber outsole"
+      "Tongue and lace-up styling",
+      "Sole height: 0.94 in",
+      "No heel",
+      "Color: Light beige/khaki green",
+      "Imported"
     ],
-    size: "8.5",
+    size: "7",
     reviewCount: 112,
     rating: 4.3
   },
   {
     id: 3,
-    name: " 530 Sneakers",
-    brand: "New Balance",
-    seller: "Free People",
-    price: 100.00,
+    name: "BRMD Shoes",
+    brand: "Adidas",
+    seller: "Finish Line",
+    price: 44.00,
     walkingTime: 8,
     inventory: 2,
     images: [
-      "assets/images/product/3-1.png",
-      "assets/images/product/3-2.png",
-      "assets/images/product/3-3.png",
+      "assets/images/product/3-1.jpg",
+      "assets/images/product/3-2.jpg",
+      "assets/images/product/3-3.jpg",
+      "assets/images/product/3-4.jpg",
+      "assets/images/product/3-5.jpg",
     ],
-    overview: "A streamlined, neutral-toned sneaker from New Balance that blends retro running aesthetics with contemporary comfort, ideal for casual styling or athletic-inspired looks.",
+    overview: "Inspired by vintage adidas silhouettes, these low-profile sneakers blend smooth leather and clean design for a versatile, everyday sport-luxe look.",
     materials: [
-      "Mesh uppers",
-      "Leather overlays",
-      "Rubber outsole",
-      "ABZORB midsole"
+      "Leather upper",
+      "Synthetic lining",
+      "Rubber outsole"
     ],
     featuresList: [
-      "Low-boot construction",
-      "Streamlined design for sleek silhouette",
-      "ABZORB cushioning for impact absorption",
-      "Lace-up closure with pull tab for easy on/off",
-      "Signature logo detailing"
+      "Regular fit",
+      "Lace-up closure",
+      "Minimal overlays and clean stitch detailing",
+      "Multidirectional tread for enhanced traction",
+      "Color: Mystery Green / Tactile Green / Gum",
+      "Imported"
     ],
-    size: "8.5",
+    size: "7",
     reviewCount: 23,
     rating: 4.1
   },
   {
     id: 4,
-    name: "Gender Inclusive XT-6 Sneaker",
-    brand: "Salomon's",
-    seller: "Nordstrom",
-    price: 150.00,
+    name: "Club C 85 Vintage Sneakers",
+    brand: "Reebok",
+    seller: "Anthropologie",
+    price: 47.50,
     walkingTime: 5,
     inventory: 10,
     images: [
-      "assets/images/product/4-1.png",
-      "assets/images/product/4-2.png",
-      "assets/images/product/4-3.png",
-      "assets/images/product/4-4.png",
-      "assets/images/product/4-5.png",
+      "assets/images/product/4-1.jpg",
+      "assets/images/product/4-2.jpg",
+      "assets/images/product/4-3.jpg",
     ],
-    overview: "A performance-driven running shoe offering stability, support, and reliable traction across various terrains, designed for long-distance comfort with innovative fit technologies.",
+    overview: "A clean, understated everyday sneaker from Reebok with timeless leather construction and fitness-inspired roots, designed for versatile styling.",
     materials: [
-      "Textile and synthetic upper and lining",
-      "Rubber sole",
-      "Removable OrthoLite® insole"
+      "Leather upper",
+      "Textile insole",
+      "Rubber sole"
     ],
     featuresList: [
-      "SensiFit™ and EndoFit™ construction for a secure, sock-like fit",
-      "Agile Chassis System (ACS) for heel-to-toe stability",
-      "Contagrip® MA tread for multi-surface traction",
-      "Quicklace™ system for easy one-pull tightening",
-      "Removable insole to accommodate orthotics",
-      "Designed in exclusive partnership with Alex Dymond (Provence/High Risk Red colors)"
+      "Tie styling (lace-up)",
+      "Subtle, minimal silhouette",
+      "Imported"
     ],
-    size: "8.5",
+    size: "7.5",
     reviewCount: 187,
     rating: 4.8
   },
+  {
+    id: 5,
+    name: "Handball Spezial Shoes",
+    brand: "Adidas",
+    seller: "Dick's",
+    price: 50.00,
+    walkingTime: 5,
+    inventory: 10,
+    images: [
+      "assets/images/product/5-1.jpg",
+      "assets/images/product/5-2.jpg",
+      "assets/images/product/5-3.jpg", 
+      "assets/images/product/5-4.jpg",
+      "assets/images/product/5-5.jpg",
+    ],
+    overview: "Originally introduced in 1979 for handball athletes, the adidas Spezial brings retro style with modern flair through vibrant color updates and classic suede construction.",
+    materials: [
+      "Suede and textile upper",
+      "Textile innersole",
+      "Synthetic lining",
+      "Gum rubber outsole"
+    ],
+    featuresList: [
+      "Lace-up closure",
+      "T-shaped toe box",
+      "Durable gum rubber outsole for traction",
+      "Vintage styling with modern color accents",
+      "Imported"
+    ],
+    size: "7.5",
+    reviewCount: 187,
+    rating: 4.8
+  }
 ];
 
 // --- Refine Images (separate from products) ---
@@ -134,6 +160,7 @@ const REFINE_IMAGES = [
   { id: 2, image: 'assets/images/refine/2.jpg', alt: 'Red Handbag' },
   { id: 3, image: 'assets/images/refine/3.jpg', alt: 'Blue Crossbody' },
   { id: 4, image: 'assets/images/refine/4.jpg', alt: 'Green Backpack' },
+  { id: 5, image: 'assets/images/refine/5.jpg', alt: 'Yellow Backpack' },
 ];
 
 // Map refine image id to product ids (auto-generated to match current test data)
