@@ -31,8 +31,8 @@ export function renderProductDetail(product, { onClose } = {}) {
           </div>
           <div class="product-detail-rating-row">
             <span class="star-icon">★</span>
-            <span class="product-detail-rating">4.5</span>
-            <a href="#" class="product-detail-reviews">(54 reviews)</a>
+            <span class="product-detail-rating">${typeof product.rating === 'number' ? product.rating.toFixed(1) : '4.5'}</span>
+            ${typeof product.reviewCount === 'number' ? `<a href="#" class="product-detail-reviews">(${product.reviewCount} reviews)</a>` : ''}
           </div>
            <div class="product-detail-color-row">
             <div class="product-detail-color-label">Color</div>
@@ -59,7 +59,7 @@ export function renderProductDetail(product, { onClose } = {}) {
               ${Array.isArray(product.featuresList) ? product.featuresList.map(f => `<div>• ${f}</div>`).join('') : (product.featuresList ? `<div>• ${product.featuresList}</div>` : (product.features ? `<div>• ${product.features}</div>` : ''))}
             </div>
           </div>
-          <div class="product-detail-section">
+        <!--  <div class="product-detail-section">
             <div class="product-detail-section-title">Reviews</div>
             <div class="product-review">
               <div class="product-review-header">
@@ -85,7 +85,7 @@ export function renderProductDetail(product, { onClose } = {}) {
                 Love this shirt! The pima cotton is so soft and the cropped length is perfect. Highly recommend.
               </div>
             </div>
-          </div>
+          </div>-->
         </div>
       </div>
     </div>

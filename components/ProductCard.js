@@ -31,10 +31,12 @@ export function renderProductCard(product, { onAdd } = {}) {
       </div>
       <div class="product-card-details-col">
         <div class="product-card-header-row">
-          <span class="brand-logo-text">${product.brand || 'Brand'}</span>
+          <div class="brand-seller-col">
+            <span class="brand-logo-text">${product.brand || 'Brand'}</span>
+            <div class="sold-by">Sold by ${product.seller || 'Seller'}</div>
+          </div>
           <button class="bookmark-btn" title="Bookmark"><i class="fa-regular fa-bookmark"></i></button>
         </div>
-        <div class="sold-by">Sold by ${product.seller || 'Seller'}</div>
         <div class="product-title">${product.name}</div>
         <div class="product-price">$${product.price || 150}${originalPrice}</div>
         <div class="product-badges-row">
@@ -45,9 +47,10 @@ export function renderProductCard(product, { onAdd } = {}) {
         <div class="product-meta-row">
         <div class="product-meta-row-left">
           <span class="availability"><span class="dot" style="background:${dotColor}"></span>${availabilityText}</span>
-          <span class="distance">${
+          <!--<span class="distance">${
             typeof product.walkingTime === 'number' ? `${product.walkingTime} min walk` : ''
-          }</span>
+          }</span>-->
+          <span class="distance">Ross Park Mall</span>
           </div>
             <button class="add-btn-modular${inTrip ? ' in-trip' : ''}" title="${inTrip ? 'Remove from Trip' : 'Add to Trip'}"><i data-feather="${inTrip ? 'x' : 'plus'}"></i></button>        
         </div>

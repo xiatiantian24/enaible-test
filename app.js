@@ -26,7 +26,9 @@ const PRODUCTS = [
       "Solid-rubber outsole enhances traction and durability",
       "Sporty lines and throwback silhouette"
     ],
-    size: "8.5"
+    size: "8.5",
+    reviewCount: 54,
+    rating: 4.7
   },
   {
     id: 2,
@@ -56,7 +58,9 @@ const PRODUCTS = [
       "GEL® technology for all-day cushioning",
       "Durable rubber outsole"
     ],
-    size: "8.5"
+    size: "8.5",
+    reviewCount: 112,
+    rating: 4.3
   },
   {
     id: 3,
@@ -85,7 +89,9 @@ const PRODUCTS = [
       "Lace-up closure with pull tab for easy on/off",
       "Signature logo detailing"
     ],
-    size: "8.5"
+    size: "8.5",
+    reviewCount: 23,
+    rating: 4.1
   },
   {
     id: 4,
@@ -116,7 +122,9 @@ const PRODUCTS = [
       "Removable insole to accommodate orthotics",
       "Designed in exclusive partnership with Alex Dymond (Provence/High Risk Red colors)"
     ],
-    size: "8.5"
+    size: "8.5",
+    reviewCount: 187,
+    rating: 4.8
   },
 ];
 
