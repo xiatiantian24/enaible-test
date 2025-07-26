@@ -42,21 +42,33 @@ export function renderProductDetail(product, { onClose } = {}) {
             </span>
           </div>
           <div class="product-detail-section">
-            <div class="product-detail-section-title">Overview</div>
+            <div class="product-detail-section-title">Material</div>
             <div class="product-detail-description-text">
-              ${product.overview || product.features || ''}
-            </div>
-          </div>
-          <div class="product-detail-section">
-            <div class="product-detail-section-title">Materials</div>
-            <div class="product-detail-description-text">
-              ${Array.isArray(product.materials) ? product.materials.map(m => `<div>• ${m}</div>`).join('') : (product.materials ? `<div>• ${product.materials}</div>` : (product.material ? `<div>• ${product.material}</div>` : ''))}
+              ${Array.isArray(product.materials) ? product.materials.join('. ') : (product.materials ? product.materials : (product.material ? product.material : 'Not specified'))}
             </div>
           </div>
           <div class="product-detail-section">
             <div class="product-detail-section-title">Features</div>
             <div class="product-detail-description-text">
-              ${Array.isArray(product.featuresList) ? product.featuresList.map(f => `<div>• ${f}</div>`).join('') : (product.featuresList ? `<div>• ${product.featuresList}</div>` : (product.features ? `<div>• ${product.features}</div>` : ''))}
+              ${Array.isArray(product.featuresList) ? product.featuresList.join('. ') : (product.featuresList ? product.featuresList : (product.features ? product.features : 'Not specified'))}
+            </div>
+          </div>
+          <div class="product-detail-section">
+            <div class="product-detail-section-title">Fit</div>
+            <div class="product-detail-description-text">
+              ${product.fit || 'Not specified'}
+            </div>
+          </div>
+          <div class="product-detail-section">
+            <div class="product-detail-section-title">Care Instructions</div>
+            <div class="product-detail-description-text">
+              ${product.careInstructions || 'Not specified'}
+            </div>
+          </div>
+          <div class="product-detail-section">
+            <div class="product-detail-section-title">Origin</div>
+            <div class="product-detail-description-text">
+              ${product.origin || 'Not specified'}
             </div>
           </div>
         <!--  <div class="product-detail-section">

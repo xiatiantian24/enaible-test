@@ -2,68 +2,56 @@
 const PRODUCTS = [
   {
     id: 1,
-    name: "Badminton Court Sneakers",
-    brand: "Gola",
+    name: "Baggy Dad Jorts",
+    brand: "Levi's ",
     seller: "Free People",
     price: 45.00,
     walkingTime: 4,
     inventory: 8,
     images: [
-      "assets/images/product/1-1.jpg",
       "assets/images/product/1-2.jpg",
+      "assets/images/product/1-1.jpg",
       "assets/images/product/1-3.jpg",
       "assets/images/product/1-4.jpg", 
-      "assets/images/product/1-5.jpg",
     ],
-    overview: "A timeless court-style sneaker with suede paneling and rounded-toe construction, designed for all-day wear with a sporty, minimal look. Now available in FP Exclusive colorways.",
-    materials: [
-      "Suede paneling",
-      "Rubber outsole",
-      "Cushioned insole"
-    ],
-    featuresList: [
-      "Lace-up closure",
-      "Rounded-toe silhouette",
-      "Available in FP Exclusive colors: Tulip Pink, Black, and Black & White"
-    ],
-    size: "7.5",
+    materials: "100% cotton. Rigid, non-stretch denim",
+    featuresList: "Zip fly with button closure, five-pocket design, authentic rigid texture. Knee-length inseam",
+    fit: "Low-slung, loose fit throughout",
+    careInstructions: "Machine wash cold, tumble dry low",
+    origin: "Not specified (Levi's product)",
+    size: "M",
     reviewCount: 54,
     rating: 4.7
   },
   {
     id: 2,
-    name: "H&M Sneakers",
-    brand: "H&M ",
+    name: "8&rdquo; Mid Rise '90s Loose Denim Bermuda Shorts",
+    brand: "Gap ",
     // seller: "Free People",
-    price: 37.99,
+    price: 50.00,
     walkingTime: 7,
     inventory: 5,
     images: [
       "assets/images/product/2-1.jpg",
       "assets/images/product/2-2.jpg",
+      "assets/images/product/2-3.jpg",
+      "assets/images/product/2-4.jpg",
     ],
-    overview: "A minimalist sneaker featuring lightweight construction and patterned soles, ideal for everyday casual wear in neutral tones.",
-    materials: [
-      "Mesh insoles",
-      "Rubber-patterned soles"
-    ],
-    featuresList: [
-      "Tongue and lace-up styling",
-      "Sole height: 0.94 in",
-      "No heel",
-      "Color: Light beige/khaki green",
-      "Imported"
-    ],
-    size: "7",
+    materials: "95% cotton, 5% recycled materials. Low-stretch denim with a soft, lived-in feel",
+    featuresList: "Medium indigo wash with five-pocket styling. Zip fly with button closure. Part of the Washwell™ program, reducing water use",
+    fit: "Mid-rise. Cut loose through the hip and thigh with a longer leg for a laid-back look",
+    careInstructions: "Not specified",
+    origin: "Not specified",
+    size: "M",
     reviewCount: 112,
     rating: 4.3
   },
   {
     id: 3,
-    name: "BRMD Shoes",
-    brand: "Adidas",
-    seller: "Finish Line",
-    price: 44.00,
+    name: "11&rdquo; Mid Rise Longline Denim Shorts",
+    brand: "Gap",
+    // seller: "Finish Line",
+    price: 50.00,
     walkingTime: 8,
     inventory: 2,
     images: [
@@ -71,60 +59,45 @@ const PRODUCTS = [
       "assets/images/product/3-2.jpg",
       "assets/images/product/3-3.jpg",
       "assets/images/product/3-4.jpg",
-      "assets/images/product/3-5.jpg",
     ],
-    overview: "Inspired by vintage adidas silhouettes, these low-profile sneakers blend smooth leather and clean design for a versatile, everyday sport-luxe look.",
-    materials: [
-      "Leather upper",
-      "Synthetic lining",
-      "Rubber outsole"
-    ],
-    featuresList: [
-      "Regular fit",
-      "Lace-up closure",
-      "Minimal overlays and clean stitch detailing",
-      "Multidirectional tread for enhanced traction",
-      "Color: Mystery Green / Tactile Green / Gum",
-      "Imported"
-    ],
-    size: "7",
+    materials: "95% cotton, 5% recycled cotton. No stretch; authentic rigid denim that breaks in over time",
+    featuresList: "Classic five-pocket short in a dark indigo wash. Zip fly with button closure. Part of the Washwell™ program, using at least 20% less water than conventional methods",
+    fit: "Mid-rise, low-slung on the waist, relaxed at the hip with a wide-leg finish",
+    careInstructions: "Not specified",
+    origin: "Responsibly made",
+    size: "M",
     reviewCount: 23,
     rating: 4.1
   },
   {
     id: 4,
-    name: "Club C 85 Vintage Sneakers",
-    brand: "Reebok",
-    seller: "Anthropologie",
-    price: 47.50,
+    name: "95 Gigi Super Baggy Denim Jort",
+    brand: "Abrand",
+    seller: "Urban Outfitters",
+    price: 29.40,
     walkingTime: 5,
     inventory: 10,
     images: [
       "assets/images/product/4-1.jpg",
       "assets/images/product/4-2.jpg",
       "assets/images/product/4-3.jpg",
+      "assets/images/product/4-4.jpg",
     ],
-    overview: "A clean, understated everyday sneaker from Reebok with timeless leather construction and fitness-inspired roots, designed for versatile styling.",
-    materials: [
-      "Leather upper",
-      "Textile insole",
-      "Rubber sole"
-    ],
-    featuresList: [
-      "Tie styling (lace-up)",
-      "Subtle, minimal silhouette",
-      "Imported"
-    ],
-    size: "7.5",
+    materials: "91% cotton, 5% viscose, 4% polyester. Rigid, non-stretch midweight denim",
+    featuresList: "Abrand Gigi 95 super baggy jorts in a longline silhouette. Slouchy mid-rise waistline, wide-leg fit, and classic five-pocket styling. Zip-fly with button closure",
+    fit: "Mid-rise with a slouchy, baggy fit and wide-leg cut. Longline length with a 17.5\" inseam. Model is 5'7.5\" and wears size 26",
+    careInstructions: "Machine wash",
+    origin: "Imported",
+    size: "M",
     reviewCount: 187,
     rating: 4.8
   },
   {
     id: 5,
-    name: "Handball Spezial Shoes",
-    brand: "Adidas",
-    seller: "Dick's",
-    price: 50.00,
+    name: "Denim Bermuda Shorts",
+    brand: "H&M",
+    // seller: "Dick's",
+    price: 29.99,
     walkingTime: 5,
     inventory: 10,
     images: [
@@ -134,21 +107,12 @@ const PRODUCTS = [
       "assets/images/product/5-4.jpg",
       "assets/images/product/5-5.jpg",
     ],
-    overview: "Originally introduced in 1979 for handball athletes, the adidas Spezial brings retro style with modern flair through vibrant color updates and classic suede construction.",
-    materials: [
-      "Suede and textile upper",
-      "Textile innersole",
-      "Synthetic lining",
-      "Gum rubber outsole"
-    ],
-    featuresList: [
-      "Lace-up closure",
-      "T-shaped toe box",
-      "Durable gum rubber outsole for traction",
-      "Vintage styling with modern color accents",
-      "Imported"
-    ],
-    size: "7.5",
+    materials: "Shell: 100% cotton; Pocket lining: 80% polyester, 20% cotton. Made with at least 48% recycled polyester and 7% recycled cotton by weight (excluding minor components)",
+    featuresList: "Classic denim construction in a solid blue color. Bermuda short style with a regular fit and five-pocket styling. High-waist, knee-length design",
+    fit: "High-rise waist with a regular fit and Bermuda-length silhouette",
+    careInstructions: "Machine wash cool. Wash with like colors. Only non-chlorine bleach when needed. Tumble dry medium. Medium iron. May be dry cleaned. Color may transfer onto light materials",
+    origin: "Imported",
+    size: "M",
     reviewCount: 187,
     rating: 4.8
   }
@@ -156,9 +120,9 @@ const PRODUCTS = [
 
 // --- Refine Images (separate from products) ---
 const REFINE_IMAGES = [
-  { id: 1, image: 'assets/images/refine/1.jpg', alt: 'Tan Satchel' },
+  { id: 1, image: 'assets/images/refine/1.jpeg', alt: 'Tan Satchel' },
   { id: 2, image: 'assets/images/refine/2.jpg', alt: 'Red Handbag' },
-  { id: 3, image: 'assets/images/refine/3.jpg', alt: 'Blue Crossbody' },
+  { id: 3, image: 'assets/images/refine/3.jpeg', alt: 'Blue Crossbody' },
   { id: 4, image: 'assets/images/refine/4.jpg', alt: 'Green Backpack' },
   { id: 5, image: 'assets/images/refine/5.jpg', alt: 'Yellow Backpack' },
 ];
