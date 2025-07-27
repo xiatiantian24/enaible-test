@@ -27,12 +27,12 @@ export function renderProductDetail(product, { onClose } = {}) {
         <div class="product-detail-info-col">
           <div class="product-detail-title-row">
             <span class="product-detail-title">${product.name}</span>
-            <span class="product-detail-price">$${product.price}.00</span>
+            <span class="product-detail-price">$${product.price.toFixed(2)}</span>
           </div>
           <div class="product-detail-rating-row">
             <span class="star-icon">★</span>
-            <span class="product-detail-rating">4.5</span>
-            <a href="#" class="product-detail-reviews">(54 reviews)</a>
+            <span class="product-detail-rating">${typeof product.rating === 'number' ? product.rating.toFixed(1) : '4.5'}</span>
+            ${typeof product.reviewCount === 'number' ? `<a href="#" class="product-detail-reviews">(${product.reviewCount} reviews)</a>` : ''}
           </div>
            <div class="product-detail-color-row">
             <div class="product-detail-color-label">Color</div>
@@ -41,41 +41,37 @@ export function renderProductDetail(product, { onClose } = {}) {
               <span class="color-swatch color-gray"></span>
             </span>
           </div>
-            
           <div class="product-detail-section">
-            <div class="product-detail-section-title">Product Details</div>
-            <div class="product-detail-subsection">
-              <div class="product-detail-subsection-title">Material</div>
-              <div class="product-detail-subsection-content">
-                ${product.material}
-              </div>
-            </div>
-            <div class="product-detail-subsection">
-              <div class="product-detail-subsection-title">Features</div>
-              <div class="product-detail-subsection-content">
-                ${product.features}
-              </div>
-            </div>
-            <div class="product-detail-subsection">
-              <div class="product-detail-subsection-title">Fit</div>
-              <div class="product-detail-subsection-content">
-                ${product.fit}
-              </div>
-            </div>
-            <div class="product-detail-subsection">
-              <div class="product-detail-subsection-title">Care Instructions</div>
-              <div class="product-detail-subsection-content">
-                ${product.care}
-              </div>
-            </div>
-            <div class="product-detail-subsection">
-              <div class="product-detail-subsection-title">Country of Origin</div>
-              <div class="product-detail-subsection-content">
-                ${product.countryOfOrigin}
-              </div>
+            <div class="product-detail-section-title">Material</div>
+            <div class="product-detail-description-text">
+              ${Array.isArray(product.materials) ? product.materials.join('. ') : (product.materials ? product.materials : (product.material ? product.material : 'Not specified'))}
             </div>
           </div>
           <div class="product-detail-section">
+            <div class="product-detail-section-title">Features</div>
+            <div class="product-detail-description-text">
+              ${Array.isArray(product.featuresList) ? product.featuresList.join('. ') : (product.featuresList ? product.featuresList : (product.features ? product.features : 'Not specified'))}
+            </div>
+          </div>
+          <div class="product-detail-section">
+            <div class="product-detail-section-title">Fit</div>
+            <div class="product-detail-description-text">
+              ${product.fit || 'Not specified'}
+            </div>
+          </div>
+          <div class="product-detail-section">
+            <div class="product-detail-section-title">Care Instructions</div>
+            <div class="product-detail-description-text">
+              ${product.careInstructions || 'Not specified'}
+            </div>
+          </div>
+          <div class="product-detail-section">
+            <div class="product-detail-section-title">Origin</div>
+            <div class="product-detail-description-text">
+              ${product.origin || 'Not specified'}
+            </div>
+          </div>
+        <!--  <div class="product-detail-section">
             <div class="product-detail-section-title">Reviews</div>
             <div class="product-review">
               <div class="product-review-header">
@@ -101,7 +97,7 @@ export function renderProductDetail(product, { onClose } = {}) {
                 Love this shirt! The pima cotton is so soft and the cropped length is perfect. Highly recommend.
               </div>
             </div>
-          </div>
+          </div>-->
         </div>
       </div>
     </div>

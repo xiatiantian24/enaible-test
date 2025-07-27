@@ -2,30 +2,35 @@
 const PRODUCTS = [
   {
     id: 1,
-    name: "Plum Linen Shirt",
-    brand: "J.Crew",
+    name: "Matilda straight-fit rinse-wash jeans",
+    brand: "Mango",
     seller: "Nordstrom",
-    price: 125.00,
+    price: 35.99,
     walkingTime: 4,
     inventory: 8,
     images: [
-      "assets/images/product/1-4.jpg",
+      "assets/images/product/1-2.jpg",
+      "assets/images/product/1-6.jpg",
       "assets/images/product/1-1.jpg",
       "assets/images/product/1-3.jpg",
+      "assets/images/product/1-4.jpg", 
+      "assets/images/product/1-5.jpg",
     ],
-    material: "100% Linen",
-    features: "Breathable fabric, buttoned front placket, chest pocket",
-    fit: "Relaxed fit, dropped shoulders, true to size",
-    care: "Machine wash cold with like colors. Tumble dry low or hang to dry. Warm iron if needed",
-    countryOfOrigin: "Made in Portugal",
-    size: "L"
+    materials: "100% recycled cotton-blend denim",
+    featuresList: "Rinse-wash cotton denim with a straight, mid-rise design. Five-pocket styling, front zip fly with button closure, belt loops, two side pockets, and two back patch pockets. Full-length silhouette with a 30.71 in. inseam. Plus sizes available",
+    fit: "Standard fit with a long, straight-leg design. Model is 1.78 m and wears size 36",
+    careInstructions: "Machine wash max 30°C (85°F), short spin dry. Do not bleach. Iron max 110°C (230°F). Do not dry clean. Do not tumble dry",
+    origin: "Designed in Barcelona. Manufactured, dyed, and woven in Türkiye",
+    size: "L",
+    reviewCount: 54,
+    rating: 4.7
   },
   {
     id: 2,
-    name: "Jacquard Floral Shirt",
-    brand: "NN07",
-    seller: "Nordstrom",
-    price: 137.00,
+    name: "Mid-Rise 90s Loose Jean",
+    brand: "Banana Republic ",
+    // seller: "Free People",
+    price: 47.99,
     walkingTime: 7,
     inventory: 5,
     images: [
@@ -33,42 +38,47 @@ const PRODUCTS = [
       "assets/images/product/2-2.jpg",
       "assets/images/product/2-3.jpg",
       "assets/images/product/2-4.jpg",
-      "assets/images/product/2-5.jpg",
     ],
-    material: "100% Organic Cotton",
-    features: "Flower jacquard pattern,  Cuban collar, Ribbed trim, Side slits",
-    fit: "Regular fit",
-    care: "Machine wash cold inside out. Do not bleach. Tumble dry low. Warm iron if needed",
-    countryOfOrigin: "Made in China",
-    size: "L"
+    materials: "69% cotton, 25% TENCEL™ lyocell, 5% recycled cotton, 1% elastane spandex",
+    featuresList: "Indigo-wash vintage-inspired jeans with a touch of stretch. Five-pocket styling, zip fly with button closure, and belt loops",
+    fit: "Mid-rise (10.75\"), slouchy at the hip with a relaxed thigh and straight, loose full-length leg",
+    careInstructions: "Machine wash cold, tumble dry low, warm iron, or dry clean",
+    origin: "Imported. Made with sustainably sourced TENCEL™ lyocell from responsibly harvested trees",
+    size: "L",
+    reviewCount: 112,
+    rating: 4.3
   },
   {
     id: 3,
-    name: "Burgundy Embroidered Shirt",
-    brand: "Kotn",
-    seller: "Macy's",
-    price: 145.00,
-    walkingTime: 2,
+    name: "Curve Love High Rise 90s Relaxed Jean",
+    brand: "Abercrombie & Fitch",
+    // seller: "Finish Line",
+    price: 40.00,
+    walkingTime: 8,
     inventory: 2,
     images: [
       "assets/images/product/3-1.jpg",
       "assets/images/product/3-2.jpg",
       "assets/images/product/3-3.jpg",
       "assets/images/product/3-4.jpg",
+      "assets/images/product/3-5.jpg",
+      "assets/images/product/3-6.jpg",
     ],
-    material: "100% BCI Cotton",
-    features: "Featuring a subtle herringbone pattern, contrast stitching, and a patch pocket on the front body. Made to layer open over a t-shirt or buttoned up. Ethically crafted",
-    fit: "Relaxed fit – intended to follow the shape of your body with extra room; waist length – intended to hit between the waist and high hip",
-    care: "Wash cold and lay flat to dry",
-    countryOfOrigin: "Made in Portugal",
-    size: "L"
+    materials: "Body: 99% cotton, 1% elastane",
+    featuresList: "Dark wash jeans with a distressed hem and a viral Curve Love fit. Designed to eliminate waist gaps, featuring extra room in the hips and thighs. Five-pocket styling and zip fly with button closure",
+    fit: "10.5\" high-rise, fitted at waist and hips with a relaxed thigh and full-length leg. Curve-hugging comfort with slight stretch for ease",
+    careInstructions: "Machine wash cold with like colors. Turn inside out and wash before wear to avoid color transfer. Tumble dry low. Warm iron if needed. Do not bleach. Do not dry clean",
+    origin: "Imported",
+    size: "L",
+    reviewCount: 23,
+    rating: 4.1
   },
   {
     id: 4,
-    name: "77 Flamé Rugby Shirt",
-    brand: "New Balance",
-    seller: "Nordstrom",
-    price: 90.00,
+    name: "Medium Indigo Shade Order '94 Baggy Jeans",
+    brand: "Levi's",
+    seller: "PacSun",
+    price: 45.65,
     walkingTime: 5,
     inventory: 10,
     images: [
@@ -77,21 +87,49 @@ const PRODUCTS = [
       "assets/images/product/4-3.jpg",
       "assets/images/product/4-4.jpg",
     ],
-    material: "100% Cotton",
-    features: "Limited edition, ribbed hem and cuffs, rubber buttons, covered placket",
-    fit: "Fits true to size – for a more relaxed fit, size up",
-    care: "Machine wash cold with like colors",
-    countryOfOrigin: "Made in Germany",
-    size: "L"
+    materials: "100% rigid cotton denim",
+    featuresList: "Medium indigo wash with a classic five-pocket body, zip fly closure, and Levi's back label. Crafted for a true vintage look and feel",
+    fit: "Mid-rise with a slouchy, straight-leg fit inspired by 1990s baggy jeans",
+    careInstructions: "Machine washable",
+    origin: "Not specified",
+    size: "L",
+    reviewCount: 187,
+    rating: 4.8
   },
+  {
+    id: 5,
+    name: "High Rise '90s Original Straight Jeans",
+    brand: "Gap",
+    // seller: "Dick's",
+    price: 34.99,
+    walkingTime: 5,
+    inventory: 10,
+    images: [
+      "assets/images/product/5-1.jpg",
+      "assets/images/product/5-2.jpg",
+      "assets/images/product/5-3.jpg", 
+      "assets/images/product/5-4.jpg",
+      "assets/images/product/5-5.jpg",
+      "assets/images/product/5-6.jpg",
+    ],
+    materials: "93% cotton, 5% recycled cotton, 2% elastane. Made with stretch denim and 5% recycled cotton to reduce resource use and waste",
+    featuresList: "Medium indigo wash with fading and whiskering. Part of the Washwell™ program, which uses at least 20% less water than conventional wash methods. Button closure and zip fly",
+    fit: "Not specified (assumed standard/stretch fit based on fabric content)",
+    careInstructions: "Machine wash",
+    origin: "Imported",
+    size: "L",
+    reviewCount: 187,
+    rating: 4.8
+  }
 ];
 
 // --- Refine Images (separate from products) ---
 const REFINE_IMAGES = [
-  { id: 1, image: 'assets/images/refine/1.jpeg', alt: 'Tan Satchel' },
+  { id: 1, image: 'assets/images/refine/1.jpg', alt: 'Tan Satchel' },
   { id: 2, image: 'assets/images/refine/2.jpg', alt: 'Red Handbag' },
   { id: 3, image: 'assets/images/refine/3.jpg', alt: 'Blue Crossbody' },
   { id: 4, image: 'assets/images/refine/4.jpg', alt: 'Green Backpack' },
+  { id: 5, image: 'assets/images/refine/5.jpg', alt: 'Yellow Backpack' },
 ];
 
 // Map refine image id to product ids (auto-generated to match current test data)
@@ -401,6 +439,9 @@ $('#preview-trip-btn').onclick = () => {
     overlay.classList.add('show');
     bg.classList.add('show');
   }, 10);
+  // Always show nav bar when overlay is open
+  const navBar = document.getElementById('navbar-container');
+  if (navBar) navBar.style.display = '';
 };
 $('#close-overlay-btn').onclick = closeTripSheet;
 document.getElementById('trip-sheet-overlay').onclick = closeTripSheet;
@@ -412,6 +453,9 @@ function closeTripSheet() {
   setTimeout(() => {
     overlay.classList.add('hidden');
     bg.classList.add('hidden');
+    // Always show nav bar after closing overlay
+    const navBar = document.getElementById('navbar-container');
+    if (navBar) navBar.style.display = '';
   }, 180);
 }
 $('#close-map-btn').onclick = () => {
@@ -491,12 +535,57 @@ function renderRefineImageGrid() {
   // Only show refine images that are mapped to a product
   const mappedIds = Object.keys(REFINE_TO_PRODUCTS).map(Number);
   const imagesToShow = REFINE_IMAGES.filter(img => mappedIds.includes(img.id));
+  // Selection logic
+  const selected = new Set();
   imagesToShow.forEach(img => {
     const tile = document.createElement('div');
     tile.className = 'refine-image-tile';
     tile.innerHTML = `<img src="${img.image}" alt="${img.alt || ''}" />`;
+    tile.onclick = () => {
+      if (tile.classList.contains('selected')) {
+        tile.classList.remove('selected');
+        selected.delete(img.id);
+      } else {
+        if (selected.size < 3) {
+          tile.classList.add('selected');
+          selected.add(img.id);
+        }
+      }
+    };
     grid.appendChild(tile);
   });
+  // Attach finish button logic if present
+  const finishBtn = document.getElementById('finish-refine-btn');
+  if (finishBtn) {
+    finishBtn.onclick = () => {
+      if (window.showScreen) window.showScreen('products');
+      // Gather selected refine image IDs
+      const selectedIds = Array.from(selected);
+      // Map to product IDs
+      let productIds = [];
+      selectedIds.forEach(refineId => {
+        if (window.REFINE_TO_PRODUCTS && window.REFINE_TO_PRODUCTS[refineId]) {
+          productIds = productIds.concat(window.REFINE_TO_PRODUCTS[refineId]);
+        }
+      });
+      // Remove duplicates
+      productIds = [...new Set(productIds)];
+      // If less than 3, add random products not already selected
+      let filteredProducts;
+      filteredProducts = (window.PRODUCTS || []).filter(p => productIds.includes(p.id));
+      if (filteredProducts.length < 3) {
+        // Get products not already selected
+        const notSelected = (window.PRODUCTS || []).filter(p => !productIds.includes(p.id));
+        // Add up to two unselected products (not random)
+        filteredProducts = filteredProducts.concat(notSelected.slice(0, 3 - filteredProducts.length));
+      }
+      // Only show up to 3 products
+      filteredProducts = filteredProducts.slice(0, 3);
+      // Store for session
+      window.lastProductSelection = filteredProducts.map(p => p.id);
+      if (window.renderProducts) window.renderProducts(filteredProducts);
+    };
+  }
 }
 
 // --- SPA Navigation: Nav Bar Clicks ---
@@ -507,6 +596,10 @@ window.addEventListener('DOMContentLoaded', () => {
   initializeOnboardingScreen();
   // Helper to show/hide main screens
   function showScreen(screen) {
+    // Track last Find sub-screen
+    if (['search', 'refine', 'products'].includes(screen)) {
+      window.lastFindScreen = screen;
+    }
     // Hide all main screens
     document.getElementById('onboarding-screen').classList.add('hidden');
     document.getElementById('refine-page').classList.add('hidden');
@@ -538,7 +631,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Hide nav bar by default
     const navBar = document.getElementById('navbar-container');
-    if (navBar) navBar.style.display = 'none';
 
     if (screen === 'onboarding') {
       document.getElementById('onboarding-screen').classList.remove('hidden');
@@ -736,8 +828,11 @@ window.addEventListener('DOMContentLoaded', () => {
       // Reset scroll for map page
       const mapPage = document.getElementById('map-page');
       if (mapPage) mapPage.scrollTop = 0;
-      // Show nav bar on map page (ensure this is always run)
-      if (navBar) navBar.style.display = '';
+      // Always show nav bar on map page
+      if (navBar) {
+        navBar.style.display = '';
+        navBar.classList.remove('hidden');
+      }
     }
   }
 
@@ -760,7 +855,7 @@ window.addEventListener('DOMContentLoaded', () => {
       // Switch view
       const label = navItem.querySelector('.nav-label')?.textContent?.trim();
       if (label === 'Find') {
-        showScreen('search');
+        showScreen(window.lastFindScreen || 'search');
       } else if (label === 'Trip') {
         showScreen('map');
       } else if (label === 'Me') {

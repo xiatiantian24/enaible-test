@@ -13,24 +13,24 @@ export function renderFilterSheet() {
           <h4>Auto-Applied Keywords</h4>
           <div class="keyword-tags" id="keyword-tags">
             <label class="keyword-tag">
-              <input type="checkbox" name="keywords" value="tuscany-weather" checked tabindex="-1">
-              <span>Good for weather in Tuscany in July</span>
+              <input type="checkbox" name="keywords" value="available-pittsburgh" checked tabindex="-1">
+              <span>Available in Pittsburgh</span>
             </label>
             <label class="keyword-tag">
-              <input type="checkbox" name="keywords" value="tall-lean" checked tabindex="-1">
-              <span>Flattering on tall and lean</span>
+              <input type="checkbox" name="keywords" value="summer-weather" checked tabindex="-1">
+              <span>For summer weather</span>
             </label>
             <label class="keyword-tag">
-              <input type="checkbox" name="keywords" value="cream-palette" checked tabindex="-1">
-              <span>Cream palette</span>
+              <input type="checkbox" name="keywords" value="changing-weather" checked tabindex="-1">
+              <span>Suitable for changing weather</span>
             </label>
             <label class="keyword-tag">
-              <input type="checkbox" name="keywords" value="summer-wedding" checked tabindex="-1">
-              <span>Summer wedding appropriate</span>
+              <input type="checkbox" name="keywords" value="versatile-style" checked tabindex="-1">
+              <span>Versatile style fit</span>
             </label>
             <label class="keyword-tag">
-              <input type="checkbox" name="keywords" value="business-casual" checked tabindex="-1">
-              <span>Business casual</span>
+              <input type="checkbox" name="keywords" value="popular-pick" checked tabindex="-1">
+              <span>Popular pick</span>
             </label>
             <input type="text" id="custom-keyword-input" class="custom-keyword-input" placeholder="Add more keywords" autocomplete="off" />
           </div>
