@@ -1,136 +1,334 @@
-// --- Product Data (easy to edit) ---
-const PRODUCTS = [
-  {
-    id: 1,
-    name: "Matilda straight-fit rinse-wash jeans",
-    brand: "Mango",
-    seller: "Nordstrom",
-    price: 35.99,
-    walkingTime: 4,
-    inventory: 8,
-    images: [
-      "assets/images/product/1-2.jpg",
-      "assets/images/product/1-6.jpg",
-      "assets/images/product/1-1.jpg",
-      "assets/images/product/1-3.jpg",
-      "assets/images/product/1-4.jpg", 
-      "assets/images/product/1-5.jpg",
+// --- Test Data Configuration ---
+const TEST_CONFIGS = {
+  test1: {
+    name: "Test 1 - Summer Shirts",
+    searchQuery: "white cotton tees that I can wear for walking to class in a Philly summer",
+    products: [
+      {
+        id: 1,
+        name: "Plum Linen Shirt",
+        brand: "J.Crew",
+        seller: "Nordstrom",
+        price: 125.00,
+        walkingTime: 4,
+        inventory: 8,
+        images: [
+          "assets/images/test1/product/1-4.jpg",
+          "assets/images/test1/product/1-1.jpg",
+          "assets/images/test1/product/1-3.jpg",
+        ],
+        material: "100% Linen",
+        features: "Breathable fabric, buttoned front placket, chest pocket",
+        fit: "Relaxed fit, dropped shoulders, true to size",
+        care: "Machine wash cold with like colors. Tumble dry low or hang to dry. Warm iron if needed",
+        countryOfOrigin: "Made in Portugal",
+        size: "L"
+      },
+      {
+        id: 2,
+        name: "Jacquard Floral Shirt",
+        brand: "NN07",
+        seller: "Nordstrom",
+        price: 137.00,
+        walkingTime: 7,
+        inventory: 5,
+        images: [
+          "assets/images/test1/product/2-1.jpg",
+          "assets/images/test1/product/2-2.jpg",
+          "assets/images/test1/product/2-3.jpg",
+          "assets/images/test1/product/2-4.jpg",
+          "assets/images/test1/product/2-5.jpg",
+        ],
+        material: "100% Organic Cotton",
+        features: "Flower jacquard pattern,  Cuban collar, Ribbed trim, Side slits",
+        fit: "Regular fit",
+        care: "Machine wash cold inside out. Do not bleach. Tumble dry low. Warm iron if needed",
+        countryOfOrigin: "Made in China",
+        size: "L"
+      },
+      {
+        id: 3,
+        name: "Burgundy Embroidered Shirt",
+        brand: "Kotn",
+        seller: "Macy's",
+        price: 145.00,
+        walkingTime: 2,
+        inventory: 2,
+        images: [
+          "assets/images/test1/product/3-1.jpg",
+          "assets/images/test1/product/3-2.jpg",
+          "assets/images/test1/product/3-3.jpg",
+          "assets/images/test1/product/3-4.jpg",
+        ],
+        material: "100% BCI Cotton",
+        features: "Featuring a subtle herringbone pattern, contrast stitching, and a patch pocket on the front body. Made to layer open over a t-shirt or buttoned up. Ethically crafted",
+        fit: "Relaxed fit – intended to follow the shape of your body with extra room; waist length – intended to hit between the waist and high hip",
+        care: "Wash cold and lay flat to dry",
+        countryOfOrigin: "Made in Portugal",
+        size: "L"
+      },
+      {
+        id: 4,
+        name: "77 Flamé Rugby Shirt",
+        brand: "New Balance",
+        seller: "Nordstrom",
+        price: 90.00,
+        walkingTime: 5,
+        inventory: 10,
+        images: [
+          "assets/images/test1/product/4-1.jpg",
+          "assets/images/test1/product/4-2.jpg",
+          "assets/images/test1/product/4-3.jpg",
+          "assets/images/test1/product/4-4.jpg",
+        ],
+        material: "100% Cotton",
+        features: "Limited edition, ribbed hem and cuffs, rubber buttons, covered placket",
+        fit: "Fits true to size – for a more relaxed fit, size up",
+        care: "Machine wash cold with like colors",
+        countryOfOrigin: "Made in Germany",
+        size: "L"
+      },
     ],
-    materials: "100% recycled cotton-blend denim",
-    featuresList: "Rinse-wash cotton denim with a straight, mid-rise design. Five-pocket styling, front zip fly with button closure, belt loops, two side pockets, and two back patch pockets. Full-length silhouette with a 30.71 in. inseam. Plus sizes available",
-    fit: "Standard fit with a long, straight-leg design. Model is 1.78 m and wears size 36",
-    careInstructions: "Machine wash max 30°C (85°F), short spin dry. Do not bleach. Iron max 110°C (230°F). Do not dry clean. Do not tumble dry",
-    origin: "Designed in Barcelona. Manufactured, dyed, and woven in Türkiye",
-    size: "L",
-    reviewCount: 54,
-    rating: 4.7
+    refineImages: [
+      { id: 1, image: 'assets/images/test1/refine/1.jpeg', alt: 'Tan Satchel' },
+      { id: 2, image: 'assets/images/test1/refine/2.jpg', alt: 'Red Handbag' },
+      { id: 3, image: 'assets/images/test1/refine/3.jpg', alt: 'Blue Crossbody' },
+      { id: 4, image: 'assets/images/test1/refine/4.jpg', alt: 'Green Backpack' },
+    ]
   },
-  {
-    id: 2,
-    name: "Mid-Rise 90s Loose Jean",
-    brand: "Banana Republic ",
-    // seller: "Free People",
-    price: 47.99,
-    walkingTime: 7,
-    inventory: 5,
-    images: [
-      "assets/images/product/2-1.jpg",
-      "assets/images/product/2-2.jpg",
-      "assets/images/product/2-3.jpg",
-      "assets/images/product/2-4.jpg",
+  test2: {
+    name: "Test 2 - Wedding Attire",
+    searchQuery: "navy button down shirts for a Catholic summer wedding in Quito",
+    products: [
+      {
+        id: 1,
+        name: "Navy Oxford Shirt",
+        brand: "Brooks Brothers",
+        seller: "Nordstrom",
+        price: 89.50,
+        walkingTime: 3,
+        inventory: 12,
+        images: [
+          "assets/images/test2/product/1-1.jpg",
+          "assets/images/test2/product/1-2.jpg",
+          "assets/images/test2/product/1-3.jpg",
+        ],
+        material: "100% Cotton Oxford",
+        features: "Classic button-down collar, chest pocket, traditional fit",
+        fit: "Traditional fit, true to size",
+        care: "Machine wash cold, tumble dry low",
+        countryOfOrigin: "Made in USA",
+        size: "L"
+      },
+      {
+        id: 2,
+        name: "Navy Poplin Shirt",
+        brand: "Ralph Lauren",
+        seller: "Macy's",
+        price: 95.00,
+        walkingTime: 6,
+        inventory: 8,
+        images: [
+          "assets/images/test2/product/2-1.jpg",
+          "assets/images/test2/product/2-2.jpg",
+          "assets/images/test2/product/2-3.jpg",
+        ],
+        material: "100% Cotton Poplin",
+        features: "Spread collar, single chest pocket, slim fit",
+        fit: "Slim fit, consider sizing up",
+        care: "Machine wash cold, iron as needed",
+        countryOfOrigin: "Made in China",
+        size: "L"
+      },
+      {
+        id: 3,
+        name: "Navy Twill Shirt",
+        brand: "J.Crew",
+        seller: "J.Crew",
+        price: 79.50,
+        walkingTime: 4,
+        inventory: 15,
+        images: [
+          "assets/images/test2/product/3-1.jpg",
+          "assets/images/test2/product/3-2.jpg",
+          "assets/images/test2/product/3-3.jpg",
+        ],
+        material: "100% Cotton Twill",
+        features: "Button-down collar, chest pocket, relaxed fit",
+        fit: "Relaxed fit, true to size",
+        care: "Machine wash cold, tumble dry low",
+        countryOfOrigin: "Made in Vietnam",
+        size: "L"
+      },
+      {
+        id: 4,
+        name: "Navy Chambray Shirt",
+        brand: "Gap",
+        seller: "Gap",
+        price: 49.99,
+        walkingTime: 2,
+        inventory: 20,
+        images: [
+          "assets/images/test2/product/4-1.jpg",
+          "assets/images/test2/product/4-2.jpg",
+          "assets/images/test2/product/4-3.jpg",
+        ],
+        material: "100% Cotton Chambray",
+        features: "Spread collar, chest pocket, modern fit",
+        fit: "Modern fit, true to size",
+        care: "Machine wash cold, tumble dry low",
+        countryOfOrigin: "Made in Bangladesh",
+        size: "L"
+      },
     ],
-    materials: "69% cotton, 25% TENCEL™ lyocell, 5% recycled cotton, 1% elastane spandex",
-    featuresList: "Indigo-wash vintage-inspired jeans with a touch of stretch. Five-pocket styling, zip fly with button closure, and belt loops",
-    fit: "Mid-rise (10.75\"), slouchy at the hip with a relaxed thigh and straight, loose full-length leg",
-    careInstructions: "Machine wash cold, tumble dry low, warm iron, or dry clean",
-    origin: "Imported. Made with sustainably sourced TENCEL™ lyocell from responsibly harvested trees",
-    size: "L",
-    reviewCount: 112,
-    rating: 4.3
+    refineImages: [
+      { id: 1, image: 'assets/images/test2/refine/1.jpeg', alt: 'Formal Navy Shirt' },
+      { id: 2, image: 'assets/images/test2/refine/2.jpg', alt: 'Classic Button Down' },
+      { id: 3, image: 'assets/images/test2/refine/3.jpg', alt: 'Wedding Attire' },
+      { id: 4, image: 'assets/images/test2/refine/4.jpg', alt: 'Business Casual' },
+    ]
   },
-  {
-    id: 3,
-    name: "Curve Love High Rise 90s Relaxed Jean",
-    brand: "Abercrombie & Fitch",
-    // seller: "Finish Line",
-    price: 40.00,
-    walkingTime: 8,
-    inventory: 2,
-    images: [
-      "assets/images/product/3-1.jpg",
-      "assets/images/product/3-2.jpg",
-      "assets/images/product/3-3.jpg",
-      "assets/images/product/3-4.jpg",
-      "assets/images/product/3-5.jpg",
-      "assets/images/product/3-6.jpg",
+  test3: {
+    name: "Test 3 - Summer Dresses",
+    searchQuery: "formal cream dress for 28 y.o. women for a barn wedding in TX this weekend",
+    products: [
+      {
+        id: 1,
+        name: "Cream Linen Dress",
+        brand: "Anthropologie",
+        seller: "Anthropologie",
+        price: 168.00,
+        walkingTime: 5,
+        inventory: 6,
+        images: [
+          "assets/images/test3/product/1-1.jpg",
+          "assets/images/test3/product/1-2.jpg",
+          "assets/images/test3/product/1-3.jpg",
+        ],
+        material: "100% Linen",
+        features: "V-neck, adjustable straps, midi length",
+        fit: "True to size, relaxed fit",
+        care: "Dry clean only",
+        countryOfOrigin: "Made in China",
+        size: "M"
+      },
+      {
+        id: 2,
+        name: "Cream Cotton Dress",
+        brand: "Free People",
+        seller: "Nordstrom",
+        price: 128.00,
+        walkingTime: 7,
+        inventory: 4,
+        images: [
+          "assets/images/test3/product/2-1.jpg",
+          "assets/images/test3/product/2-2.jpg",
+          "assets/images/test3/product/2-3.jpg",
+        ],
+        material: "100% Cotton",
+        features: "Square neck, smocked bodice, tiered skirt",
+        fit: "True to size, flowy fit",
+        care: "Machine wash cold, hang to dry",
+        countryOfOrigin: "Made in India",
+        size: "M"
+      },
+      {
+        id: 3,
+        name: "Cream Silk Dress",
+        brand: "Reformation",
+        seller: "Reformation",
+        price: 248.00,
+        walkingTime: 3,
+        inventory: 3,
+        images: [
+          "assets/images/test3/product/3-1.jpg",
+          "assets/images/test3/product/3-2.jpg",
+          "assets/images/test3/product/3-3.jpg",
+        ],
+        material: "100% Silk",
+        features: "Wrap style, adjustable tie, midi length",
+        fit: "True to size, flattering fit",
+        care: "Dry clean only",
+        countryOfOrigin: "Made in USA",
+        size: "M"
+      },
+      {
+        id: 4,
+        name: "Cream Chiffon Dress",
+        brand: "ASOS",
+        seller: "ASOS",
+        price: 89.99,
+        walkingTime: 4,
+        inventory: 8,
+        images: [
+          "assets/images/test3/product/4-1.jpg",
+          "assets/images/test3/product/4-2.jpg",
+          "assets/images/test3/product/4-3.jpg",
+        ],
+        material: "100% Polyester Chiffon",
+        features: "V-neck, empire waist, maxi length",
+        fit: "True to size, flowy fit",
+        care: "Hand wash cold, hang to dry",
+        countryOfOrigin: "Made in China",
+        size: "M"
+      },
     ],
-    materials: "Body: 99% cotton, 1% elastane",
-    featuresList: "Dark wash jeans with a distressed hem and a viral Curve Love fit. Designed to eliminate waist gaps, featuring extra room in the hips and thighs. Five-pocket styling and zip fly with button closure",
-    fit: "10.5\" high-rise, fitted at waist and hips with a relaxed thigh and full-length leg. Curve-hugging comfort with slight stretch for ease",
-    careInstructions: "Machine wash cold with like colors. Turn inside out and wash before wear to avoid color transfer. Tumble dry low. Warm iron if needed. Do not bleach. Do not dry clean",
-    origin: "Imported",
-    size: "L",
-    reviewCount: 23,
-    rating: 4.1
-  },
-  {
-    id: 4,
-    name: "Medium Indigo Shade Order '94 Baggy Jeans",
-    brand: "Levi's",
-    seller: "PacSun",
-    price: 45.65,
-    walkingTime: 5,
-    inventory: 10,
-    images: [
-      "assets/images/product/4-1.jpg",
-      "assets/images/product/4-2.jpg",
-      "assets/images/product/4-3.jpg",
-      "assets/images/product/4-4.jpg",
-    ],
-    materials: "100% rigid cotton denim",
-    featuresList: "Medium indigo wash with a classic five-pocket body, zip fly closure, and Levi's back label. Crafted for a true vintage look and feel",
-    fit: "Mid-rise with a slouchy, straight-leg fit inspired by 1990s baggy jeans",
-    careInstructions: "Machine washable",
-    origin: "Not specified",
-    size: "L",
-    reviewCount: 187,
-    rating: 4.8
-  },
-  {
-    id: 5,
-    name: "High Rise '90s Original Straight Jeans",
-    brand: "Gap",
-    // seller: "Dick's",
-    price: 34.99,
-    walkingTime: 5,
-    inventory: 10,
-    images: [
-      "assets/images/product/5-1.jpg",
-      "assets/images/product/5-2.jpg",
-      "assets/images/product/5-3.jpg", 
-      "assets/images/product/5-4.jpg",
-      "assets/images/product/5-5.jpg",
-      "assets/images/product/5-6.jpg",
-    ],
-    materials: "93% cotton, 5% recycled cotton, 2% elastane. Made with stretch denim and 5% recycled cotton to reduce resource use and waste",
-    featuresList: "Medium indigo wash with fading and whiskering. Part of the Washwell™ program, which uses at least 20% less water than conventional wash methods. Button closure and zip fly",
-    fit: "Not specified (assumed standard/stretch fit based on fabric content)",
-    careInstructions: "Machine wash",
-    origin: "Imported",
-    size: "L",
-    reviewCount: 187,
-    rating: 4.8
+    refineImages: [
+      { id: 1, image: 'assets/images/test3/refine/1.jpeg', alt: 'Cream Formal Dress' },
+      { id: 2, image: 'assets/images/test3/refine/2.jpg', alt: 'Wedding Guest Dress' },
+      { id: 3, image: 'assets/images/test3/refine/3.jpg', alt: 'Summer Dress' },
+      { id: 4, image: 'assets/images/test3/refine/4.jpg', alt: 'Barn Wedding Style' },
+    ]
   }
-];
+};
+
+// Current active test configuration
+let currentTestConfig = 'test1';
+
+// Function to get current test data
+function getCurrentTestData() {
+  return TEST_CONFIGS[currentTestConfig];
+}
+
+// Function to switch test configuration
+function switchTestConfig(testId) {
+  currentTestConfig = testId;
+  const testData = getCurrentTestData();
+  
+  // Update global variables
+  window.PRODUCTS = testData.products;
+  window.REFINE_IMAGES = testData.refineImages;
+  
+  // Update refine to products mapping
+  window.REFINE_TO_PRODUCTS = {};
+  const minCount = Math.min(testData.refineImages.length, testData.products.length);
+  for (let i = 0; i < minCount; i++) {
+    window.REFINE_TO_PRODUCTS[testData.refineImages[i].id] = [testData.products[i].id];
+  }
+  
+  // Reset trip plan for new test
+  window.tripPlan = [];
+  updateTripBtn();
+  
+  // Update search input with test query
+  const searchInput = document.querySelector('#searchbar-container .searchbar-input') || 
+                     document.querySelector('#searchbar-container textarea') ||
+                     document.querySelector('#searchbar-container input');
+  if (searchInput) {
+    searchInput.value = testData.searchQuery;
+  }
+  
+  // Update example placeholders
+  window.examplePlaceholders = getExamplePlaceholders();
+  
+  console.log(`Switched to ${testData.name}`);
+}
+
+// --- Product Data (easy to edit) ---
+const PRODUCTS = TEST_CONFIGS[currentTestConfig].products;
 
 // --- Refine Images (separate from products) ---
-const REFINE_IMAGES = [
-  { id: 1, image: 'assets/images/refine/1.jpg', alt: 'Tan Satchel' },
-  { id: 2, image: 'assets/images/refine/2.jpg', alt: 'Red Handbag' },
-  { id: 3, image: 'assets/images/refine/3.jpg', alt: 'Blue Crossbody' },
-  { id: 4, image: 'assets/images/refine/4.jpg', alt: 'Green Backpack' },
-  { id: 5, image: 'assets/images/refine/5.jpg', alt: 'Yellow Backpack' },
-];
+const REFINE_IMAGES = TEST_CONFIGS[currentTestConfig].refineImages;
 
 // Map refine image id to product ids (auto-generated to match current test data)
 const REFINE_TO_PRODUCTS = {};
@@ -346,7 +544,7 @@ function renderTripOverlay() {
   // Calculate estimated trip length (sum of product distances in min + 5 min per item)
   let totalMin = 0;
   tripPlan.forEach(id => {
-    const product = PRODUCTS.find(p => p.id === id);
+    const product = (window.PRODUCTS || []).find(p => p.id === id);
     if (product && product.distance) {
       totalMin += Math.round(product.distance * 13); // same as product card
     }
@@ -372,7 +570,7 @@ function renderTripOverlay() {
   }
   import('./components/ProductCard.js').then(({ renderProductCard }) => {
     tripPlan.forEach(id => {
-      const product = PRODUCTS.find(p => p.id === id);
+      const product = (window.PRODUCTS || []).find(p => p.id === id);
       // Render the card with add/remove button enabled and refresh sheet on click
       const card = renderProductCard(product, {
         onAdd: (id) => {
@@ -409,15 +607,17 @@ function renderMapOverlay() {
   map.style.height = '250px';
   // Place markers for each product
   tripPlan.forEach((id, idx) => {
-    const product = PRODUCTS.find(p => p.id === id);
-    const marker = document.createElement('div');
-    marker.className = 'map-product-marker';
-    marker.style.left = (product.location.x - 16) + 'px';
-    marker.style.top = (product.location.y - 16) + 'px';
-    marker.style.position = 'absolute';
-    marker.title = product.name;
-    marker.innerText = idx + 1;
-    map.appendChild(marker);
+    const product = (window.PRODUCTS || []).find(p => p.id === id);
+    if (product && product.location) {
+      const marker = document.createElement('div');
+      marker.className = 'map-product-marker';
+      marker.style.left = (product.location.x - 16) + 'px';
+      marker.style.top = (product.location.y - 16) + 'px';
+      marker.style.position = 'absolute';
+      marker.title = product.name;
+      marker.innerText = idx + 1;
+      map.appendChild(marker);
+    }
   });
 }
 
@@ -481,6 +681,8 @@ window.tripPlan = tripPlan;
 window.REFINE_IMAGES = REFINE_IMAGES;
 window.REFINE_TO_PRODUCTS = REFINE_TO_PRODUCTS;
 window.addToTrip = addToTrip;
+window.switchTestConfig = switchTestConfig;
+window.getCurrentTestData = getCurrentTestData;
 
 // Map productId to array of badge objects for this session
 window.productBadgeMap = window.productBadgeMap || {};
@@ -503,13 +705,15 @@ window.getRandomBadgesForProduct = function(productId) {
 window.lastProductSelection = null;
 
 // Example search placeholders for rotating search bar inspiration
-window.examplePlaceholders = [
-  "What are you searching for today?",
-  "White cotton tees that I can wear for walking to class in a Philly summer",
-  "Navy button down shirts for a Catholic  summer wedding in Quito",
-  "Formal cream dress for 28 y.o. women for a barn wedding in TX this weekend",
-  "Bags that go well with linen pants for summer in Tuscany"
-];
+function getExamplePlaceholders() {
+  const testData = getCurrentTestData();
+  return [
+    "What are you searching for today?",
+    testData.searchQuery,
+    "Bags that go well with linen pants for summer in Tuscany"
+  ];
+}
+window.examplePlaceholders = getExamplePlaceholders();
 window.placeholderIndex = 0;
 window.placeholderInterval = null;
 
@@ -533,10 +737,8 @@ function renderRefineImageGrid() {
   if (!grid) return;
   grid.innerHTML = '';
   // Only show refine images that are mapped to a product
-  const mappedIds = Object.keys(REFINE_TO_PRODUCTS).map(Number);
-  const imagesToShow = REFINE_IMAGES.filter(img => mappedIds.includes(img.id));
-  // Selection logic
-  const selected = new Set();
+  const mappedIds = Object.keys(window.REFINE_TO_PRODUCTS || {}).map(Number);
+  const imagesToShow = (window.REFINE_IMAGES || []).filter(img => mappedIds.includes(img.id));
   imagesToShow.forEach(img => {
     const tile = document.createElement('div');
     tile.className = 'refine-image-tile';

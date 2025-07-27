@@ -402,6 +402,73 @@ body {
   margin-top: 32px;
 }
 
+/* Test Selection Styles */
+.test-selection-container {
+  margin-bottom: 24px;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+}
+
+.test-selection-header {
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #495057;
+}
+
+.test-selection-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.test-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.test-btn:hover {
+  background: #f1f3f4;
+  border-color: #adb5bd;
+}
+
+.test-btn.active {
+  background: #007bff;
+  border-color: #007bff;
+  color: white;
+}
+
+.test-btn-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.test-btn.active .test-btn-number {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.test-btn-label {
+  white-space: nowrap;
+}
+
 .search-bar-modern {
   width: 100%;
   max-width: 380px;

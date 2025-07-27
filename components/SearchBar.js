@@ -3,6 +3,27 @@ export function renderSearchBar(containerId, onSearch) {
   const searchDiv = document.createElement("div");
   searchDiv.className = "search-bar-modern";
   searchDiv.innerHTML = `
+    <!-- Test Selection Buttons -->
+    <div class="test-selection-container">
+      <div class="test-selection-header">
+        <span>Select Test Scenario:</span>
+      </div>
+      <div class="test-selection-buttons">
+        <button class="test-btn" data-test="test1">
+          <span class="test-btn-number">1</span>
+          <span class="test-btn-label">Summer Shirts</span>
+        </button>
+        <button class="test-btn" data-test="test2">
+          <span class="test-btn-number">2</span>
+          <span class="test-btn-label">Wedding Attire</span>
+        </button>
+        <button class="test-btn" data-test="test3">
+          <span class="test-btn-number">3</span>
+          <span class="test-btn-label">Summer Dresses</span>
+        </button>
+      </div>
+    </div>
+    
     <div class="searchbar-outer searchbar-vertical-fixed">
       <textarea type="text" class="searchbar-input" placeholder="What are you searching for today?" style="font-size:17px;line-height:23px;text-align:left;display:flex;width:100%;height:100%;border:none;outline:none;background:transparent;color:var(--Text-Default-Default,#1E1E1E);font-family:'Instrument Sans',Arial,sans-serif;"></textarea>
       <div class="searchbar-actions-row-fixed">
@@ -23,6 +44,29 @@ export function renderSearchBar(containerId, onSearch) {
 
   const input = searchDiv.querySelector(".searchbar-input");
   const sendBtn = searchDiv.querySelector(".send");
+
+  // Test selection button handlers
+  const testButtons = searchDiv.querySelectorAll(".test-btn");
+  testButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const testId = btn.getAttribute("data-test");
+      
+      // Update active button state
+      testButtons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      
+      // Switch test configuration
+      if (window.switchTestConfig) {
+        window.switchTestConfig(testId);
+      }
+    });
+  });
+
+  // Set initial active state for test1
+  const test1Btn = searchDiv.querySelector('[data-test="test1"]');
+  if (test1Btn) {
+    test1Btn.classList.add("active");
+  }
 
   sendBtn.addEventListener("click", () => {
     const value = input.value.trim();
