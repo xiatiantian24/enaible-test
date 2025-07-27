@@ -21,6 +21,10 @@ export function renderSearchBar(containerId, onSearch) {
           <span class="test-btn-number">3</span>
           <span class="test-btn-label">Summer Dresses</span>
         </button>
+        <button class="test-btn" data-test="test4">
+          <span class="test-btn-number">4</span>
+          <span class="test-btn-label">Summer Bags</span>
+        </button>
       </div>
     </div>
     
