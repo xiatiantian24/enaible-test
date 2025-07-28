@@ -33,24 +33,24 @@ This is a prototype of a shopping trip planner that helps users discover, refine
 ### 1. **Onboarding & Preferences**
 - Configure shopping preferences (department, sizes, budget)
 - Set location permissions
-- **Note**: Preferences are pre-filled for demo purposes
+> **Note**: Preferences are pre-filled for demo purposes
 
 ### 2. **Search**
 - Select from predefined search scenarios to simulate natural language queries
-- **Note**: Search functionality is simulated using pre-configured test scenarios; custom text input is disabled as no backend processing is implemented
+> **Note**: Search functionality is simulated using pre-configured test scenarios; custom text input is disabled as no backend processing is implemented
 
 ### 3. **Style Refinement**
 - Select up to 3 reference images to refine product recommendations
-- **Note**: Image selection is functional; AI-powered refinement is simulated
+> **Note**: Image selection is functional; AI-powered refinement is simulated
 
 ### 4. **Product Browsing**
 - Browse curated product recommendations in card view/detail view
-- **Note**: Live inventory data and store information are simulated
+> **Note**: Live inventory data and store information are simulated
 
 ### 5. **Trip Planning & Map**
 - Build shopping trips by adding/removing items
 - View items on map with trip statistics (estimated time, distance, number of stops)
-- **Note**: Interactive map displays mock store locations around Pittsburgh; location data are simulated
+> **Note**: Interactive map displays mock store locations around Pittsburgh; location data are simulated
 
 ## Example searches
 
