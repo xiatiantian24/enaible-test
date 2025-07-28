@@ -2,6 +2,7 @@
 
 This is a prototype of a shopping trip planner that helps users discover, refine, and plan their shopping trips with personalized recommendations and interactive maps.
 
+## Getting Started
 
 ### **Live Demo**
 **View the live site**: [https://xiatiantian24.github.io/enaible-test/](https://xiatiantian24.github.io/enaible-test/)
@@ -23,11 +24,11 @@ This is a prototype of a shopping trip planner that helps users discover, refine
 **Option 2: Using Live Server Extension (VS Code)**
 1. Clone the repository
 2. Open the project in VS Code
-3. Install the "Live Server" extension if you haven't already
+3. Install the "Live Server" extension
 4. Right-click on `index.html` and select "Open with Live Server"
 5. Complete the onboarding process to start using the app
 
-## User Flow & Functionality
+## Prototyped Functionality & User Flow
 
 ### 1. **Onboarding & Preferences**
 - Configure shopping preferences (department, sizes, budget)
@@ -44,7 +45,7 @@ This is a prototype of a shopping trip planner that helps users discover, refine
 
 ### 4. **Product Browsing**
 - Browse curated product recommendations in card view/detail view
-- **Note**: Product data, inventory, and store information are simulated
+- **Note**: Live inventory data and store information are simulated
 
 ### 5. **Trip Planning & Map**
 - Build shopping trips by adding/removing items
@@ -62,5 +63,5 @@ The prototype includes four pre-configured search scenarios, available via tappi
 
 ---
 
-**Developed with Cursor by Ray Xia from Team ENAiBLE, MHCI '25**
+Developed with Cursor by Ray Xia from Team ENAiBLE, MHCI '25
 
