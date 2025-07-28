@@ -56,10 +56,10 @@ This is a prototype of a shopping trip planner that helps users discover, refine
 
 The prototype includes four pre-configured search scenarios, available via tapping on the buttons below the search bar:
 
-1. **1 - Running Shoes**: "Running shoes for a 5k on a Pittsburgh summer"
-2. **2 - Tennis Shoes**: "Casual tennis shoes that go well with linen pants"
-3. **3 - Summer Jorts**: "Denim jorts with pockets"
-4. **4 - Jeans**: "Jeans that look good with a white or black t-shirt"
+1. **Running Shoes**: "Running shoes for a 5k on a Pittsburgh summer"
+2. **Tennis Shoes**: "Casual tennis shoes that go well with linen pants"
+3. **Summer Jorts**: "Denim jorts with pockets"
+4. **Jeans**: "Jeans that look good with a white or black t-shirt"
 
 ---
 
