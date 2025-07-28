@@ -1,75 +1,66 @@
 # Cerulean - Shopping Trip Planner
 
-A modern shopping trip planner app with dynamic test scenario selection.
+This is a prototype of a shopping trip planner that helps users discover, refine, and plan their shopping trips with personalized recommendations and interactive maps.
 
-## Features
 
-- **Dynamic Test Scenarios**: Switch between different test configurations without maintaining separate branches
-- **Test Selection UI**: Choose from multiple test scenarios via buttons on the search screen
-- **Unified Codebase**: All test data is managed in a single configuration object
+### **Live Demo**
+**View the live site**: [https://xiatiantian24.github.io/enaible-test/](https://xiatiantian24.github.io/enaible-test/)
 
-## Test Scenarios
+> **Note**: Phone screen recommended for live site.
 
-The app includes three pre-configured test scenarios:
+### **Local Installation & Running**
 
-1. **Test 1 - Summer Shirts**: Features summer clothing items with a focus on breathable fabrics
-2. **Test 2 - Wedding Attire**: Features formal navy shirts suitable for wedding events
-3. **Test 3 - Summer Dresses**: Features formal dresses for summer wedding events
-
-## How to Use Test Selection
-
-1. **Launch the app** and complete the onboarding process
-2. **On the search screen**, you'll see three test selection buttons above the search bar
-3. **Click any test button** to switch to that scenario:
-   - The search input will be populated with the test-specific query
-   - Product data will be updated to match the selected scenario
-   - Refine images will be updated accordingly
-4. **Proceed with the normal flow** - search, refine, and view products
-
-## Adding New Test Scenarios
-
-To add a new test scenario:
-
-1. **Add a new configuration** to the `TEST_CONFIGS` object in `app.js`:
-   ```javascript
-   test4: {
-     name: "Test 4 - Your Test Name",
-     searchQuery: "Your search query here",
-     products: [
-       // Your product data array
-     ],
-     refineImages: [
-       // Your refine images array
-     ]
-   }
+**Option 1: Using Python HTTP Server**
+1. Clone the repository
+2. Navigate to the project directory
+3. Start a local server:
+   ```bash
+   python -m http.server 8000
    ```
+4. Open your browser to `http://localhost:8000`
+5. Complete the onboarding process to start using the app
 
-2. **Add a new button** to the SearchBar component in `components/SearchBar.js`:
-   ```html
-   <button class="test-btn" data-test="test4">
-     <span class="test-btn-number">4</span>
-     <span class="test-btn-label">Your Test Name</span>
-   </button>
-   ```
+**Option 2: Using Live Server Extension (VS Code)**
+1. Clone the repository
+2. Open the project in VS Code
+3. Install the "Live Server" extension if you haven't already
+4. Right-click on `index.html` and select "Open with Live Server"
+5. Complete the onboarding process to start using the app
 
-3. **Update the button labels** to match your test scenario
+## User Flow & Functionality
 
-## File Structure
+### 1. **Onboarding & Preferences**
+- Configure shopping preferences (department, sizes, budget)
+- Set location permissions
+- **Note**: Preferences are pre-filled for demo purposes
 
-- `app.js` - Main application logic and test configuration
-- `components/SearchBar.js` - Search bar component with test selection UI
-- `styles.css` - Styling for test selection buttons
-- `assets/images/` - Product and refine images for all test scenarios
+### 2. **Search**
+- Select from predefined search scenarios to simulate natural language queries
+- **Note**: Search functionality is simulated using pre-configured test scenarios; custom text input is disabled as no backend processing is implemented
 
-## Running the Application
+### 3. **Style Refinement**
+- Select up to 3 reference images to refine product recommendations
+- **Note**: Image selection is functional; AI-powered refinement is simulated
 
-1. Start a local server: `python -m http.server 8000`
-2. Open your browser to `http://localhost:8000`
-3. Use the test selection buttons to switch between scenarios
+### 4. **Product Browsing**
+- Browse curated product recommendations in card view/detail view
+- **Note**: Product data, inventory, and store information are simulated
 
-## Technical Implementation
+### 5. **Trip Planning & Map**
+- Build shopping trips by adding/removing items
+- View items on map with trip statistics (estimated time, distance, number of stops)
+- **Note**: Interactive map displays mock store locations around Pittsburgh; location data are simulated
 
-- **Test Configuration**: All test data is stored in the `TEST_CONFIGS` object
-- **Dynamic Switching**: The `switchTestConfig()` function updates all relevant data
-- **Global State Management**: Test data is stored in `window.PRODUCTS` and `window.REFINE_IMAGES`
-- **UI Updates**: Test selection automatically updates the search input and example placeholders
+## Example searches
+
+The prototype includes four pre-configured search scenarios, available via tapping on the buttons below the search bar:
+
+1. **1 - Running Shoes**: "Running shoes for a 5k on a Pittsburgh summer"
+2. **2 - Tennis Shoes**: "Casual tennis shoes that go well with linen pants"
+3. **3 - Summer Jorts**: "Denim jorts with pockets"
+4. **4 - Jeans**: "Jeans that look good with a white or black t-shirt"
+
+---
+
+**Developed with Cursor by Ray Xia from Team ENAiBLE, MHCI '25**
+
