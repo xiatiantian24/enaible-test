@@ -10,6 +10,14 @@
       href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
   <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
@@ -260,33 +268,30 @@
       <!-- Map Page (SPA style) -->
       <div id="map-page" class="hidden">
         <h2>Store Map</h2>
-        <div
-          id="map-container"
-          style="
-            width: 100%;
-            height: 250px;
-            background: repeating-linear-gradient(
-              45deg,
-              #e0e0e0,
-              #e0e0e0 10px,
-              #fff 10px,
-              #fff 20px
-            );
-            position: relative;
-          "
-        ></div>
-        <p>This is your trip plan map. (Mockup)</p>
+        <div id="map-container"></div>
+        <div class="map-info-panel">
+          <h3>Trip Summary</h3>
+          <div class="map-stats">
+            <div class="map-stat">
+              <span class="map-stat-value" id="trip-stops">0</span>
+              <span class="map-stat-label">Stops</span>
+            </div>
+            <div class="map-stat">
+              <span class="map-stat-value" id="trip-distance">0</span>
+              <span class="map-stat-label">Miles</span>
+            </div>
+            <div class="map-stat">
+              <span class="map-stat-value" id="trip-time">0</span>
+              <span class="map-stat-label">Minutes</span>
+            </div>
+          </div>
+          <p>Tap markers to see item details.</p>
+        </div>
       </div>
       <!-- Profile Page (SPA style) -->
       <div id="profile-page" class="hidden">
-        <h2>Profile</h2>
-        <div id="profile-info">
-          <p><strong>Name:</strong> Jane Doe</p>
-          <p><strong>Email:</strong> jane.doe@example.com</p>
-          <p><strong>Favorite Style:</strong> Modern Business</p>
-          <p>This is a mockup profile page.</p>
-        </div>
-    </div>
+        <div id="profile-content"></div>
+      </div>
     <!-- Trip Plan Overlay Sheet -->
     <div id="trip-sheet-overlay" class="filter-overlay hidden"></div>
     <div id="trip-overlay" class="filter-sheet hidden">
@@ -299,6 +304,12 @@
       </div>
       <div class="filter-sheet-content">
         <div id="trip-list"></div>
+      </div>
+      <div class="trip-sheet-footer">
+        <button id="view-trip-map-btn" class="trip-map-btn">
+          <i data-feather="map"></i>
+          <span>View Trip Map</span>
+        </button>
       </div>
     </div>
     <!-- Map Overlay Sheet -->
@@ -320,6 +331,8 @@
       import { renderNavBar } from "./components/NavBar.js";
       import { renderSearchBar } from "./components/SearchBar.js";
       import { renderFilterSheet, initializeFilterSheet } from "./components/FilterSheet.js";
+      import { initializeLeafletMap, updateMapWithTripPlan } from "./components/LeafletMap.js";
+      import { renderProfile, initializeProfile } from "./components/Profile.js";
       window.addEventListener("DOMContentLoaded", () => {
       function waitForRenderProducts(callback) {
         if (window.renderProducts && window.PRODUCTS) {
@@ -430,6 +443,10 @@
         });
         renderNavBar("navbar-container");
         renderSearchBar("searchbar-container", goToProductsPage);
+        
+        // Expose Profile component functions globally
+        window.renderProfile = renderProfile;
+        window.initializeProfile = initializeProfile;
         
         // Render FilterSheet component
         const filterSheetContainer = document.getElementById("filter-sheet-container");

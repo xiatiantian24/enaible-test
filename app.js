@@ -896,6 +896,12 @@ function addToTrip(productId) {
   // Update window.tripPlan to keep it in sync
   window.tripPlan = tripPlan;
   updateTripBtn();
+  
+  // Update map if we're on the map page
+  if (window.updateMapWithTripPlan && !document.getElementById('map-page').classList.contains('hidden')) {
+    window.updateMapWithTripPlan(tripPlan, window.PRODUCTS || []);
+  }
+  
   // Re-render products to update icons
   if (window.renderProducts && window.lastProductSelection) {
     const filteredProducts = window.lastProductSelection.map(id => (window.PRODUCTS || []).find(p => p.id === id));
@@ -977,32 +983,41 @@ function renderTripOverlay() {
   
   // Replace Feather icons after rendering
   if (window.feather) window.feather.replace();
+  
+  // Add click handler for trip map button - works exactly like Trip nav button
+  const tripMapBtn = document.getElementById('view-trip-map-btn');
+  if (tripMapBtn) {
+    tripMapBtn.onclick = () => {
+      // Close the trip overlay
+      closeTripSheet();
+      // Update nav bar to highlight Trip tab
+      const navBar = document.getElementById('navbar-container');
+      if (navBar) {
+        // Remove active from all nav-items and nav-icon-bg
+        navBar.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+        navBar.querySelectorAll('.nav-icon-bg').forEach(i => i.classList.remove('active'));
+        // Set active on Trip nav item
+        const tripNavItem = navBar.querySelector('.nav-item:nth-child(2)'); // Trip is the second nav item
+        if (tripNavItem) {
+          tripNavItem.classList.add('active');
+          const iconBg = tripNavItem.querySelector('.nav-icon-bg');
+          if (iconBg) iconBg.classList.add('active');
+        }
+      }
+      // Navigate to map screen (same as Trip nav button)
+      if (window.showScreen) {
+        window.showScreen('map');
+      }
+    };
+  }
 }
 
 // --- Render Map Overlay ---
 function renderMapOverlay() {
-  const map = document.getElementById('map-container');
-  if (!map) return;
-  map.innerHTML = '';
-  // Fake map size
-  map.style.position = 'relative';
-  map.style.background = 'repeating-linear-gradient(45deg, #e0e0e0, #e0e0e0 10px, #fff 10px, #fff 20px)';
-  map.style.width = '100%';
-  map.style.height = '250px';
-  // Place markers for each product
-  tripPlan.forEach((id, idx) => {
-    const product = (window.PRODUCTS || []).find(p => p.id === id);
-    if (product && product.location) {
-    const marker = document.createElement('div');
-    marker.className = 'map-product-marker';
-    marker.style.left = (product.location.x - 16) + 'px';
-    marker.style.top = (product.location.y - 16) + 'px';
-    marker.style.position = 'absolute';
-    marker.title = product.name;
-    marker.innerText = idx + 1;
-    map.appendChild(marker);
-    }
-  });
+  // Use Leaflet map instead of mock map
+  if (window.updateMapWithTripPlan) {
+    window.updateMapWithTripPlan(tripPlan, window.PRODUCTS || []);
+  }
 }
 
 // --- Event Listeners ---
@@ -1447,6 +1462,14 @@ window.addEventListener('DOMContentLoaded', () => {
       if (searchbarActions) searchbarActions.classList.remove('hidden');
       if (searchbarOuter) searchbarOuter.style.height = '';
       if (exampleSearches) exampleSearches.classList.add('hidden');
+      // Render profile content
+      const profileContent = document.getElementById('profile-content');
+      if (profileContent && window.renderProfile) {
+        profileContent.innerHTML = window.renderProfile();
+        if (window.initializeProfile) {
+          window.initializeProfile();
+        }
+      }
       // Reset scroll for profile page
       const profilePage = document.getElementById('profile-page');
       if (profilePage) profilePage.scrollTop = 0;
@@ -1482,6 +1505,14 @@ window.addEventListener('DOMContentLoaded', () => {
     navBar.addEventListener('click', (e) => {
       let navItem = e.target.closest('.nav-item');
       if (!navItem) return;
+      
+      const label = navItem.querySelector('.nav-label')?.textContent?.trim();
+      
+      // Check if Trip button is already active and being clicked again
+      if (label === 'Trip' && navItem.classList.contains('active')) {
+        return; // Prevent re-selecting Trip when already on map screen
+      }
+      
       // Remove active from all nav-items and nav-icon-bg
       navBar.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
       navBar.querySelectorAll('.nav-icon-bg').forEach(i => i.classList.remove('active'));
@@ -1490,7 +1521,6 @@ window.addEventListener('DOMContentLoaded', () => {
       const iconBg = navItem.querySelector('.nav-icon-bg');
       if (iconBg) iconBg.classList.add('active');
       // Switch view
-      const label = navItem.querySelector('.nav-label')?.textContent?.trim();
       if (label === 'Find') {
         showScreen(window.lastFindScreen || 'search');
       } else if (label === 'Trip') {
