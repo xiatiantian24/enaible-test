@@ -3,30 +3,6 @@ export function renderSearchBar(containerId, onSearch) {
   const searchDiv = document.createElement("div");
   searchDiv.className = "search-bar-modern";
   searchDiv.innerHTML = `
-    <!-- Test Selection Buttons -->
-    <div class="test-selection-container">
-      <div class="test-selection-header">
-        <span>Select Test Scenario:</span>
-      </div>
-      <div class="test-selection-buttons">
-        <button class="test-btn" data-test="test1">
-          <span class="test-btn-number">1</span>
-          <span class="test-btn-label">Summer Shirts</span>
-        </button>
-        <button class="test-btn" data-test="test2">
-          <span class="test-btn-number">2</span>
-          <span class="test-btn-label">Wedding Attire</span>
-        </button>
-        <button class="test-btn" data-test="test3">
-          <span class="test-btn-number">3</span>
-          <span class="test-btn-label">Summer Dresses</span>
-        </button>
-        <button class="test-btn" data-test="test4">
-          <span class="test-btn-number">4</span>
-          <span class="test-btn-label">Summer Bags</span>
-        </button>
-      </div>
-    </div>
     
     <div class="searchbar-outer searchbar-vertical-fixed">
       <textarea type="text" class="searchbar-input" placeholder="What are you searching for today?" style="font-size:17px;line-height:23px;text-align:left;display:flex;width:100%;height:100%;border:none;outline:none;background:transparent;color:var(--Text-Default-Default,#1E1E1E);font-family:'Instrument Sans',Arial,sans-serif;"></textarea>
@@ -42,6 +18,31 @@ export function renderSearchBar(containerId, onSearch) {
         </button>
       </div>
     </div>
+       <div class="test-selection-container">
+      <div class="test-selection-header">
+        <span>Suggested Searches</span>
+      </div>
+      <div class="test-selection-buttons">
+      <div class="test-selection-buttons-inner">
+        <button class="test-btn" data-test="test1">
+          <span class="test-btn-label">Summer running shoes for a 5k</span>
+          <i class="fa-solid fa-square-arrow-up-right test-btn-arrow"></i>
+        </button>
+        <button class="test-btn" data-test="test2">
+          <span class="test-btn-label">Casual tennis shoes</span>
+          <i class="fa-solid fa-square-arrow-up-right test-btn-arrow"></i>
+        </button>
+        <button class="test-btn" data-test="test3">
+          <span class="test-btn-label">Denim jorts with pockets</span>
+          <i class="fa-solid fa-square-arrow-up-right test-btn-arrow"></i>
+        </button>
+        <button class="test-btn" data-test="test4">
+          <span class="test-btn-label">Jeans for white/black t-shirt</span>
+          <i class="fa-solid fa-square-arrow-up-right test-btn-arrow"></i>
+        </button>
+      </div>
+      </div>
+    </div>
   `;
   document.getElementById(containerId).appendChild(searchDiv);
   if (window.feather) window.feather.replace();
@@ -49,28 +50,43 @@ export function renderSearchBar(containerId, onSearch) {
   const input = searchDiv.querySelector(".searchbar-input");
   const sendBtn = searchDiv.querySelector(".send");
 
+  // Disable free typing in search bar
+  input.setAttribute("readonly", "readonly");
+  input.style.cursor = "default";
+  input.style.userSelect = "none";
+
   // Test selection button handlers
   const testButtons = searchDiv.querySelectorAll(".test-btn");
-  testButtons.forEach(btn => {
+  testButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
       const testId = btn.getAttribute("data-test");
-      
+
       // Update active button state
-      testButtons.forEach(b => b.classList.remove("active"));
+      testButtons.forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
-      
+
       // Switch test configuration
       if (window.switchTestConfig) {
         window.switchTestConfig(testId);
       }
+
+      // Update search button appearance when query is populated
+      updateSearchButtonAppearance();
     });
   });
 
-  // Set initial active state for test1
-  const test1Btn = searchDiv.querySelector('[data-test="test1"]');
-  if (test1Btn) {
-    test1Btn.classList.add("active");
+  // Function to update search button appearance
+  function updateSearchButtonAppearance() {
+    const hasQuery = input.value.trim().length > 0;
+    if (hasQuery) {
+      sendBtn.classList.add("active");
+    } else {
+      sendBtn.classList.remove("active");
+    }
   }
+
+  // Initial button state
+  updateSearchButtonAppearance();
 
   sendBtn.addEventListener("click", () => {
     const value = input.value.trim();
@@ -79,10 +95,8 @@ export function renderSearchBar(containerId, onSearch) {
     }
   });
 
-  // Optional: allow Enter key to trigger search
+  // Disable Enter key functionality since typing is disabled
   input.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      sendBtn.click();
-    }
+    e.preventDefault(); // Prevent any keyboard input
   });
 }

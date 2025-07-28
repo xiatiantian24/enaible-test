@@ -145,7 +145,7 @@ body {
   margin-bottom: 24px;
 }
 
-.onboarding-title  {
+.onboarding-title {
   font-size: 1.8rem;
   font-weight: 700;
   color: var(--accent-color);
@@ -404,11 +404,7 @@ body {
 
 /* Test Selection Styles */
 .test-selection-container {
-  margin-bottom: 24px;
-  padding: 16px;
-  background: #f8f9fa;
-  border-radius: 12px;
-  border: 1px solid #e9ecef;
+  margin-top: 20px;
 }
 
 .test-selection-header {
@@ -419,23 +415,41 @@ body {
 }
 
 .test-selection-buttons {
+  width: calc(100% + 16px);
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.test-selection-buttons-inner {
   display: flex;
   gap: 8px;
-  flex-wrap: wrap;
+  width: max-content;
+  margin-right: 16px;
+}
+
+.test-selection-buttons::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
 }
 
 .test-btn {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
-  padding: 8px 12px;
+  padding: 12px;
   background: white;
   border: 1px solid #dee2e6;
-  border-radius: 8px;
+  border-radius: 16px;
   cursor: pointer;
   transition: all 0.2s ease;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 400;
+  min-height: 54px;
+  max-width: 180px;
+  min-width: 160px;
+  text-align: left;
+  position: relative;
+  flex-shrink: 0;
 }
 
 .test-btn:hover {
@@ -444,9 +458,9 @@ body {
 }
 
 .test-btn.active {
-  background: #007bff;
-  border-color: #007bff;
-  color: white;
+  background: #f4f4f4;
+  border-color: #dee2e6;
+  color: #1e1e1e;
 }
 
 .test-btn-number {
@@ -466,12 +480,25 @@ body {
 }
 
 .test-btn-label {
-  white-space: nowrap;
+  white-space: normal;
+  font-family: "Instrument Sans", Arial, sans-serif;
+  line-height: 1;
+  word-wrap: break-word;
+  flex: 1;
+}
+
+.test-btn-arrow {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-size: 14px;
+  color: #bbb;
+  opacity: 0.7;
 }
 
 .search-bar-modern {
   width: 100%;
-  max-width: 380px;
+  max-width: 420px;
   margin: 0 auto;
 }
 
@@ -564,6 +591,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.searchbar-arrow-btn.active {
+  background: #1e1e1e;
+  color: white;
+  border-color: #1e1e1e;
 }
 
 /* Modern NavBar styles - improved spacing and vertical stack */
@@ -1368,6 +1403,14 @@ svg {
 
 .searchbar-input {
   resize: none;
+  /* Hide scrollbar for webkit browsers */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+/* Hide scrollbar for webkit browsers (Chrome, Safari, Edge) */
+.searchbar-input::-webkit-scrollbar {
+  display: none;
 }
 
 .refine-loading {
@@ -1641,7 +1684,7 @@ svg {
   line-height: 1.3;
 }
 .product-detail-color-row {
-  margin: 24px 0 0 0;
+  margin: 24px 0;
 }
 .product-detail-color-label {
   font-size: 14px;
@@ -1667,7 +1710,7 @@ svg {
   border: 3px solid #181818;
 }
 .color-white {
-  background: #586fb5;
+  background: #ffffff;
   border: 1px solid #e0e0e0;
 }
 .color-gray {
@@ -1714,6 +1757,28 @@ svg {
   color: #222;
   margin-bottom: 10px;
   letter-spacing: 0.01em;
+}
+
+.product-detail-description-text {
+  font-size: 0.98rem;
+  color: #555;
+  line-height: 1.5;
+  margin-left: 2px;
+}
+
+.product-detail-list {
+  margin: 0;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.product-detail-list li {
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.product-detail-list li:last-child {
+  margin-bottom: 0;
 }
 .product-detail-subsection {
   margin-bottom: 12px;
@@ -1866,7 +1931,7 @@ svg {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255,255,255,0.85);
+  background: rgba(255, 255, 255, 0.85);
   border: none;
   border-radius: 50%;
   width: 36px;
@@ -1878,7 +1943,7 @@ svg {
   color: #519db8;
   z-index: 2;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: background 0.2s;
 }
 .carousel-arrow.left {
@@ -1893,7 +1958,7 @@ svg {
 .carousel-container .product-detail-image {
   width: 100%;
   border-radius: 18px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
   object-fit: cover;
 }
 .carousel-dots {
@@ -1934,20 +1999,44 @@ svg {
   animation: slideRightIn 0.25s forwards;
 }
 @keyframes slideLeftOut {
-  0% { opacity: 1; transform: translateX(0); }
-  100% { opacity: 0; transform: translateX(-60%); }
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-60%);
+  }
 }
 @keyframes slideLeftIn {
-  0% { opacity: 0; transform: translateX(60%); }
-  100% { opacity: 1; transform: translateX(0); }
+  0% {
+    opacity: 0;
+    transform: translateX(60%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 @keyframes slideRightOut {
-  0% { opacity: 1; transform: translateX(0); }
-  100% { opacity: 0; transform: translateX(60%); }
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(60%);
+  }
 }
 @keyframes slideRightIn {
-  0% { opacity: 0; transform: translateX(-60%); }
-  100% { opacity: 1; transform: translateX(0); }
+  0% {
+    opacity: 0;
+    transform: translateX(-60%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .trip-time-bold {

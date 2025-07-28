@@ -1,36 +1,47 @@
 // --- Test Data Configuration ---
 const TEST_CONFIGS = {
   test1: {
-    name: "Test 1 - Summer Shirts",
-    searchQuery: "white cotton tees that I can wear for walking to class in a Philly summer",
+    name: "Test 1 - Running Shoes",
+    searchQuery: "Running shoes for a 5k on a Pittsburgh summer",
     products: [
-      {
-        id: 1,
-        name: "Plum Linen Shirt",
-        brand: "J.Crew",
-        seller: "Nordstrom",
-        price: 125.00,
-        walkingTime: 4,
-        inventory: 8,
-        images: [
+  {
+    id: 1,
+        name: "Women's P-6000 Shoes",
+        brand: "Nike",
+        seller: "Dick's",
+        price: 91.99,
+    walkingTime: 4,
+    inventory: 8,
+    images: [
           "assets/images/test1/product/1-1.jpg",
           "assets/images/test1/product/1-2.jpg",
           "assets/images/test1/product/1-3.jpg",
           "assets/images/test1/product/1-4.jpg",
         ],
-        material: "100% Linen",
-        features: "Breathable fabric, buttoned front placket, chest pocket",
-        fit: "Relaxed fit, dropped shoulders, true to size",
-        care: "Machine wash cold with like colors. Tumble dry low or hang to dry. Warm iron if needed",
-        countryOfOrigin: "Made in Portugal",
-        size: "L"
-      },
-      {
-        id: 2,
-        name: "Jacquard Floral Shirt",
-        brand: "NN07",
-        seller: "Nordstrom",
-        price: 137.00,
+        overview: "A heritage-inspired sneaker combining breathable textiles with retro styling cues drawn from the Nike Pegasus 25 and Pegasus 2006, designed for everyday wear with durable traction and lasting comfort.",
+        materials: [
+          "Textile upper with mesh overlays",
+          "Foam midsole",
+          "Solid rubber outsole"
+        ],
+        featuresList: [
+          "Breathable layered upper for texture and airflow",
+          "Foam midsole provides lightweight, lasting cushioning",
+          "Solid-rubber outsole enhances traction and durability",
+          "Sporty lines and throwback silhouette"
+        ],
+        fit: "True to size, medium width",
+        care: "Wipe clean with damp cloth, air dry away from direct heat",
+        size: "8.5",
+        rating: 4.7,
+        reviewCount: 89
+  },
+  {
+    id: 2,
+        name: "GEL-1130 Premium Shoes",
+        brand: "Asics ",
+        seller: "Free People",
+        price: 100.00,
         walkingTime: 7,
         inventory: 5,
         images: [
@@ -40,39 +51,64 @@ const TEST_CONFIGS = {
           "assets/images/test1/product/2-4.png",
           "assets/images/test1/product/2-5.png",
         ],
-        material: "100% Organic Cotton",
-        features: "Flower jacquard pattern,  Cuban collar, Ribbed trim, Side slits",
-        fit: "Regular fit",
-        care: "Machine wash cold inside out. Do not bleach. Tumble dry low. Warm iron if needed",
-        countryOfOrigin: "Made in China",
-        size: "L"
+        overview: "A lightweight, breathable sneaker inspired by late 2000s athletic styles, featuring GEL® technology for plush comfort and a classic lace-up silhouette.",
+        materials: [
+          "Mesh upper",
+          "Synthetic overlays",
+          "Rubber outsole",
+          "Cushioned footbed"
+        ],
+        featuresList: [
+          "Lace-up closure for a secure fit",
+          "Breathable mesh construction with retro aesthetic",
+          "GEL® technology for all-day cushioning",
+          "Durable rubber outsole"
+        ],
+        fit: "True to size, consider half size up for wide feet",
+        care: "Machine wash cold, air dry, avoid bleach and fabric softener",
+        size: "8.5",
+        rating: 4.3,
+        reviewCount: 156
       },
       {
         id: 3,
-        name: "Burgundy Embroidered Shirt",
-        brand: "Kotn",
-        seller: "Macy's",
-        price: 145.00,
-        walkingTime: 2,
+        name: " 530 Sneakers",
+        brand: "New Balance",
+        seller: "Free People",
+        price: 100.00,
+        walkingTime: 8,
         inventory: 2,
         images: [
           "assets/images/test1/product/3-1.png",
           "assets/images/test1/product/3-2.png",
           "assets/images/test1/product/3-3.png",
         ],
-        material: "100% BCI Cotton",
-        features: "Featuring a subtle herringbone pattern, contrast stitching, and a patch pocket on the front body. Made to layer open over a t-shirt or buttoned up. Ethically crafted",
-        fit: "Relaxed fit – intended to follow the shape of your body with extra room; waist length – intended to hit between the waist and high hip",
-        care: "Wash cold and lay flat to dry",
-        countryOfOrigin: "Made in Portugal",
-        size: "L"
+        overview: "A streamlined, neutral-toned sneaker from New Balance that blends retro running aesthetics with contemporary comfort, ideal for casual styling or athletic-inspired looks.",
+        materials: [
+          "Mesh uppers",
+          "Leather overlays",
+          "Rubber outsole",
+          "ABZORB midsole"
+        ],
+        featuresList: [
+          "Low-boot construction",
+          "Streamlined design for sleek silhouette",
+          "ABZORB cushioning for impact absorption",
+          "Lace-up closure with pull tab for easy on/off",
+          "Signature logo detailing"
+        ],
+        fit: "True to size, medium to wide width available",
+        care: "Spot clean with mild soap and water, air dry naturally",
+        size: "8.5",
+        rating: 4.8,
+        reviewCount: 203
       },
       {
         id: 4,
-        name: "77 Flamé Rugby Shirt",
-        brand: "New Balance",
-        seller: "Nordstrom",
-        price: 90.00,
+        name: "Gender Inclusive XT-6 Sneaker",
+        brand: "Salomon's",
+    seller: "Nordstrom",
+        price: 150.00,
         walkingTime: 5,
         inventory: 10,
         images: [
@@ -82,12 +118,25 @@ const TEST_CONFIGS = {
           "assets/images/test1/product/4-4.png",
           "assets/images/test1/product/4-5.png",
         ],
-        material: "100% Cotton",
-        features: "Limited edition, ribbed hem and cuffs, rubber buttons, covered placket",
-        fit: "Fits true to size – for a more relaxed fit, size up",
-        care: "Machine wash cold with like colors",
-        countryOfOrigin: "Made in Germany",
-        size: "L"
+        overview: "A performance-driven running shoe offering stability, support, and reliable traction across various terrains, designed for long-distance comfort with innovative fit technologies.",
+        materials: [
+          "Textile and synthetic upper and lining",
+          "Rubber sole",
+          "Removable OrthoLite® insole"
+        ],
+        featuresList: [
+          "SensiFit™ and EndoFit™ construction for a secure, sock-like fit",
+          "Agile Chassis System (ACS) for heel-to-toe stability",
+          "Contagrip® MA tread for multi-surface traction",
+          "Quicklace™ system for easy one-pull tightening",
+          "Removable insole to accommodate orthotics",
+          "Designed in exclusive partnership with Alex Dymond (Provence/High Risk Red colors)"
+        ],
+        fit: "True to size, performance fit with secure heel lock",
+        care: "Hand wash with mild detergent, air dry away from direct sunlight",
+        size: "8.5",
+        rating: 4.5,
+        reviewCount: 67
       },
     ],
     refineImages: [
@@ -97,115 +146,171 @@ const TEST_CONFIGS = {
       { id: 4, image: 'assets/images/test1/refine/4.jpg', alt: 'Green Backpack' },
     ]
   },
-  test2: {
-    name: "Test 2 - Wedding Attire",
-    searchQuery: "navy button down shirts for a Catholic summer wedding in Quito",
+    test2: {
+    name: "Test 2 - Tennis Shoes",
+    searchQuery: "Casual tennis shoes that go well with linen pants",
     products: [
       {
         id: 1,
-        name: "Navy Oxford Shirt",
-        brand: "Brooks Brothers",
-        seller: "Nordstrom",
-        price: 89.50,
-        walkingTime: 3,
-        inventory: 12,
+        name: "Badminton Court Sneakers",
+        brand: "Gola",
+        seller: "Free People",
+        price: 45.00,
+        walkingTime: 4,
+        inventory: 8,
         images: [
           "assets/images/test2/product/1-1.jpg",
           "assets/images/test2/product/1-2.jpg",
           "assets/images/test2/product/1-3.jpg",
-          "assets/images/test2/product/1-4.jpg",
+          "assets/images/test2/product/1-4.jpg", 
           "assets/images/test2/product/1-5.jpg",
         ],
-        material: "100% Cotton Oxford",
-        features: "Classic button-down collar, chest pocket, traditional fit",
-        fit: "Traditional fit, true to size",
-        care: "Machine wash cold, tumble dry low",
-        countryOfOrigin: "Made in USA",
-        size: "L"
+        overview: "A timeless court-style sneaker with suede paneling and rounded-toe construction, designed for all-day wear with a sporty, minimal look. Now available in FP Exclusive colorways.",
+        materials: [
+          "Suede paneling",
+          "Rubber outsole",
+          "Cushioned insole"
+        ],
+        featuresList: [
+          "Lace-up closure",
+          "Rounded-toe silhouette",
+          "Available in FP Exclusive colors: Tulip Pink, Black, and Black & White"
+        ],
+        fit: "True to size, medium width",
+        care: "Spot clean with suede brush, air dry away from direct heat",
+        size: "7.5",
+        rating: 4.6,
+        reviewCount: 124
       },
       {
         id: 2,
-        name: "Navy Poplin Shirt",
-        brand: "Ralph Lauren",
-        seller: "Macy's",
-        price: 95.00,
-        walkingTime: 6,
-        inventory: 8,
-        images: [
+        name: "H&M Sneakers",
+        brand: "H&M",
+        price: 37.99,
+    walkingTime: 7,
+    inventory: 5,
+    images: [
           "assets/images/test2/product/2-1.jpg",
           "assets/images/test2/product/2-2.jpg",
         ],
-        material: "100% Cotton Poplin",
-        features: "Spread collar, single chest pocket, slim fit",
-        fit: "Slim fit, consider sizing up",
-        care: "Machine wash cold, iron as needed",
-        countryOfOrigin: "Made in China",
-        size: "L"
-      },
-      {
-        id: 3,
-        name: "Navy Twill Shirt",
-        brand: "J.Crew",
-        seller: "J.Crew",
-        price: 79.50,
-        walkingTime: 4,
-        inventory: 15,
-        images: [
+        overview: "A minimalist sneaker featuring lightweight construction and patterned soles, ideal for everyday casual wear in neutral tones.",
+        materials: [
+          "Mesh insoles",
+          "Rubber-patterned soles"
+        ],
+        featuresList: [
+          "Tongue and lace-up styling",
+          "Sole height: 0.94 in",
+          "No heel",
+          "Color: Light beige/khaki green",
+          "Imported"
+        ],
+        fit: "True to size, consider half size up for wide feet",
+        care: "Wipe clean with damp cloth, air dry naturally",
+        size: "7",
+        rating: 4.2,
+        reviewCount: 78
+  },
+  {
+    id: 3,
+        name: "BRMD Shoes",
+        brand: "Adidas",
+        seller: "Finish Line",
+        price: 44.00,
+        walkingTime: 8,
+    inventory: 2,
+    images: [
           "assets/images/test2/product/3-1.jpg",
           "assets/images/test2/product/3-2.jpg",
           "assets/images/test2/product/3-3.jpg",
           "assets/images/test2/product/3-4.jpg",
           "assets/images/test2/product/3-5.jpg",
         ],
-        material: "100% Cotton Twill",
-        features: "Button-down collar, chest pocket, relaxed fit",
-        fit: "Relaxed fit, true to size",
-        care: "Machine wash cold, tumble dry low",
-        countryOfOrigin: "Made in Vietnam",
-        size: "L"
-      },
-      {
-        id: 4,
-        name: "Navy Chambray Shirt",
-        brand: "Gap",
-        seller: "Gap",
-        price: 49.99,
-        walkingTime: 2,
-        inventory: 20,
+        overview: "Inspired by vintage adidas silhouettes, these low-profile sneakers blend smooth leather and clean design for a versatile, everyday sport-luxe look.",
+        materials: [
+          "Leather upper",
+          "Synthetic lining",
+          "Rubber outsole"
+        ],
+        featuresList: [
+          "Regular fit",
+          "Lace-up closure",
+          "Minimal overlays and clean stitch detailing",
+          "Multidirectional tread for enhanced traction",
+          "Color: Mystery Green / Tactile Green / Gum",
+          "Imported"
+        ],
+        fit: "True to size, regular fit",
+        care: "Clean with leather cleaner, air dry away from direct sunlight",
+        size: "7",
+        rating: 4.4,
+        reviewCount: 95
+  },
+  {
+    id: 4,
+        name: "Club C 85 Vintage Sneakers",
+        brand: "Reebok",
+        seller: "Anthropologie",
+        price: 47.50,
+        walkingTime: 5,
+        inventory: 10,
         images: [
           "assets/images/test2/product/4-1.jpg",
           "assets/images/test2/product/4-2.jpg",
           "assets/images/test2/product/4-3.jpg",
         ],
-        material: "100% Cotton Chambray",
-        features: "Spread collar, chest pocket, modern fit",
-        fit: "Modern fit, true to size",
-        care: "Machine wash cold, tumble dry low",
-        countryOfOrigin: "Made in Bangladesh",
-        size: "L"
+        overview: "A clean, understated everyday sneaker from Reebok with timeless leather construction and fitness-inspired roots, designed for versatile styling.",
+        materials: [
+          "Leather upper",
+          "Textile insole",
+          "Rubber sole"
+        ],
+        featuresList: [
+          "Tie styling (lace-up)",
+          "Subtle, minimal silhouette",
+          "Imported"
+        ],
+        fit: "True to size, classic fit",
+        care: "Wipe clean with damp cloth, air dry naturally",
+        size: "7.5",
+        rating: 4.7,
+        reviewCount: 187
       },
       {
         id: 5,
-        name: "Navy Dress Shirt",
-        brand: "Banana Republic",
-        seller: "Banana Republic",
-        price: 69.99,
+        name: "Handball Spezial Shoes",
+        brand: "Adidas",
+        seller: "Dick's",
+        price: 50.00,
         walkingTime: 5,
         inventory: 10,
         images: [
           "assets/images/test2/product/5-1.jpg",
           "assets/images/test2/product/5-2.jpg",
-          "assets/images/test2/product/5-3.jpg",
+          "assets/images/test2/product/5-3.jpg", 
           "assets/images/test2/product/5-4.jpg",
           "assets/images/test2/product/5-5.jpg",
         ],
-        material: "100% Cotton",
-        features: "Spread collar, chest pocket, tailored fit",
-        fit: "Tailored fit, true to size",
-        care: "Machine wash cold, iron as needed",
-        countryOfOrigin: "Made in Vietnam",
-        size: "L"
-      },
+        overview: "Originally introduced in 1979 for handball athletes, the adidas Spezial brings retro style with modern flair through vibrant color updates and classic suede construction.",
+        materials: [
+          "Suede and textile upper",
+          "Textile innersole",
+          "Synthetic lining",
+          "Gum rubber outsole"
+        ],
+        featuresList: [
+          "Lace-up closure",
+          "T-shaped toe box",
+          "Durable gum rubber outsole for traction",
+          "Vintage styling with modern color accents",
+          "Imported"
+        ],
+        fit: "True to size, medium width",
+        care: "Brush suede with suede brush, spot clean with mild soap",
+        size: "7.5",
+        rating: 4.8,
+        reviewCount: 234
+      }
     ],
     refineImages: [
       { id: 1, image: 'assets/images/test2/refine/1.jpg', alt: 'Formal Navy Shirt' },
@@ -216,117 +321,165 @@ const TEST_CONFIGS = {
     ]
   },
   test3: {
-    name: "Test 3 - Summer Dresses",
-    searchQuery: "formal cream dress for 28 y.o. women for a barn wedding in TX this weekend",
+    name: "Test 3 - Summer Jorts",
+    searchQuery: "Denim jorts with pockets",
     products: [
       {
         id: 1,
-        name: "Cream Linen Dress",
-        brand: "Anthropologie",
-        seller: "Anthropologie",
-        price: 168.00,
-        walkingTime: 5,
-        inventory: 6,
+        name: "Baggy Dad Jorts",
+        brand: "Levi's",
+        seller: "Free People",
+        price: 45.00,
+        walkingTime: 4,
+        inventory: 8,
         images: [
-          "assets/images/test3/product/1-1.jpg",
           "assets/images/test3/product/1-2.jpg",
+          "assets/images/test3/product/1-1.jpg",
           "assets/images/test3/product/1-3.jpg",
-          "assets/images/test3/product/1-4.jpg",
-          "assets/images/test3/product/1-5.jpg",
+          "assets/images/test3/product/1-4.jpg", 
         ],
-        material: "100% Linen",
-        features: "V-neck, adjustable straps, midi length",
-        fit: "True to size, relaxed fit",
-        care: "Dry clean only",
-        countryOfOrigin: "Made in China",
-        size: "M"
+        overview: "Classic baggy dad jorts with authentic rigid denim texture and comfortable loose fit.",
+        materials: [
+          "100% cotton",
+          "Rigid, non-stretch denim"
+        ],
+        featuresList: [
+          "Zip fly with button closure",
+          "Five-pocket design",
+          "Authentic rigid texture",
+          "Knee-length inseam"
+        ],
+        fit: "Low-slung, loose fit throughout",
+        care: "Machine wash cold, tumble dry low",
+        countryOfOrigin: "Not specified (Levi's product)",
+        size: "M",
+        rating: 4.5,
+        reviewCount: 142
       },
       {
         id: 2,
-        name: "Cream Cotton Dress",
-        brand: "Free People",
-        seller: "Nordstrom",
-        price: 128.00,
+        name: "8\" Mid Rise '90s Loose Denim Bermuda Shorts",
+        brand: "Gap",
+        price: 50.00,
         walkingTime: 7,
-        inventory: 4,
+        inventory: 5,
         images: [
           "assets/images/test3/product/2-1.jpg",
           "assets/images/test3/product/2-2.jpg",
           "assets/images/test3/product/2-3.jpg",
           "assets/images/test3/product/2-4.jpg",
         ],
-        material: "100% Cotton",
-        features: "Square neck, smocked bodice, tiered skirt",
-        fit: "True to size, flowy fit",
-        care: "Machine wash cold, hang to dry",
-        countryOfOrigin: "Made in India",
-        size: "M"
+        overview: "Vintage-inspired loose denim shorts with a laid-back, comfortable fit perfect for summer.",
+        materials: [
+          "95% cotton, 5% recycled materials",
+          "Low-stretch denim with a soft, lived-in feel"
+        ],
+        featuresList: [
+          "Medium indigo wash with five-pocket styling",
+          "Zip fly with button closure",
+          "Part of the Washwell™ program, reducing water use"
+        ],
+        fit: "Mid-rise. Cut loose through the hip and thigh with a longer leg for a laid-back look",
+        care: "Not specified",
+        countryOfOrigin: "Not specified",
+        size: "M",
+        rating: 4.3,
+        reviewCount: 89
       },
       {
         id: 3,
-        name: "Cream Silk Dress",
-        brand: "Reformation",
-        seller: "Reformation",
-        price: 248.00,
-        walkingTime: 3,
-        inventory: 3,
+        name: "11\" Mid Rise Longline Denim Shorts",
+        brand: "Gap",
+        price: 50.00,
+        walkingTime: 8,
+        inventory: 2,
         images: [
           "assets/images/test3/product/3-1.jpg",
           "assets/images/test3/product/3-2.jpg",
           "assets/images/test3/product/3-3.jpg",
           "assets/images/test3/product/3-4.jpg",
-          "assets/images/test3/product/3-5.jpg",
         ],
-        material: "100% Silk",
-        features: "Wrap style, adjustable tie, midi length",
-        fit: "True to size, flattering fit",
-        care: "Dry clean only",
-        countryOfOrigin: "Made in USA",
-        size: "M"
+        overview: "Longline denim shorts with classic five-pocket styling and sustainable manufacturing.",
+        materials: [
+          "95% cotton, 5% recycled cotton",
+          "No stretch; authentic rigid denim that breaks in over time"
+        ],
+        featuresList: [
+          "Classic five-pocket short in a dark indigo wash",
+          "Zip fly with button closure",
+          "Part of the Washwell™ program, using at least 20% less water than conventional methods"
+        ],
+        fit: "Mid-rise, low-slung on the waist, relaxed at the hip with a wide-leg finish",
+        care: "Not specified",
+        countryOfOrigin: "Responsibly made",
+        size: "M",
+        rating: 4.6,
+        reviewCount: 167
       },
       {
         id: 4,
-        name: "Cream Chiffon Dress",
-        brand: "ASOS",
-        seller: "ASOS",
-        price: 89.99,
-        walkingTime: 4,
-        inventory: 8,
+        name: "95 Gigi Super Baggy Denim Jort",
+        brand: "Abrand",
+        seller: "Urban Outfitters",
+        price: 29.40,
+        walkingTime: 5,
+        inventory: 10,
         images: [
           "assets/images/test3/product/4-1.jpg",
           "assets/images/test3/product/4-2.jpg",
           "assets/images/test3/product/4-3.jpg",
           "assets/images/test3/product/4-4.jpg",
         ],
-        material: "100% Polyester Chiffon",
-        features: "V-neck, empire waist, maxi length",
-        fit: "True to size, flowy fit",
-        care: "Hand wash cold, hang to dry",
-        countryOfOrigin: "Made in China",
-        size: "M"
+        overview: "Super baggy jorts with a longline silhouette and slouchy mid-rise waistline for ultimate comfort.",
+        materials: [
+          "91% cotton, 5% viscose, 4% polyester",
+          "Rigid, non-stretch midweight denim"
+        ],
+        featuresList: [
+          "Abrand Gigi 95 super baggy jorts in a longline silhouette",
+          "Slouchy mid-rise waistline, wide-leg fit",
+          "Classic five-pocket styling",
+          "Zip-fly with button closure"
+        ],
+        fit: "Mid-rise with a slouchy, baggy fit and wide-leg cut. Longline length with a 17.5\" inseam. Model is 5'7.5\" and wears size 26",
+        care: "Machine wash",
+        countryOfOrigin: "Imported",
+        size: "M",
+        rating: 4.1,
+        reviewCount: 45
       },
       {
         id: 5,
-        name: "Cream Maxi Dress",
-        brand: "Lulus",
-        seller: "Lulus",
-        price: 98.00,
-        walkingTime: 6,
-        inventory: 5,
+        name: "Denim Bermuda Shorts",
+        brand: "H&M",
+        price: 29.99,
+        walkingTime: 5,
+        inventory: 10,
         images: [
           "assets/images/test3/product/5-1.jpg",
           "assets/images/test3/product/5-2.jpg",
-          "assets/images/test3/product/5-3.jpg",
+          "assets/images/test3/product/5-3.jpg", 
           "assets/images/test3/product/5-4.jpg",
           "assets/images/test3/product/5-5.jpg",
         ],
-        material: "100% Polyester",
-        features: "V-neck, empire waist, flowy maxi length",
-        fit: "True to size, flowy fit",
-        care: "Machine wash cold, hang to dry",
-        countryOfOrigin: "Made in China",
-        size: "M"
-      },
+        overview: "Classic denim Bermuda shorts with high-waist design and sustainable materials.",
+        materials: [
+          "Shell: 100% cotton",
+          "Pocket lining: 80% polyester, 20% cotton",
+          "Made with at least 48% recycled polyester and 7% recycled cotton by weight (excluding minor components)"
+        ],
+        featuresList: [
+          "Classic denim construction in a solid blue color",
+          "Bermuda short style with a regular fit and five-pocket styling",
+          "High-waist, knee-length design"
+        ],
+        fit: "High-rise waist with a regular fit and Bermuda-length silhouette",
+        care: "Machine wash cool. Wash with like colors. Only non-chlorine bleach when needed. Tumble dry medium. Medium iron. May be dry cleaned. Color may transfer onto light materials",
+        countryOfOrigin: "Imported",
+        size: "M",
+        rating: 4.4,
+        reviewCount: 98
+      }
     ],
     refineImages: [
       { id: 1, image: 'assets/images/test3/refine/1.jpeg', alt: 'Cream Formal Dress' },
@@ -337,61 +490,80 @@ const TEST_CONFIGS = {
     ]
   },
   test4: {
-    name: "Test 4 - Summer Bags",
-    searchQuery: "bags that go well with linen pants for summer in Tuscany",
+    name: "Test 4 - Jeans",
+    searchQuery: "Jeans that look good with a white or black t-shirt",
     products: [
       {
         id: 1,
-        name: "Straw Tote Bag",
-        brand: "Free People",
-        seller: "Free People",
-        price: 78.00,
+        name: "Matilda straight-fit rinse-wash jeans",
+        brand: "Mango",
+    seller: "Nordstrom",
+        price: 35.99,
         walkingTime: 4,
-        inventory: 12,
+        inventory: 8,
         images: [
-          "assets/images/test4/product/1-1.jpg",
           "assets/images/test4/product/1-2.jpg",
-          "assets/images/test4/product/1-3.jpg",
-          "assets/images/test4/product/1-4.jpg",
-          "assets/images/test4/product/1-5.jpg",
           "assets/images/test4/product/1-6.jpg",
+          "assets/images/test4/product/1-1.jpg",
+          "assets/images/test4/product/1-3.jpg",
+          "assets/images/test4/product/1-4.jpg", 
+          "assets/images/test4/product/1-5.jpg",
         ],
-        material: "Natural Straw",
-        features: "Large tote with leather handles, perfect for beach or market",
-        fit: "One size fits all",
-        care: "Spot clean only, keep dry",
-        countryOfOrigin: "Made in Italy",
-        size: "One Size"
+        overview: "Classic straight-fit jeans with a modern rinse-wash finish and sustainable cotton-blend denim.",
+        materials: [
+          "100% recycled cotton-blend denim"
+        ],
+        featuresList: [
+          "Rinse-wash cotton denim with a straight, mid-rise design",
+          "Five-pocket styling, front zip fly with button closure",
+          "Belt loops, two side pockets, and two back patch pockets",
+          "Full-length silhouette with a 30.71 in. inseam",
+          "Plus sizes available"
+        ],
+        fit: "Standard fit with a long, straight-leg design. Model is 1.78 m and wears size 36",
+        care: "Machine wash max 30°C (85°F), short spin dry. Do not bleach. Iron max 110°C (230°F). Do not dry clean. Do not tumble dry",
+        countryOfOrigin: "Designed in Barcelona. Manufactured, dyed, and woven in Türkiye",
+        size: "L",
+        rating: 4.7,
+        reviewCount: 54
       },
       {
         id: 2,
-        name: "Canvas Crossbody",
-        brand: "Madewell",
-        seller: "Madewell",
-        price: 65.00,
-        walkingTime: 3,
-        inventory: 8,
+        name: "Mid-Rise 90s Loose Jean",
+        brand: "Banana Republic",
+        price: 47.99,
+        walkingTime: 7,
+        inventory: 5,
         images: [
           "assets/images/test4/product/2-1.jpg",
           "assets/images/test4/product/2-2.jpg",
           "assets/images/test4/product/2-3.jpg",
           "assets/images/test4/product/2-4.jpg",
         ],
-        material: "Canvas with leather trim",
-        features: "Adjustable crossbody strap, multiple pockets",
-        fit: "One size fits all",
-        care: "Spot clean with mild soap",
-        countryOfOrigin: "Made in USA",
-        size: "One Size"
+        overview: "Vintage-inspired loose jeans with sustainable TENCEL™ lyocell and a touch of stretch for comfort.",
+        materials: [
+          "69% cotton, 25% TENCEL™ lyocell",
+          "5% recycled cotton, 1% elastane spandex"
+        ],
+        featuresList: [
+          "Indigo-wash vintage-inspired jeans with a touch of stretch",
+          "Five-pocket styling, zip fly with button closure",
+          "Belt loops"
+        ],
+        fit: "Mid-rise (10.75\"), slouchy at the hip with a relaxed thigh and straight, loose full-length leg",
+        care: "Machine wash cold, tumble dry low, warm iron, or dry clean",
+        countryOfOrigin: "Imported. Made with sustainably sourced TENCEL™ lyocell from responsibly harvested trees",
+        size: "L",
+        rating: 4.3,
+        reviewCount: 112
       },
       {
         id: 3,
-        name: "Woven Shoulder Bag",
-        brand: "Anthropologie",
-        seller: "Anthropologie",
-        price: 89.00,
-        walkingTime: 5,
-        inventory: 6,
+        name: "Curve Love High Rise 90s Relaxed Jean",
+        brand: "Abercrombie & Fitch",
+        price: 40.00,
+        walkingTime: 8,
+        inventory: 2,
         images: [
           "assets/images/test4/product/3-1.jpg",
           "assets/images/test4/product/3-2.jpg",
@@ -400,57 +572,84 @@ const TEST_CONFIGS = {
           "assets/images/test4/product/3-5.jpg",
           "assets/images/test4/product/3-6.jpg",
         ],
-        material: "Woven fabric with leather handles",
-        features: "Shoulder strap, magnetic closure, interior pocket",
-        fit: "One size fits all",
-        care: "Spot clean only",
-        countryOfOrigin: "Made in Morocco",
-        size: "One Size"
+        overview: "Dark wash jeans with a viral Curve Love fit designed to eliminate waist gaps and provide extra room in the hips and thighs.",
+        materials: [
+          "99% cotton, 1% elastane"
+        ],
+        featuresList: [
+          "Dark wash jeans with a distressed hem and a viral Curve Love fit",
+          "Designed to eliminate waist gaps, featuring extra room in the hips and thighs",
+          "Five-pocket styling and zip fly with button closure"
+        ],
+        fit: "10.5\" high-rise, fitted at waist and hips with a relaxed thigh and full-length leg. Curve-hugging comfort with slight stretch for ease",
+        care: "Machine wash cold with like colors. Turn inside out and wash before wear to avoid color transfer. Tumble dry low. Warm iron if needed. Do not bleach. Do not dry clean",
+        countryOfOrigin: "Imported",
+        size: "L",
+        rating: 4.1,
+        reviewCount: 23
       },
       {
         id: 4,
-        name: "Leather Satchel",
-        brand: "Kate Spade",
-        seller: "Nordstrom",
-        price: 298.00,
-        walkingTime: 7,
-        inventory: 4,
-        images: [
+        name: "Medium Indigo Shade Order '94 Baggy Jeans",
+        brand: "Levi's",
+        seller: "PacSun",
+        price: 45.65,
+    walkingTime: 5,
+    inventory: 10,
+    images: [
           "assets/images/test4/product/4-1.jpg",
           "assets/images/test4/product/4-2.jpg",
           "assets/images/test4/product/4-3.jpg",
           "assets/images/test4/product/4-4.jpg",
         ],
-        material: "Genuine leather",
-        features: "Structured satchel with gold hardware, adjustable strap",
-        fit: "One size fits all",
-        care: "Clean with leather cleaner, condition regularly",
-        countryOfOrigin: "Made in Italy",
-        size: "One Size"
+        overview: "Classic Levi's baggy jeans with medium indigo wash and authentic vintage-inspired fit from the 1990s.",
+        materials: [
+          "100% rigid cotton denim"
+        ],
+        featuresList: [
+          "Medium indigo wash with a classic five-pocket body",
+          "Zip fly closure, and Levi's back label",
+          "Crafted for a true vintage look and feel"
+        ],
+        fit: "Mid-rise with a slouchy, straight-leg fit inspired by 1990s baggy jeans",
+        care: "Machine washable",
+        countryOfOrigin: "Not specified",
+        size: "L",
+        rating: 4.8,
+        reviewCount: 187
       },
       {
         id: 5,
-        name: "Rattan Clutch",
-        brand: "Urban Outfitters",
-        seller: "Urban Outfitters",
-        price: 45.00,
-        walkingTime: 2,
-        inventory: 15,
+        name: "High Rise '90s Original Straight Jeans",
+        brand: "Gap",
+        price: 34.99,
+        walkingTime: 5,
+        inventory: 10,
         images: [
           "assets/images/test4/product/5-1.jpg",
           "assets/images/test4/product/5-2.jpg",
-          "assets/images/test4/product/5-3.jpg",
+          "assets/images/test4/product/5-3.jpg", 
           "assets/images/test4/product/5-4.jpg",
           "assets/images/test4/product/5-5.jpg",
           "assets/images/test4/product/5-6.jpg",
         ],
-        material: "Rattan with leather trim",
-        features: "Clutch with wrist strap, perfect for evening events",
-        fit: "One size fits all",
-        care: "Spot clean only, keep dry",
-        countryOfOrigin: "Made in Indonesia",
-        size: "One Size"
-      },
+        overview: "Sustainable straight jeans with medium indigo wash and fading, part of Gap's Washwell™ water conservation program.",
+        materials: [
+          "93% cotton, 5% recycled cotton, 2% elastane",
+          "Made with stretch denim and 5% recycled cotton to reduce resource use and waste"
+        ],
+        featuresList: [
+          "Medium indigo wash with fading and whiskering",
+          "Part of the Washwell™ program, which uses at least 20% less water than conventional wash methods",
+          "Button closure and zip fly"
+        ],
+        fit: "Not specified (assumed standard/stretch fit based on fabric content)",
+        care: "Machine wash",
+        countryOfOrigin: "Imported",
+        size: "L",
+        rating: 4.8,
+        reviewCount: 187
+      }
     ],
     refineImages: [
       { id: 1, image: 'assets/images/test4/refine/1.jpg', alt: 'Straw Tote Bag' },
@@ -463,11 +662,11 @@ const TEST_CONFIGS = {
 };
 
 // Current active test configuration
-let currentTestConfig = 'test1';
+let currentTestConfig = null;
 
 // Function to get current test data
 function getCurrentTestData() {
-  return TEST_CONFIGS[currentTestConfig];
+  return currentTestConfig ? TEST_CONFIGS[currentTestConfig] : null;
 }
 
 // Function to switch test configuration
@@ -487,6 +686,7 @@ function switchTestConfig(testId) {
   }
   
   // Reset trip plan for new test
+  tripPlan = [];
   window.tripPlan = [];
   updateTripBtn();
   
@@ -505,16 +705,18 @@ function switchTestConfig(testId) {
 }
 
 // --- Product Data (easy to edit) ---
-const PRODUCTS = TEST_CONFIGS[currentTestConfig].products;
+const PRODUCTS = currentTestConfig ? TEST_CONFIGS[currentTestConfig].products : [];
 
 // --- Refine Images (separate from products) ---
-const REFINE_IMAGES = TEST_CONFIGS[currentTestConfig].refineImages;
+const REFINE_IMAGES = currentTestConfig ? TEST_CONFIGS[currentTestConfig].refineImages : [];
 
 // Map refine image id to product ids (auto-generated to match current test data)
 const REFINE_TO_PRODUCTS = {};
+if (currentTestConfig && REFINE_IMAGES.length > 0 && PRODUCTS.length > 0) {
 const minCount = Math.min(REFINE_IMAGES.length, PRODUCTS.length);
 for (let i = 0; i < minCount; i++) {
   REFINE_TO_PRODUCTS[REFINE_IMAGES[i].id] = [PRODUCTS[i].id];
+  }
 }
 
 // --- State ---
@@ -691,6 +893,8 @@ function addToTrip(productId) {
   } else {
     tripPlan.splice(idx, 1);
   }
+  // Update window.tripPlan to keep it in sync
+  window.tripPlan = tripPlan;
   updateTripBtn();
   // Re-render products to update icons
   if (window.renderProducts && window.lastProductSelection) {
@@ -789,14 +993,14 @@ function renderMapOverlay() {
   tripPlan.forEach((id, idx) => {
     const product = (window.PRODUCTS || []).find(p => p.id === id);
     if (product && product.location) {
-      const marker = document.createElement('div');
-      marker.className = 'map-product-marker';
-      marker.style.left = (product.location.x - 16) + 'px';
-      marker.style.top = (product.location.y - 16) + 'px';
-      marker.style.position = 'absolute';
-      marker.title = product.name;
-      marker.innerText = idx + 1;
-      map.appendChild(marker);
+    const marker = document.createElement('div');
+    marker.className = 'map-product-marker';
+    marker.style.left = (product.location.x - 16) + 'px';
+    marker.style.top = (product.location.y - 16) + 'px';
+    marker.style.position = 'absolute';
+    marker.title = product.name;
+    marker.innerText = idx + 1;
+    map.appendChild(marker);
     }
   });
 }
@@ -864,6 +1068,56 @@ window.addToTrip = addToTrip;
 window.switchTestConfig = switchTestConfig;
 window.getCurrentTestData = getCurrentTestData;
 
+// Initialize placeholder rotation on app load
+function initializePlaceholderRotation() {
+  setTimeout(() => {
+    let searchInput = document.querySelector('#searchbar-container .searchbar-input');
+    if (!searchInput) {
+      searchInput = document.querySelector('#searchbar-container textarea');
+    }
+    if (!searchInput) {
+      searchInput = document.querySelector('#searchbar-container input');
+    }
+    if (searchInput) {
+      // Add transition class for smooth fade
+      searchInput.classList.add('placeholder-fade');
+      searchInput.placeholder = window.examplePlaceholders[0];
+      if (window.placeholderInterval) clearInterval(window.placeholderInterval);
+      window.placeholderIndex = 0;
+
+      function startPlaceholderRotation() {
+        if (window.placeholderInterval) clearInterval(window.placeholderInterval);
+        window.placeholderInterval = setInterval(() => {
+          // Only rotate if search screen is visible
+          if (
+            document.getElementById('searchbar-container').classList.contains('hidden')
+          ) {
+            return;
+          }
+          // Fade out
+          searchInput.style.opacity = '0.3';
+          setTimeout(() => {
+            // Change placeholder text
+            window.placeholderIndex = (window.placeholderIndex + 1) % window.examplePlaceholders.length;
+            searchInput.placeholder = window.examplePlaceholders[window.placeholderIndex];
+            // Fade in
+            searchInput.style.opacity = '1';
+          }, 150);
+        }, 3000);
+      }
+
+      startPlaceholderRotation();
+    }
+  }, 500);
+}
+
+// Call initialization when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializePlaceholderRotation);
+} else {
+  initializePlaceholderRotation();
+}
+
 // Map productId to array of badge objects for this session
 window.productBadgeMap = window.productBadgeMap || {};
 window.getRandomBadgesForProduct = function(productId) {
@@ -888,9 +1142,11 @@ window.lastProductSelection = null;
 function getExamplePlaceholders() {
   const testData = getCurrentTestData();
   return [
-    "What are you searching for today?",
-    testData.searchQuery,
-    "Bags that go well with linen pants for summer in Tuscany"
+  "What are you searching for today?",
+    testData ? testData.searchQuery : "White cotton tees that I can wear for walking to class in a Philly summer",
+    "Bags that go well with linen pants for summer in Tuscany",
+    "Formal cream dress for a 35 y.o. woman for a barn wedding in TX this weekend",
+    "Smart casual shirt for a business trip to NYC"
   ];
 }
 window.examplePlaceholders = getExamplePlaceholders();
@@ -1033,6 +1289,9 @@ window.addEventListener('DOMContentLoaded', () => {
       if (backBtnRefine) backBtnRefine.classList.add('hidden');
       if (searchbarActions) searchbarActions.classList.remove('hidden');
       if (searchbarOuter) searchbarOuter.style.height = '';
+      // Show test selection buttons on search screen
+      const testSelectionContainer = document.querySelector('.test-selection-container');
+      if (testSelectionContainer) testSelectionContainer.classList.remove('hidden');
       // Reset scroll for searchbar container
       const searchbarContainer = document.getElementById('searchbar-container');
       if (searchbarContainer) searchbarContainer.scrollTop = 0;
@@ -1055,10 +1314,9 @@ window.addEventListener('DOMContentLoaded', () => {
           function startPlaceholderRotation() {
             if (window.placeholderInterval) clearInterval(window.placeholderInterval);
             window.placeholderInterval = setInterval(() => {
-              // Only rotate if search screen is visible and input is empty
+              // Only rotate if search screen is visible
               if (
-                document.getElementById('searchbar-container').classList.contains('hidden') ||
-                searchInput.value.length > 0
+                document.getElementById('searchbar-container').classList.contains('hidden')
               ) {
                 return;
               }
@@ -1076,16 +1334,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
           startPlaceholderRotation();
 
-          // Pause rotation only when input is not empty
-          searchInput.addEventListener('input', () => {
-            if (searchInput.value.length > 0) {
-              if (window.placeholderInterval) clearInterval(window.placeholderInterval);
-              searchInput.style.opacity = '1';
-            } else {
-              startPlaceholderRotation();
-            }
-          });
-          // No need to pause on focus/blur, only on actual input
+          // No input event listener needed since typing is disabled
         }
       }, 100);
       // Show nav bar on search page
@@ -1128,6 +1377,9 @@ window.addEventListener('DOMContentLoaded', () => {
         document.getElementById('refine-page').classList.remove('hidden');
         document.getElementById('searchbar-container').classList.remove('hidden');
         refineDesc.classList.remove('hidden');
+        // Hide test selection buttons on refine screen
+        const testSelectionContainer = document.querySelector('.test-selection-container');
+        if (testSelectionContainer) testSelectionContainer.classList.add('hidden');
         // Play animation as before
         setTimeout(() => {
           const refineDescEl = document.getElementById('refine-desc');
@@ -1144,6 +1396,9 @@ window.addEventListener('DOMContentLoaded', () => {
         document.getElementById('searchbar-container').classList.remove('hidden');
         const refineDesc = document.getElementById('refine-desc');
         if (refineDesc) refineDesc.classList.remove('hidden');
+        // Hide test selection buttons on refine screen
+        const testSelectionContainer = document.querySelector('.test-selection-container');
+        if (testSelectionContainer) testSelectionContainer.classList.add('hidden');
         window.justSearched = false;
       }
       if (window.renderRefineImageGrid) window.renderRefineImageGrid();
@@ -1154,7 +1409,7 @@ window.addEventListener('DOMContentLoaded', () => {
         if (window.feather) window.feather.replace();
       }
       if (searchbarActions) searchbarActions.classList.add('hidden');
-      if (searchbarOuter) searchbarOuter.style.height = '58px';
+      if (searchbarOuter) searchbarOuter.style.height = 'auto';
       if (exampleSearches) exampleSearches.classList.add('hidden');
       // Reset scroll for refine page
       const refinePage = document.getElementById('refine-page');
